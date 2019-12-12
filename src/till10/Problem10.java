@@ -8,14 +8,13 @@ public class Problem10 {
         // Solution:
         outer:
         for (long i = 11; i < 2000000; i += 2) {
-            for (long j = 3; j <= Math.sqrt(i); j++) {
+            for (long j = 3; j <= Math.sqrt(i); j+=2) {
                 if (i % j == 0) {
                     continue outer;
                 }
             }
             result += i;
         }
-        //TODO optimize this trash
 
         long timeToResolve = System.nanoTime() - startTime;
         if (((double) timeToResolve / 1_000_000) >= 1000) {
