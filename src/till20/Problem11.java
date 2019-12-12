@@ -1,20 +1,14 @@
-package till10;
+package till20;
 
-public class Problem10 {
-    public Problem10() {
+public class Problem11 {
+    public Problem11() {
+
+        int[][] grid = new int[20][20];
+
         long startTime = System.nanoTime();
-        long result = 17;
+        long result = 0;
 
         // Solution:
-        outer:
-        for (long i = 11; i < 2000000; i += 2) {
-            for (long j = 3; j <= (int) Math.sqrt(i); j += 2) {
-                if (i % j == 0) {
-                    continue outer;
-                }
-            }
-            result += i;
-        }
 
         long timeToResolve = System.nanoTime() - startTime;
         if (((double) timeToResolve / 1_000_000) >= 1000) {
