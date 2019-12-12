@@ -14,8 +14,12 @@ public class Main {
             try {
                 Class.forName("till100.Problem" + input).newInstance();
             } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-                System.out.println("not valid\n");
-                e.printStackTrace();
+                try {
+                    Class.forName("till200.Problem" + input).newInstance();
+                } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
+                    System.out.println("not valid\n");
+                    e.printStackTrace();
+                }
             }
         }
     }
