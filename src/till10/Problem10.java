@@ -1,25 +1,21 @@
 package till10;
 
-public class Problem9 {
-    public Problem9() {
+public class Problem10 {
+    public Problem10() {
         long startTime = System.nanoTime();
-        long result = 0;
+        long result = 17;
 
         // Solution:
         outer:
-        for (int i = 0; i < 500; i++) {
-            for (int j = 0; j < 500; j++) {
-                for (int k = 0; k < 500; k++) {
-                    if (i * i + j * j == k * k && i + j + k == 1000) {
-                        result = i * j * k;
-//                        System.out.println(i + " " + j + " " + k);
-                        break outer;
-                    }
+        for (long i = 11; i < 2000000; i += 2) {
+            for (long j = 3; j <= Math.sqrt(i); j++) {
+                if (i % j == 0) {
+                    continue outer;
                 }
             }
+            result += i;
         }
-        // was ultra easy (?)
-        // 20 or 45 ms
+        //TODO optimize this trash
 
         long timeToResolve = System.nanoTime() - startTime;
         if (((double) timeToResolve / 1_000_000) >= 1000) {
