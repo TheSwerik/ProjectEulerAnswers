@@ -1,7 +1,4 @@
-package till100;
-
-import java.util.HashSet;
-import java.util.stream.Stream;
+package till10;
 
 public class Problem1 {
     public Problem1() {

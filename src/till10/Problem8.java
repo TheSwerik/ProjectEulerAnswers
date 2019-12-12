@@ -1,6 +1,4 @@
-package till100;
-
-import java.util.Arrays;
+package till10;
 
 public class Problem8 {
     public Problem8() {

@@ -1,5 +1,3 @@
-import till100.*;
-
 import java.util.Scanner;
 
 public class Main {
@@ -12,10 +10,10 @@ public class Main {
                 System.exit(0);
             }
             try {
-                Class.forName("till100.Problem" + input).newInstance();
+                Class.forName("till10.Problem" + input).newInstance();
             } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                 try {
-                    Class.forName("till200.Problem" + input).newInstance();
+                    Class.forName("till20.Problem" + input).newInstance();
                 } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
                     System.out.println("not valid\n");
                     e.printStackTrace();

@@ -1,17 +1,21 @@
-package till100;
+package till10;
 
-public class Problem6 {
-    public Problem6() {
+public class Problem5 {
+    public Problem5() {
         long startTime = System.nanoTime();
         long result = 0;
 
-        int a = 0;
-        int b = 0;
-        for (int i = 1; i < 101; i++) {
-            a += i;
-            b += i * i;
+        outer:
+        for (int i = 20; ; i++) {
+            for (int j = 1; j < 21; j++) {
+                if (i % j != 0) {
+                    continue outer;
+                }
+            }
+            result = i;
+            break;
         }
-        result = a * a - b;
+        //TODO make not trash
 
         long timeToResolve = System.nanoTime() - startTime;
         if (((double) timeToResolve / 1_000_000) >= 1000) {

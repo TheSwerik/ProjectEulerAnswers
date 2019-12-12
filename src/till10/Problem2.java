@@ -1,4 +1,4 @@
-package till100;
+package till10;
 
 public class Problem2 {
     public Problem2() {

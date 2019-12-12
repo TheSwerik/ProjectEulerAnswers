@@ -1,29 +1,26 @@
-package till100;
+package till10;
 
-public class Problem7 {
-    public Problem7() {
+public class Problem3 {
+    public Problem3() {
         long startTime = System.nanoTime();
         long result = 0;
-
-        // Solution:
-        int counter = 4;
-        outer:
-        for (int i = 11; ; i += 2) {
-            //check if i is prime:
-            for (int j = 3; j <= (int) Math.sqrt(i); j++) {
+        for (int i = (int) Math.sqrt(600851475143L); i > 2; i--) {
+            if (600851475143L % i != 0) {
+                continue;
+            }
+            for (int j = 2; j < Math.sqrt(i); j++) {
                 if (i % j == 0) {
-                    continue outer;
+                    break;
+                }
+                if (j == (int) Math.sqrt(i)) {
+                    result = i;
+                    break;
                 }
             }
-            System.out.println(i);
-            //check if it's the 10001st:
-            if (++counter == 10001) {
-                result = i;
+            if (result != 0) {
                 break;
             }
         }
-        //shaved off from 1,5sec to /3ms
-
         long timeToResolve = System.nanoTime() - startTime;
         if (((double) timeToResolve / 1_000_000) >= 1000) {
             System.out.println("Result:\t" + result + "\tTime:\t" + ((double) timeToResolve / 1_000_000_000) + "s");
