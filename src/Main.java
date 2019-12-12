@@ -10,6 +10,7 @@ public class Main {
                 System.exit(0);
             }
             try {
+                Class.forName("Problem").newInstance();
                 Class.forName("till10.Problem" + input).newInstance();
             } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                 try {

@@ -3,7 +3,7 @@ package till20;
 public class Problem11 {
     public Problem11() {
 
-        int[][] grid = new int[20][20];
+//        int[][] grid = new int{}[20];
 
         long startTime = System.nanoTime();
         long result = 0;
