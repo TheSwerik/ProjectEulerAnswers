@@ -1,19 +1,36 @@
 package till10;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Problem10 {
     public Problem10() {
         long startTime = System.nanoTime();
         long result = 17;
 
-        // Solution:
-        outer:
-        for (long i = 11; i < 2000000; i += 2) {
-            for (long j = 3; j <= (int) Math.sqrt(i); j += 2) {
-                if (i % j == 0) {
-                    continue outer;
+//        // Solution:
+//        outer:
+//        for (long i = 11; i < 2000000; i += 2) {
+//            for (long j = 3; j <= (int) Math.sqrt(i); j += 2) {
+//                if (i % j == 0) {
+//                    continue outer;
+//                }
+//            }
+//            result += i;
+//        }
+
+        //better (Maurice):
+        result = 0;
+        boolean[] bools = new boolean[2000000];
+        Arrays.fill(bools, true);
+
+        for (int i = 2; i < bools.length; i++) {
+            if (bools[i]) {
+                result += i;
+                for (int j = i; j < bools.length; j += i) {
+                    bools[j] = false;
                 }
             }
-            result += i;
         }
 
         long timeToResolve = System.nanoTime() - startTime;

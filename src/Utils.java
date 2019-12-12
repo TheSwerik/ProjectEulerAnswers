@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
@@ -28,8 +29,23 @@ public class Utils {
             }
             primes.add(i);
         }
-//        return primes.toArray();
+//        return primes.toArray(); //würde alle geben
         return primes.get(primes.size() - 1);
     }
 
+    public Integer[] primeSieve(int range) {
+        ArrayList<Integer> primes = new ArrayList<>();
+        boolean[] bools = new boolean[range + 1];
+        Arrays.fill(bools, true);
+
+        for (int i = 2; i < bools.length; i++) {
+            if (bools[i]) {
+                primes.add(i);
+                for (int j = i; j < bools.length; j += i) {
+                    bools[j] = false;
+                }
+            }
+        }
+        return primes.toArray(new Integer[0]);
+    }
 }

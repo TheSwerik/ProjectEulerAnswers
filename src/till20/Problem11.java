@@ -3,12 +3,15 @@ package till20;
 public class Problem11 {
     public Problem11() {
 
-//        int[][] grid = new int{}[20];
+        //TODO hier
+//        int[][] grid = new int{{8}};
 
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
+
+
 
         long timeToResolve = System.nanoTime() - startTime;
         if (((double) timeToResolve / 1_000_000) >= 1000) {
