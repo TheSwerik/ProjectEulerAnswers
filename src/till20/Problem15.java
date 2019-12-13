@@ -9,8 +9,8 @@ public class Problem15 {
         long result = 0;
 
         // Solution:
-        BigInteger n = new BigInteger("1");
-        BigInteger k = new BigInteger("1");
+        BigInteger n = BigInteger.ONE;
+        BigInteger k = BigInteger.ONE;
         for (int i = 21; i < 40; i++) {
             n = n.multiply(new BigInteger(i + ""));
             k = k.multiply(new BigInteger(i - 20 + ""));
