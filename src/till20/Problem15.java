@@ -11,13 +11,11 @@ public class Problem15 {
         // Solution:
         BigInteger n = new BigInteger("1");
         BigInteger k = new BigInteger("1");
-        for (int i = 21; i <= 40; i++) {
+        for (int i = 21; i < 40; i++) {
             n = n.multiply(new BigInteger(i + ""));
+            k = k.multiply(new BigInteger(i - 20 + ""));
         }
-        for (int i = 2; i <= 20; i++) {
-            k = k.multiply(new BigInteger(i + ""));
-        }
-        n = n.divide(k);
+        n = (n.divide(k)).multiply(new BigInteger("2"));
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + n + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
