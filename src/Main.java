@@ -10,14 +10,10 @@ public class Main {
                 System.exit(0);
             }
             try {
-                Class.forName("till10.Problem" + input).newInstance();
+                Class.forName("till" + (1 + (input + "").charAt(0) - 48) + "0.Problem" + input).newInstance();
             } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-                try {
-                    Class.forName("till20.Problem" + input).newInstance();
-                } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
-                    System.out.println("not valid\n");
-                    e.printStackTrace();
-                }
+                System.out.println("not valid\n");
+                e.printStackTrace();
             }
         }
     }
