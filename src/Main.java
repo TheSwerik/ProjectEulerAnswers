@@ -10,7 +10,12 @@ public class Main {
                 System.exit(0);
             }
             try {
-                Class.forName("till" + (1 + (input + "").charAt(0) - 48) + "0.Problem" + input).newInstance();
+                String inputString = input + "";
+                int start = 0;
+                Class.forName("till" +
+                        (input > 99 ? (inputString.charAt(start++) - 48) : "") +
+                        (1 + inputString.charAt(start) - 48) +
+                        "0.Problem" + input).newInstance();
             } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                 System.out.println("not valid\n");
                 e.printStackTrace();
