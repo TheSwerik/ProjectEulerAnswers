@@ -1,3 +1,4 @@
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 public class Main {
@@ -12,11 +13,21 @@ public class Main {
             try {
                 String inputString = input + "";
                 int start = 0;
-                Class.forName("till" +
-                        (input > 99 ? (inputString.charAt(start++) - 48) : "") +
-                        (1 + inputString.charAt(start) - 48) +
-                        "0.Problem" + input).newInstance();
-            } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+                String till = "";
+                if (input > 99) {
+                    till += inputString.charAt(start++) - 48 + "";
+                }
+                if (inputString.length() == 1) {
+                    till = "10";
+                } else {
+                    if (inputString.charAt(start + 1) - 48 == 0) {
+                        till += inputString.charAt(start) - 48 + "0";
+                    } else {
+                        till += inputString.charAt(start) - 48 + 1 + "0";
+                    }
+                }
+                Class.forName("till" + till + ".Problem" + input).getDeclaredConstructor().newInstance();
+            } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
                 System.out.println("not valid\n");
                 e.printStackTrace();
             }

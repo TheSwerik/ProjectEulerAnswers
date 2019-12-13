@@ -1,7 +1,5 @@
 package till20;
 
-import com.sun.org.apache.xml.internal.serialize.LineSeparator;
-
 import java.math.BigInteger;
 
 public class Problem13 {
