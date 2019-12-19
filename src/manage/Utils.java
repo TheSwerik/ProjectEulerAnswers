@@ -1,8 +1,31 @@
+package manage;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Utils {
+
+    public static Integer[] primeSieveButFast(int range) {
+        boolean[] bools = new boolean[range + 1];
+        Arrays.fill(bools, true);
+        double root = Math.sqrt(range) + 0.5;
+        for (int i = 3; i < root; i += 2) {
+            if (bools[i]) {
+                for (int j = i * i; j < range; j += i * 2) {
+                    bools[j] = false;
+                }
+            }
+        }
+        ArrayList<Integer> primes = new ArrayList<>();
+        primes.add(2);
+        for (int i = 3; i < range; i += 2) {
+            if (bools[i]) {
+                primes.add(i);
+            }
+        }
+        return primes.toArray(new Integer[0]);
+    }
+
     public int findBiggestPrimFactor(long input) {
         int i;
         long maxNumber = input;
@@ -33,7 +56,7 @@ public class Utils {
         return primes.get(primes.size() - 1);
     }
 
-    public Integer[] primeSieve(int range) {
+    public static Integer[] primeSieve(int range) {
         ArrayList<Integer> primes = new ArrayList<>();
         boolean[] bools = new boolean[range + 1];
         Arrays.fill(bools, true);
