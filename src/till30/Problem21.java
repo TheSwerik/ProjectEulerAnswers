@@ -1,29 +1,38 @@
 package till30;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 public class Problem21 {
+
     public Problem21() {
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
-        for (long i = 2; i <= 10000; i+=2) {
-            long sum1 = 0;
-            for (int j = 1; j <= i / 2; j++) {
+        for (long i = 2; i <= 10000; i += 2) {
+            long sum1 = 1;
+//            for (int j = 2; j <= i / 2; j++) {
+//                if (i % j == 0) {
+//                    sum1 += j;
+//                }
+//            }
+            double root = Math.sqrt(i);
+            for (int j = 2; j <= root; j++) {
                 if (i % j == 0) {
-                    sum1 +=  j;
+                    sum1 += j + (i / j);
                 }
             }
-            if(sum1==i){
+            if (sum1 == i) {
                 continue;
             }
-            long sum2 = 0;
-            for (int j = 1; j <= sum1 / 2; j++) {
+            long sum2 = 1;
+//            for (int j = 2; j <= sum1 / 2; j++) {
+//                if (sum1 % j == 0) {
+//                    sum2 += j;
+//                }
+//            }
+            root = Math.sqrt(sum1);
+            for (int j = 2; j <= root; j++) {
                 if (sum1 % j == 0) {
-                    sum2 +=  j;
+                    sum2 += j + (sum1 / j);
                 }
             }
             if (sum2 == i) {
