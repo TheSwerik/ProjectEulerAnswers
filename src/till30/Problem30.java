@@ -34,7 +34,7 @@ public class Problem30 {
                             }
                             for (int n = 0; n < 10; n++) {
                                 long f = (long) Math.pow(n, 5);
-                                testString = i + "" + j + "" + k + "" + l + "" + m + n;
+                                testString = i + "" + j + "" + k + "" + l + "" + m + "" + n;
                                 testNumber = a + b + c + d + e + f;
 
                                 if ((testNumber + "").equals(testString)) {
