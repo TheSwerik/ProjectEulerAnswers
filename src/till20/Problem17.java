@@ -41,24 +41,21 @@ public class Problem17 {
             if (restInt < 14 || restInt == 15 || restInt == 18) {
                 result += map.get(restInt);                 // below 14, or 15 or 18
             } else if (restInt < 20) {
-                result += map.get(rest.charAt(0) - 48);     // last digit
+                result += map.get(rest.charAt(1) - 48);     // last digit
                 result += 4;                                // teen
             } else {
                 if (rest.charAt(0) - 48 == 2 || rest.charAt(0) - 48 == 3 || rest.charAt(0) - 48 == 8) {
                     result += 4;                            // twen- or thir- or eigh-
-                } else if (rest.charAt(0) - 48 == 5) {
-                    result += 3;                            // fif-
+                } else if (rest.charAt(0) - 48 == 5 || rest.charAt(0) - 48 == 4) {
+                    result += 3;                            // fif- or for-
                 } else {
                     result += map.get(rest.charAt(0) - 48); // first digit
                 }
                 result += 2;                                // -ty
                 result += map.get(rest.charAt(1) - 48);     // last digit
             }
-            System.out.println(i + "\t" + (result - test));
         }
         result += 11;                                       // one thousand
-        result -= 60;
-        //TODO Fix issue
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
