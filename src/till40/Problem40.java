@@ -6,8 +6,8 @@ public class Problem40 {
         long result = 0;
 
         // Solution:
-        int n = 1;
         String concatenated = concatenate(1_000_000);
+        int n = 1;
         result = concatenated.charAt(n) - 48;
         for (int i = 0; i < 6; i++) {
             n = Integer.parseInt(n + "0");
