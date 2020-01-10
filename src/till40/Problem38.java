@@ -17,9 +17,19 @@ public class Problem38 {
 
         this.permute(permutations, "", first);
 
+        //find startIndex:
+        int index = 0;
+        for (int i = 0; i < permutations.length; i++) {
+            if (permutations[i].equals("948765321")) {
+                index = i;
+                break;
+            }
+        }
 
+        //find number:
         loop:
-        for (String number : permutations) {
+        for (int j = index; j < permutations.length; j++) {
+            String number = permutations[j];
             if (Integer.parseInt(number.substring(0, 4)) * 2 > 100_000) {
                 continue;
             }
