@@ -12,7 +12,7 @@ public class Problem38 {
         long result = 0;
 
         // Solution:
-//        result = solve(result);
+//        result = solveOld(result);
         int n = 40_320;                         //n = 40320 bc there are 40320 Pandigital numbers that start with 9
         String[] permutations = new String[n];
         String first = "987654321";
@@ -35,8 +35,9 @@ public class Problem38 {
                 (((double) timeToResolve / 1_000_000) + "ms")));
     }
 
-    private long solve(long result) {
-        int n = 362880;
+    private long solveOld(long result) {
+//        int n = 362880; // ALL Pandigital Numbers
+        int n = 40_320;                         //n = 40320 bc there are 40320 Pandigital numbers that start with 9
         String[] permutations = new String[n];
         String first = "987654321";
 
