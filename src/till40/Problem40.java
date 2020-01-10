@@ -7,10 +7,11 @@ public class Problem40 {
 
         // Solution:
         int n = 1;
-        result = concatenate(n).charAt(n) - 48;
+        String concatenated = concatenate(1000000);
+        result = concatenated.charAt(n) - 48;
         for (int i = 0; i < 6; i++) {
             n = Integer.parseInt(n + "0");
-            result *= concatenate(n).charAt(n) - 48;
+            result *= concatenated.charAt(n) - 48;
         }
 
         long timeToResolve = System.nanoTime() - startTime;
