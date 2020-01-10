@@ -28,7 +28,6 @@ public class Problem38 {
             }
         }
 
-
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
                 (((double) timeToResolve / 1_000_000_000) + "s") :
