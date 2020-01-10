@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-//        Problem.solve();
         while (true) {
             System.out.println("\nWhich do you want to try out?");
             int input = sc.nextInt();

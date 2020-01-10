@@ -12,11 +12,7 @@ public class Problem36 {
         int counter = 0;
         String nines = "99";
         String tens = "0";
-        ArrayList<Integer> checkList = new ArrayList<Integer>();
-        for (long i = 11; i < 100_000; ) {
-            if (i > 10_000) {
-                checkList.add((int) i);
-            }
+        for (long i = 11; i < 10_000; ) {
             String binary = Integer.toBinaryString((int) i);
             if (binary.equals(new StringBuilder(binary).reverse().toString())) {
                 result += i;
@@ -47,7 +43,7 @@ public class Problem36 {
                 i += 11;
             }
         }
-        // for 10101:
+/*        // for 10101:
         int compare = 19191;
         int lastI = 100001;
         for (long i = 10101; i < 100_000; ) {
@@ -74,14 +70,36 @@ public class Problem36 {
                 i += 1010;
             }
             System.out.println(i + " " + counter);
+        }*/
+        // for 10101 and 11011:
+        counter = 0;
+        long lastI = 10001;
+        for (long i = lastI, j = 0; i < 100_000; ) {
+            if (Integer.toBinaryString((int) i).equals(new StringBuilder(Integer.toBinaryString((int) i)).reverse().toString())) {
+                result += i;
+//                System.out.println(i);
+            }
+            i += 1010;
+            if (++counter == 10) {
+                i = lastI + 100;
+                lastI = (int) i;
+                counter = 0;
+                j++;
+            } // 19991 and 29992 etc
+            if (j == 10) {
+                j = 0;
+                i += 9001;
+                lastI = (int) i;
+            }
+            System.out.println(i);
         }
         // for 101101 and 110011:
         counter = 0;
         lastI = 100001;
-        for (long i = 100001, j = 0; i < 1_000_000; ) {
+        for (long i = lastI, j = 0; i < 1_000_000; ) {
             if (Integer.toBinaryString((int) i).equals(new StringBuilder(Integer.toBinaryString((int) i)).reverse().toString())) {
                 result += i;
-                System.out.println(i);
+//                System.out.println(i);
             }
             i += 10010;
             if (++counter == 10) {
