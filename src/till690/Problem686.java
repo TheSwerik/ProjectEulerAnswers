@@ -2,7 +2,7 @@ package till690;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 public class Problem686 {
 
@@ -25,7 +25,7 @@ public class Problem686 {
             exponent++;
         }
         //find increments:
-        ArrayList<Long> increments = new ArrayList<>();
+        ArrayList<char[]> increments = new ArrayList<>();
         if (findIncrements) {
             long last = 0;
             for (long count = 1; count < max && System.nanoTime() - startTime < 100_000_000; exponent++) {
@@ -34,29 +34,54 @@ public class Problem686 {
                     count++;
                     Long increment = exponent - last;
                     if (!increments.contains(increment)) {
-                        increments.add(increment);
+//                        increments.add(increment);
                     }
                     last = exponent;
                 }
             }
-            Collections.sort(increments);
+//            Collections.sort(increments);
         } else {
-            increments.add(196L);
-            increments.add(289L);
-            increments.add(379L);
-            increments.add(485L);
+//            increments.add(196L);
+//            increments.add(289L);
+//            increments.add(379L);
+//            increments.add(485L);
+            char[] chars1 = new char[196];
+            Arrays.fill(chars1, '0');
+            increments.add(chars1);
+            char[] chars2 = new char[289];
+            Arrays.fill(chars2, '0');
+            increments.add(chars2);
+            char[] chars3 = new char[379];
+            Arrays.fill(chars3, '0');
+            increments.add(chars3);
+            char[] chars4 = new char[485];
+            Arrays.fill(chars4, '0');
+            increments.add(chars4);
         }
 
         //solve:
         exponent = first;
 
-        outer: for (long count = 1; count < max; count++) {
-            System.out.printf("%.2f", (float) count / max * 100);
-            System.out.println(" %");
+        StringBuilder binaryNumber = new StringBuilder("1");
+        char[] chars = new char[90];
+        Arrays.fill(chars, '0');
+        binaryNumber.append(chars);
+
+        long counterTime = System.nanoTime();
+        outer:
+        for (long count = 1; count < max; count++) {
+            if (System.nanoTime() - counterTime > 1_000_000_000) {
+                counterTime = System.nanoTime();
+                System.out.printf("%.2f", (float) count / max * 100);
+                System.out.println(" %");
+            }
             for (int i = 0; ; i++) {
-                BigInteger digit = BigInteger.TWO.pow((int) exponent + increments.get(i).intValue());
+                StringBuilder tempString = new StringBuilder(binaryNumber);
+                tempString.append(increments.get(i));
+                BigInteger digit = new BigInteger(tempString.toString(), 2);
                 if (digit.toString().startsWith(pattern)) {
-                    exponent += increments.get(i);
+                    binaryNumber.append(increments.get(i));
+                    exponent = binaryNumber.length();
                     continue outer;
                 }
             }
