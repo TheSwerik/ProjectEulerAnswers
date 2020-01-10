@@ -22,7 +22,7 @@ public class Problem40 {
 
     private String concatenate(long n) {
         StringBuilder result = new StringBuilder(".");
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; result.length() <= n + 1; i++) {
             result.append(i);
         }
         return result.toString();
