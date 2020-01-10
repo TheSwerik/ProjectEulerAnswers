@@ -27,12 +27,12 @@ public class Problem39 {
         for (int c = n / 2; c > 2; c--) {
             for (int b = c; b > 1; b--) {
                 double a = Math.sqrt(c * c - b * b);
-                if (a + b + c == n && a % 1 == 0) {
+                if (a + b + c == n) {
                     result++;
                 }
             }
         }
 
-        return (int) ((result + 0.5) / 2);
+        return result;
     }
 }
