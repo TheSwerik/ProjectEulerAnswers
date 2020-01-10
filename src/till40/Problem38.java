@@ -1,5 +1,6 @@
 package till40;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Problem38 {
@@ -11,11 +12,35 @@ public class Problem38 {
         long result = 0;
 
         // Solution:
+//        result = solve(result);
+        int n = 40_320;                         //n = 40320 bc there are 40320 Pandigital numbers that start with 9
+        String[] permutations = new String[n];
+        String first = "987654321";
+
+        this.permute(n, permutations, "", first);
+
+        ArrayList<String> permutationsList = new ArrayList<String>(Arrays.asList(permutations));
+        //find number:
+        for (int i = 9487; i > 0; i--) {
+            if (permutationsList.contains(concatenate(i))) {
+                result = Long.parseLong(i + "" + i * 2);
+                break;
+            }
+        }
+
+
+        long timeToResolve = System.nanoTime() - startTime;
+        System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
+                (((double) timeToResolve / 1_000_000_000) + "s") :
+                (((double) timeToResolve / 1_000_000) + "ms")));
+    }
+
+    private long solve(long result) {
         int n = 362880;
         String[] permutations = new String[n];
         String first = "987654321";
 
-        this.permute(permutations, "", first);
+        this.permute(n, permutations, "", first);
 
         //find startIndex:
         int index = 0;
@@ -41,15 +66,11 @@ public class Problem38 {
                 }
             }
         }
-
-        long timeToResolve = System.nanoTime() - startTime;
-        System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
-                (((double) timeToResolve / 1_000_000_000) + "s") :
-                (((double) timeToResolve / 1_000_000) + "ms")));
+        return result;
     }
 
-    private void permute(String[] permutations, String prefix, String s) {
-        if (counter >= 362880) {
+    private void permute(int max, String[] permutations, String prefix, String s) {
+        if (counter >= max) {
             return;
         }
         int n = s.length();
@@ -57,7 +78,7 @@ public class Problem38 {
             permutations[this.counter++] = prefix;
         } else {
             for (int i = 0; i < n; i++) {
-                permute(permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
+                permute(max, permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
             }
         }
     }
