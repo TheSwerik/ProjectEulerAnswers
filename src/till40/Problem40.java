@@ -7,11 +7,10 @@ public class Problem40 {
 
         // Solution:
         int n = 1;
-        result = concatenate(n).charAt(1 + n) - 48;
+        result = concatenate(n).charAt(n) - 48;
         for (int i = 0; i < 6; i++) {
             n = Integer.parseInt(n + "0");
-            result *= concatenate(n).charAt(1 + n) - 48;
-
+            result *= concatenate(n).charAt(n) - 48;
         }
 
         long timeToResolve = System.nanoTime() - startTime;
@@ -21,7 +20,7 @@ public class Problem40 {
     }
 
     private String concatenate(long n) {
-        StringBuilder result = new StringBuilder("0.");
+        StringBuilder result = new StringBuilder(".");
         for (int i = 1; i <= n; i++) {
             result.append(i);
         }
