@@ -7,7 +7,7 @@ public class Problem40 {
 
         // Solution:
         int n = 1;
-        String concatenated = concatenate(1000000);
+        String concatenated = concatenate(1_000_000);
         result = concatenated.charAt(n) - 48;
         for (int i = 0; i < 6; i++) {
             n = Integer.parseInt(n + "0");
