@@ -122,25 +122,4 @@ public class Problem37 {
         }
         return primes.toArray(new Integer[0]);
     }
-
-    private ArrayList<String> primeSieveButFastString(int range) {
-        boolean[] bools = new boolean[range + 1];
-        Arrays.fill(bools, true);
-        double root = Math.sqrt(range) + 0.5;
-        for (int i = 3; i < root; i += 2) {
-            if (bools[i]) {
-                for (int j = i * i; j < range; j += i * 2) {
-                    bools[j] = false;
-                }
-            }
-        }
-        ArrayList<String> primes = new ArrayList<>();
-        primes.add("2");
-        for (int i = 3; i < range; i += 2) {
-            if (bools[i]) {
-                primes.add(i + "");
-            }
-        }
-        return primes;
-    }
 }
