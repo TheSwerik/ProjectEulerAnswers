@@ -6,11 +6,11 @@ public class Problem39 {
         long result = 0;
 
         // Solution:
-        int max = 0;
+        int maxSolutions = 0;
         for (int i = 1000; i > 2; i--) {
-            int solution = numberOfSolutions(i);
-            if (solution > max) {
-                max = solution;
+            int solutions = numberOfSolutions(i);
+            if (solutions > maxSolutions) {
+                maxSolutions = solutions;
                 result = i;
             }
         }
