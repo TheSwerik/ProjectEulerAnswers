@@ -9,7 +9,7 @@ public class Problem42 {
         String[] words = readWords();
         long startTime = System.nanoTime();
         long result = 0;
-// A = 65
+
         // Solution:
         ArrayList<Integer> triangles = generateTriangles(15 * 26);
         for (String word : words) {
