@@ -9,16 +9,12 @@ public class Problem43 {
         long result = 0;
 
         // Solution:
-        int n = 3_628_800;
+        int n = 3_265_920;
         String[] permutations = new String[n];
-        String first = "0123456789";
+        String first = "9876543210";
         this.permute(n, permutations, "", first);
 
         for (String number : permutations) {
-            // skip leading 0s
-            if (number.charAt(0) == '0') {
-                continue;
-            }
             // check 2
             if ((number.charAt(3) - 48) % 2 != 0) {
                 continue;
@@ -53,6 +49,7 @@ public class Problem43 {
             if (checkNumber % 17 != 0) {
                 continue;
             }
+
             result += Long.parseLong(number);
         }
 
