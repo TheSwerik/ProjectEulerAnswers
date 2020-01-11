@@ -21,17 +21,6 @@ public class Problem41 {
                 (((double) timeToResolve / 1_000_000) + "ms")));
     }
 
-    private long solvePrimeToPan() {
-        Integer[] primes = primeSieveButFast(7654321);
-        System.out.println("generated");
-        for (int i = primes.length - 1; i >= 0; i--) {
-            if (isPandigital(primes[i].toString())) {
-                return primes[i];
-            }
-        }
-
-        return 0;
-    }
 
     private long solvePanToPrime() {
         int max = 5040;
@@ -61,6 +50,32 @@ public class Problem41 {
         return true;
     }
 
+    private void permute(int max, String[] permutations, String prefix, String s) {
+        if (counter >= max) {
+            return;
+        }
+        int n = s.length();
+        if (n == 0) {
+            permutations[this.counter++] = prefix;
+        } else {
+            for (int i = 0; i < n; i++) {
+                permute(max, permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
+            }
+        }
+    }
+
+    private long solvePrimeToPan() {
+        Integer[] primes = primeSieveButFast(7654321);
+//        System.out.println("generated " + primes.length + " primes");
+        for (int i = primes.length - 1; i >= 0; i--) {
+            if (isPandigital(primes[i].toString())) {
+                return primes[i];
+            }
+        }
+
+        return 0;
+    }
+
     private boolean isPandigital(String n) {
         if (n.contains("0") || n.contains("9") || n.contains("8")) {
             return false;
@@ -74,20 +89,6 @@ public class Problem41 {
             numbers[(n.charAt(i) - 49)] = true;
         }
         return true;
-    }
-
-    private void permute(int max, String[] permutations, String prefix, String s) {
-        if (counter >= max) {
-            return;
-        }
-        int n = s.length();
-        if (n == 0) {
-            permutations[this.counter++] = prefix;
-        } else {
-            for (int i = 0; i < n; i++) {
-                permute(max, permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
-            }
-        }
     }
 
     private Integer[] primeSieveButFast(int range) {
