@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in); //a
+        Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("\nWhich do you want to try out?");
             int input = sc.nextInt();
