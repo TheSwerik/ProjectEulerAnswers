@@ -12,14 +12,6 @@ public class Problem684 {
 
         // Solution:
         long[] fibo = findFibos(90);
-//        for (int i = 1000; i < 10000; ) {
-//            result = result.add(findSmallestDigitSum(i));
-//            if (i++ % 999 == 0) {
-//                System.out.println(result.toString());
-//                bigS(i);
-//                result = BigInteger.ZERO;
-//            }
-//        }
         float i = 1;
         for (long f : fibo) {
             result += bigS(f) % 1_000_000_007;
