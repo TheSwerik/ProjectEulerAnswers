@@ -28,7 +28,7 @@ public class Main {
                         till += inputString.charAt(start) - 48 + 1 + "0";
                     }
                 }
-                Class.forName("till" + till + ".Problem" + input).getDeclaredConstructor().newInstance();
+                Class.forName("java_.till" + till + ".Problem" + input).getDeclaredConstructor().newInstance();
             } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
                 System.out.println("not valid\n");
                 e.printStackTrace();
