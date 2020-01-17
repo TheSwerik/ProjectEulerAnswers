@@ -18,28 +18,17 @@ public class Main {
                 startJava(input.substring(1));
             } else if (input.charAt(0) == 'c' || input.charAt(0) == 'C') {
                 startCpp(input.substring(1));
+            } else if (input.matches("\\d+")) {
+                startJava(input);
             }
         }
     }
 
     private static void startJava(String inputString) {
         try {
-            int start = 0;
-            String till = "";
-            if (Integer.parseInt(inputString) > 99) {
-                till += inputString.charAt(start++) - 48 + "";
-            }
-            if (inputString.length() == 1) {
-                till = "10";
-            } else {
-                if (inputString.charAt(start + 1) - 48 == 0) {
-                    till += inputString.charAt(start) - 48 + "0";
-                } else {
-                    till += inputString.charAt(start) - 48 + 1 + "0";
-                }
-            }
-            Class.forName("java_.till" + till + ".Problem" + inputString).getDeclaredConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
+            int inputInt = Integer.parseInt(inputString);
+            Class.forName("java_.problems" + (inputInt / 10 * 10 + 1) + "_" + ((inputInt / 10) + 1) * 10 + ".Problem" + inputString).getDeclaredConstructor().newInstance();
+        } catch (ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             System.out.println("not valid\n");
             e.printStackTrace();
         }
@@ -47,22 +36,9 @@ public class Main {
 
     private static void startCpp(String inputString) {
         try {
-            int start = 0;
-            String till = "";
-            if (Integer.parseInt(inputString) > 99) {
-                till += inputString.charAt(start++) - 48 + "";
-            }
-            if (inputString.length() == 1) {
-                till = "10";
-            } else {
-                if (inputString.charAt(start + 1) - 48 == 0) {
-                    till += inputString.charAt(start) - 48 + "0";
-                } else {
-                    till += inputString.charAt(start) - 48 + 1 + "0";
-                }
-            }
-            Class.forName("java_.till" + till + ".Problem" + inputString).getDeclaredConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
+            int inputInt = Integer.parseInt(inputString);
+            Class.forName("cpp.problems" + (inputInt / 10 * 10 + 1) + "_" + ((inputInt / 10) + 1) * 10 + ".Problem" + inputString).getDeclaredConstructor().newInstance();
+        } catch (ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             System.out.println("not valid\n");
             e.printStackTrace();
         }
