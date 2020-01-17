@@ -45,7 +45,7 @@ public class Main {
     }
 
     private static void compileAndRunC(String path) {
-        try {
+        try { //TODO look into Java -> native
             //get Path & Command:
             String pathIn = new File("").getAbsolutePath() + "\\src\\" + path + ".c";
             String pathOut = new File("").getAbsolutePath() + "\\out\\exe" + path.substring(path.lastIndexOf('\\')) + ".exe";
