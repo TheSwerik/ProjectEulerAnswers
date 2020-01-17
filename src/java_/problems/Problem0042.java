@@ -45,7 +45,7 @@ public class Problem0042 {
 
     private String[] readWords() {
         try {
-            File file = new File("src/java.till50/words.txt");
+            File file = new File("src/java_/files/problem0042_words.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
 
             StringBuilder st = new StringBuilder();
