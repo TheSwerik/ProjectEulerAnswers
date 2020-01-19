@@ -9,12 +9,18 @@ public class Problem0688 {
 
         // Solution:
         long max = 10_000_000_000_000_000L;
-        for (long n = 1; n <= 200; n++) {
+        long tempMax = 300_000L;
+//        long tempMax = max;
+        int percent = 0;
+        for (long n = 1; n <= tempMax; n++) {
             // Theory:
-//            result += f(n) * (max - n + 1) % 1_000_000_007;
             result += F(n);
-            if (((double) n / max * 100) > 0.000001)
-                System.out.println(((double) n / max * 100) + "%");
+
+            // percent
+            int temp = (int) ((double) n / tempMax * 100);
+            if (temp > percent) {
+                System.out.println((percent = temp) + "%");
+            }
         }
 
 
@@ -27,7 +33,7 @@ public class Problem0688 {
     private long F(long n) {
         long result = 0;
 
-        for (int k = 1; k <= n; k++) {
+        for (long k = 1; k <= n; k++) {
 //            long debugLast = result;
             if (n < (k * k + k) / 2)
                 continue;
@@ -41,9 +47,5 @@ public class Problem0688 {
         }
 
         return result % 1_000_000_007;
-    }
-
-    private long smallestPossible(long k) {
-        return (k * k + k) / 2; // gaußsche summenformel
     }
 }
