@@ -5,13 +5,13 @@ import java.math.BigInteger;
 public class Problem0688 {
     public Problem0688() {
         long startTime = System.nanoTime();
-        BigInteger result = BigInteger.ZERO;
+        long result = 0;
 
         // Solution:
         long max = 10_000_000_000_000_000L;
-        for (long n = 1; n <= 10000; n++) {
+        for (long n = 1; n <= max; n++) {
 //            result = result.add(f(n).multiply(new BigInteger((max - n + 1) + ""))).mod(new BigInteger("1000000007"));
-            result = result.add(F(n)).mod(new BigInteger("1000000007"));
+            result += F(n);
             if (((double) n / max * 100) > 0.01)
                 System.out.println(((double) n / max * 100) + "%");
         }
@@ -23,20 +23,21 @@ public class Problem0688 {
                 (((double) timeToResolve / 1_000_000) + "ms")));
     }
 
-    private BigInteger F(long n) {
-        BigInteger result = BigInteger.ZERO;
+    private long F(long n) {
+        long result = 0;
 
         for (int k = 1; k <= n; k++) {
             if (n < (k * k + k) / 2)
                 continue;
             if (k % 2 == 0) {
-                result = result.add(new BigInteger(((n - (k / 2)) / k) - (k / 2 - 1) + ""));
+                result += (((n - (k / 2)) / k) - (k / 2 - 1)) % 1_000_000_007;
             } else {
-                result = result.add(new BigInteger(n / k - k / 2 + ""));
+                result += (n / k - k / 2) % 1_000_000_007;
             }
+            result %= 1_000_000_007;
         }
 
-        return result;
+        return result % 1_000_000_007;
     }
 
     private long smallestPossible(long k) {
