@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class Problem0688 {
 
-    BigInteger mod = new BigInteger("1000000007");
+    private BigInteger mod = new BigInteger("1000000007");
 
     public Problem0688() {
         long startTime = System.nanoTime();
@@ -40,7 +40,7 @@ public class Problem0688 {
                 System.out.println((percent = temp) + "%");
             }
         }
-        result += Long.parseLong((new BigInteger(F(gausMax) + "").multiply(new BigInteger((max - gausMax - 1)+ "")).mod(mod)).toString());
+        result += Long.parseLong((new BigInteger(F(gausMax) + "").multiply(new BigInteger((max - gausMax - 1) + "")).mod(mod)).toString());
 
 
         long timeToResolve = System.nanoTime() - startTime;
