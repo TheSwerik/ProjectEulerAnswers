@@ -18,6 +18,7 @@ public class Problem0684 {
             System.out.println(i++ / 90 * 100 + " %");
 //            i++;
         }
+        //TODO finish
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?

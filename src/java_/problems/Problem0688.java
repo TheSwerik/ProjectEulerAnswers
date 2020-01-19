@@ -42,6 +42,8 @@ public class Problem0688 {
         }
         result += Long.parseLong((new BigInteger(F(gausMax) + "").multiply(new BigInteger((max - gausMax - 1) + "")).mod(mod)).toString());
 
+        //TODO finish
+
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
