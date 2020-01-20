@@ -15,6 +15,7 @@ public class Problem0688 {
 //        long gausMax = 4_294_967_295L; // max for long
         long gausMax = findGausMax(10_000_000_000_000_000L); // max for max
         long tempMax = 1_000_000;
+         tempMax = max;
         int percent = 0;
         outer:
         for (long n = 1; n <= tempMax; n++) {
@@ -35,7 +36,7 @@ public class Problem0688 {
             }
 
             // percent
-            int temp = (int) ((double) n / tempMax * 100);
+            int temp = (int) ((double) n / gausMax * 100);
             if (temp > percent) {
                 System.out.println((percent = temp) + "%");
             }
