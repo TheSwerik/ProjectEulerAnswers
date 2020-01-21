@@ -58,6 +58,12 @@ public class Main {
             String pathToCmd = "C:\\Windows\\System32";
             String command = "g++ " + pathIn + " -o " + pathOut;
 
+            //create folder if it doesnt exist:
+            File pathOutFile = new File(new File("").getAbsolutePath() + "\\out\\exe\\");
+            if (!pathOutFile.exists()) {
+                pathOutFile.mkdirs();
+            }
+
             //Start Compile Process
             Process p = new ProcessBuilder("cmd", "/c", command).directory(new File(pathToCmd)).start();
 
