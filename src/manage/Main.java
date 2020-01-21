@@ -47,7 +47,7 @@ public class Main {
     private static void compileAndRunC(String path) {
         try { //TODO look into Java -> native
             //get Path & Command:
-            String pathIn = new File("").getAbsolutePath() + "\\src\\" + path + ".c";
+            String pathIn = new File("").getAbsolutePath() + "\\src\\" + path + ".cpp";
             String pathOut = new File("").getAbsolutePath() + "\\out\\exe" + path.substring(path.lastIndexOf('\\')) + ".exe";
             String pathToCmd = "C:\\Windows\\System32";
             String command = "g++ " + pathIn + " -o " + pathOut;

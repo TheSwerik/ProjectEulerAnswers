@@ -1,0 +1,4 @@
+cmake_minimum_required(3.13)
+project(Euler)
+
+add_executable(Main.cpp)
