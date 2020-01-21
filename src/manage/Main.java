@@ -66,7 +66,7 @@ public class Main {
             p = new ProcessBuilder(pathOut).start();
             BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((s = input.readLine()) != null) {
-                System.out.println(s + "\n");
+                System.out.println(s);
             }
         } catch (IOException e) {
             System.out.println("not valid\n");
