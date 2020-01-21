@@ -8,6 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 public class Main {
+    private static final boolean isJavaStandard = false;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -23,7 +25,11 @@ public class Main {
             } else if (input.charAt(0) == 'c' || input.charAt(0) == 'C') {
                 startCpp(input.substring(1));
             } else if (input.matches("\\d+")) {
-                startJava(input);
+                if (isJavaStandard) {
+                    startJava(input);
+                } else {
+                    startCpp(input);
+                }
             }
         }
     }
