@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    private static final boolean isJavaStandard = false;
+    private static final boolean isJavaStandard = true;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
