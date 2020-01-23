@@ -2,6 +2,7 @@ package manage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class Utils {
 
@@ -24,6 +25,34 @@ public class Utils {
             }
         }
         return primes.toArray(new Integer[0]);
+    }
+
+    public static Integer[] primeSieve(int range) {
+        ArrayList<Integer> primes = new ArrayList<>();
+        boolean[] bools = new boolean[range + 1];
+        Arrays.fill(bools, true);
+
+        for (int i = 2; i < bools.length; i++) {
+            if (bools[i]) {
+                primes.add(i);
+                for (int j = i; j < bools.length; j += i) {
+                    bools[j] = false;
+                }
+            }
+        }
+        return primes.toArray(new Integer[0]);
+    }
+
+    public static Integer[] genPrimesWithStreams(int range) {
+        return Stream.concat(
+                Stream.of(2),
+                Stream.iterate(3, n -> n + 2)
+                        .limit(range / 2 - 1)
+                        .filter(n ->
+                                Stream.iterate(2, x -> x + 1)
+                                        .limit((int) (Math.sqrt(n)))
+                                        .noneMatch(x -> n % x == 0)))
+                .toArray(Integer[]::new);
     }
 
     public int findBiggestPrimFactor(long input) {
@@ -54,21 +83,5 @@ public class Utils {
         }
 //        return primes.toArray(); //würde alle geben
         return primes.get(primes.size() - 1);
-    }
-
-    public static Integer[] primeSieve(int range) {
-        ArrayList<Integer> primes = new ArrayList<>();
-        boolean[] bools = new boolean[range + 1];
-        Arrays.fill(bools, true);
-
-        for (int i = 2; i < bools.length; i++) {
-            if (bools[i]) {
-                primes.add(i);
-                for (int j = i; j < bools.length; j += i) {
-                    bools[j] = false;
-                }
-            }
-        }
-        return primes.toArray(new Integer[0]);
     }
 }
