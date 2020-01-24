@@ -9,7 +9,7 @@ public class Problem0012 {
         int divisors = 500;
         long n = 1;
         for (long i = 2; ; i++) {
-            n += i;
+            n = (i * (i + 1)) / 2;
             double root = Math.sqrt(n);
             int count = (int) root == root ? 1 : 0;
             for (long j = 1; j < root; j++) {
@@ -17,7 +17,7 @@ public class Problem0012 {
                     count += 2;
                 }
             }
-            if (count > 500) {
+            if (count > divisors) {
                 result = n;
                 break;
             }
