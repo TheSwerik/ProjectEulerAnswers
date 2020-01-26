@@ -11,7 +11,7 @@ public class Problem0699 {
 
         long start = 1_000_001;
         long startValue = 26089287;
-        result += startValue;       //because its a sum, i can just start here
+        result += startValue;                                // because its a sum, I can just start here
 
         int percent = 0;
 
