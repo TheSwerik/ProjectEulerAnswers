@@ -9,13 +9,13 @@ public class Problem0699 {
         long max = 100_000_000_000_000L;
         double maxRoot = Math.sqrt(max);
 
-        long start = 1_000_001;
+        long start = 1_000_002;
         long startValue = 26089287;
         result += startValue;                                // because its a sum, I can just start here
 
-        int percent = 0;
+        double percent = 0;
 
-        for (long denom = start; denom <= max; denom++) {
+        for (long denom = start; denom <= max; denom+=3) {
             double root = Math.sqrt(denom);
             long num = root % 1 == 0 ? (long) root : 0;     // if the root is a whole number, add it too
             for (int i = 1; i < root; i++) {
@@ -27,7 +27,7 @@ public class Problem0699 {
             result += denomReduced(num, denom);             // reduce the fraction and add the denominator if it's 3^k
 
             if ((double) denom / max * 100 > percent) {
-                System.out.println(++percent + "%");
+                System.out.println((percent += 0.000001d) + "%");
             }
         }
 
