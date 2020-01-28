@@ -13,65 +13,74 @@ import java.util.stream.DoubleStream;
 
 public class Benchmark {
 
-    private static final boolean printPercentages = true;
-    private static final boolean printBenchmarkPercentages = true;
     private static final int max = 700;
     private static final int checks = 5;
     private static final ArrayList<Integer> skip = new ArrayList<>(Arrays.asList(684, 688, 699));
+    private static PrintStream dummyPS;
+    private static PrintStream cfilePS;
 
-    public static void main(String[] args) {
-        PrintStream dummyPS = new PrintStream(new OutputStream() {
+    public static void main(String[] args) throws InterruptedException {
+        dummyPS = new PrintStream(new OutputStream() {
             public void write(int b) {
             }
         });
         // Create a stream to hold the output
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream filePS = new PrintStream(baos);
+        ByteArrayOutputStream jbaos = new ByteArrayOutputStream();
+        PrintStream jfilePS = new PrintStream(jbaos);
+        ByteArrayOutputStream cbaos = new ByteArrayOutputStream();
+        cfilePS = new PrintStream(cbaos);
+//        cfilePS = System.out;
 
         // Save the old System.out
         PrintStream consolePS = System.out;
 
         // Tell Java to use your special stream
-        System.setOut(filePS);
+        System.setOut(jfilePS);
 
         // Benchmark Problems:
         consolePS.println("Starting Benchmark...");
         for (int i = 1; i <= max; i++) {
-            if (printBenchmarkPercentages || printPercentages) {
-                consolePS.print("\b".repeat(30));
-                consolePS.print(String.format("%.2f", (double) i / max * 100) + "%");
-            }
+//            consolePS.print("\r" + String.format("%.2f", (double) i / max * 100) + "%");
+            // run skip infinite loops:
             if (skip.contains(i)) {
-                filePS.println("/");
+                jfilePS.println("/");
+                cfilePS.println("/");
                 continue;
             }
+            // run Java:
+            consolePS.print("\r" + String.format("%.2f", (double) i / max * 100) + "%\t" + "Problem " + i + " in Java...");
             try {
                 for (int j = 0; j < (2 + checks); j++) {
                     if (j == 0) {
                         System.setOut(dummyPS);
                     } else if (j == 2) {
-                        System.setOut(filePS);
+                        System.setOut(jfilePS);
                     }
                     startJava(i + "");
                 }
             } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException | ClassNotFoundException e) {
-                filePS.println("/");
+                jfilePS.println("/");
             }
+            // run C++:
+//            consolePS.print("\b".repeat(30));
+            consolePS.print("\r" + String.format("%.2f", (double) i / max * 100) + "%\t" + "Problem " + i + " in C++...");
+            startCpp(i + "");
         }
 
-        // Put things back
-        filePS.flush();
+        // Cleanup PrintStreams
+        jfilePS.flush();
         dummyPS.flush();
+        cfilePS.flush();
         System.setOut(consolePS);
         consolePS.println("\nBenchmark Complete.\n");
 
         // convert all Lines to String-Array of Times:
-        String[] lines = baos.toString().split("\n");
+        String[] jLines = jbaos.toString().split("\n");
+        String[] cLines = cbaos.toString().split("\n");
 
         // create Worksheet:
-        String[] cTimes = new String[lines.length];
-        Arrays.fill(cTimes, "/");
-        writeToExcel(fillArr(lines), cTimes);
+        String[] cArr = fillArr(cLines, false);
+        writeToExcel(fillArr(jLines, true), cArr);
     }
 
     private static void startJava(String inputString) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
@@ -98,10 +107,7 @@ public class Benchmark {
         cell = row.createCell(2);
         cell.setCellValue("C++ Times (ms)");
         for (int i = 0; i < jTimes.length; i++) {
-            if (printPercentages) {
-                System.out.print("\b".repeat(30));
-                System.out.print(String.format("%.2f", (double) (i + 1) / jTimes.length * 100) + "%");
-            }
+            System.out.print("\r" + String.format("%.2f", (double) (i + 1) / jTimes.length * 100) + "%");
             row = spreadsheet.createRow(1 + i);
 
             // Problem number:
@@ -124,17 +130,14 @@ public class Benchmark {
         }
     }
 
-    private static String[] fillArr(String[] lines) {
-        System.out.println("Calculating averages...");
-        ArrayList<String> jTimes = new ArrayList<>();
+    private static String[] fillArr(String[] lines, boolean isJava) {
+        System.out.println("Calculating " + (isJava ? "Java " : "C++ ") + "averages...");
+        ArrayList<String> times = new ArrayList<>();
         for (int i = 0; i < lines.length; i++) {
-            if (printPercentages) {
-                System.out.print("\b".repeat(30));
-                System.out.print(String.format("%.2f", (double) (i + 1) / lines.length * 100) + "%");
-            }
+            System.out.print("\r" + String.format("%.2f", (double) (i + 1) / lines.length * 100) + "%");
             if (lines[i] != null && !lines[i].equals("")) {
                 if (lines[i].contains("/")) {
-                    jTimes.add("/");
+                    times.add("/");
                 } else {
                     double[] problemTimes = new double[checks];
                     for (int j = 0; j < problemTimes.length; j++) {
@@ -142,12 +145,65 @@ public class Benchmark {
                         problemTimes[j] = Double.parseDouble(s.substring(0, s.indexOf("s") - 1)) * ((s.substring(s.indexOf("s") - 1).contains("ms")) ? 1 : 1000);
                         i++;
                     }
-                    jTimes.add(String.format("%f", DoubleStream.of(problemTimes).average().orElse(-1)));
+                    times.add(String.format("%f.#", DoubleStream.of(problemTimes).average().orElse(-1)));
                     i--;
                 }
             }
         }
         System.out.println("\nAverages calculated.\n");
-        return jTimes.toArray(new String[0]);
+        return times.toArray(new String[0]);
+    }
+
+    private static void startCpp(String inputString) {
+        int inputInt = Integer.parseInt(inputString);
+        compileAndRunC("cpp\\problems" + "\\Problem" + "0".repeat(4 - inputString.length()) + inputString);
+    }
+
+    private static void compileAndRunC(String path) {
+        try {
+            //get Path & Command:
+            String pathIn = new File("").getAbsolutePath() + "\\src\\" + path + ".cpp";
+            if (!new File(pathIn).exists()) {
+                cfilePS.println("/");
+                return;
+            }
+            String pathOut = new File("").getAbsolutePath() + "\\out\\exe" + path.substring(path.lastIndexOf('\\')) + ".exe";
+            String pathToCmd = "C:\\Windows\\System32";
+            String command = "g++ " + pathIn + " -o " + pathOut;
+
+            //create folder if it doesnt exist:
+            File pathOutFile = new File(new File("").getAbsolutePath() + "\\out\\exe\\");
+            if (!pathOutFile.exists()) {
+                pathOutFile.mkdirs();
+            }
+
+            //Start Compile Process
+            Process p = new ProcessBuilder("cmd", "/c", command).directory(new File(pathToCmd)).start();
+            p.waitFor();
+
+            //Konsolen Output:
+//            BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+//            while ((s = stdError.readLine()) != null) {
+//                System.out.println(s);
+//            }
+
+            //Start built Process
+            String s = null;
+            for (int i = 0; i < 2 + checks; i++) {
+                if (i == 0) {
+                    System.setOut(dummyPS);
+                } else if (i == 2) {
+                    System.setOut(cfilePS);
+                }
+                p = new ProcessBuilder(pathOut).start();
+                BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                while ((s = input.readLine()) != null) {
+                    System.out.println(s);
+                }
+            }
+        } catch (IOException | InterruptedException e) {
+            System.out.println("not valid\n");
+            e.printStackTrace();
+        }
     }
 }

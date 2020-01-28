@@ -30,8 +30,8 @@ int main() {
             long long int l2 = j * (3 * j - 1) / 2L;
             if (isPartOfFormular(l1 + l2) && isPartOfFormular(l1 - l2)) {
                 result = l1 - l2 > 0 ? l1 - l2 : l2 - l1;
-                std::cout << l1 << "\t" << l2 << std::endl;
-                std::cout << i << "\t" << j << std::endl;
+//                std::cout << l1 << "\t" << l2 << std::endl;
+//                std::cout << i << "\t" << j << std::endl;
                 goto finish;
             }
         }
@@ -44,11 +44,10 @@ int main() {
 
     //Stop time and print
     std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
-    double long elapsedTime = (double long) std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() /
-                              1000000; //<- nanoseconds to microseconds
-    std::cout << "Result:\t" << result
-              << "\tTime:\t" << (elapsedTime > 1000 ? elapsedTime / 1000 : elapsedTime)
-              << (elapsedTime > 1000 ? "s" : "ms") << std::endl;
+    double long elapsedTime = (double long) std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() /1000000; //<- nanoseconds to microseconds
+	std::cout << "Result:\t" << result
+		<< "\tTime:\t" <<(elapsedTime > 1000 ? elapsedTime / 1000 : elapsedTime)
+		<< (elapsedTime > 1000 ? "s" : "ms") << std::endl;
 
     return 0;
 }
