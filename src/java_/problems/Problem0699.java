@@ -1,10 +1,12 @@
 package java_.problems;
 
+import java.nio.file.ClosedFileSystemException;
+
 public class Problem0699 {
     public Problem0699() {
         long startTime = System.nanoTime();
         long result = 0;
-
+        System.exit(0);
         // Solution:
         long max = 100_000_000_000_000L;
         double maxRoot = Math.sqrt(max);
