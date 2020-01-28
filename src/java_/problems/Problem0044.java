@@ -17,8 +17,8 @@ public class Problem0044 {
                 long l2 = arr[j];
                 if (isPartOfFormular(arr,l1 + l2) && isPartOfFormular(arr,l1 - l2)) {
                     result = l1 - l2 > 0 ? l1 - l2 : l2 - l1;
-                    System.out.println(l1 + " at " + i);
-                    System.out.println(l2 + " at " + j);
+//                    System.out.println(l1 + " at " + i);
+//                    System.out.println(l2 + " at " + j);
                     break outer;
                 }
             }

@@ -38,7 +38,6 @@ public class Main {
     private static void startJava(String inputString) {
         try {
             int inputInt = Integer.parseInt(inputString);
-//            Class.forName("java_.problems" + (inputInt / 10 * 10 + 1) + "_" + ((inputInt / 10) + 1) * 10 + ".Problem" + inputString).getDeclaredConstructor().newInstance();
             Class.forName("java_.problems" + ".Problem" + "0".repeat(4 - inputString.length()) + inputString).getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             System.out.println("not valid\n");

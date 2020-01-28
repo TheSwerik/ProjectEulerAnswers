@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Fraction" level="application" />
+    <orderEntry type="library" exported="" name="Apache POI" level="project" />
   </component>
 </module>
