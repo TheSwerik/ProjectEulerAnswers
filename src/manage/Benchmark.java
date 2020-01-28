@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.DoubleStream;
@@ -29,7 +30,6 @@ public class Benchmark {
         PrintStream jfilePS = new PrintStream(jbaos);
         ByteArrayOutputStream cbaos = new ByteArrayOutputStream();
         cfilePS = new PrintStream(cbaos);
-//        cfilePS = System.out;
 
         // Save the old System.out
         PrintStream consolePS = System.out;
@@ -40,7 +40,6 @@ public class Benchmark {
         // Benchmark Problems:
         consolePS.println("Starting Benchmark...");
         for (int i = 1; i <= max; i++) {
-//            consolePS.print("\r" + String.format("%.2f", (double) i / max * 100) + "%");
             // run skip infinite loops:
             if (skip.contains(i)) {
                 jfilePS.println("/");
@@ -62,7 +61,6 @@ public class Benchmark {
                 jfilePS.println("/");
             }
             // run C++:
-//            consolePS.print("\b".repeat(30));
             consolePS.print("\r" + String.format("%.2f", (double) i / max * 100) + "%\t" + "Problem " + i + " in C++...");
             startCpp(i + "");
         }
@@ -145,7 +143,7 @@ public class Benchmark {
                         problemTimes[j] = Double.parseDouble(s.substring(0, s.indexOf("s") - 1)) * ((s.substring(s.indexOf("s") - 1).contains("ms")) ? 1 : 1000);
                         i++;
                     }
-                    times.add(String.format("%f.#", DoubleStream.of(problemTimes).average().orElse(-1)));
+                    times.add(new DecimalFormat("0.######").format(DoubleStream.of(problemTimes).average().orElse(-1)));
                     i--;
                 }
             }
@@ -180,12 +178,6 @@ public class Benchmark {
             //Start Compile Process
             Process p = new ProcessBuilder("cmd", "/c", command).directory(new File(pathToCmd)).start();
             p.waitFor();
-
-            //Konsolen Output:
-//            BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-//            while ((s = stdError.readLine()) != null) {
-//                System.out.println(s);
-//            }
 
             //Start built Process
             String s = null;
