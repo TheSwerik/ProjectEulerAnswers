@@ -15,7 +15,7 @@ import java.util.stream.DoubleStream;
 public class Benchmark {
 
     private static final int max = 700;
-    private static final int checks = 5;
+    private static final int checks = 25;
     private static final ArrayList<Integer> skip = new ArrayList<>(Arrays.asList(684, 688, 699));
     private static PrintStream dummyPS;
     private static PrintStream cfilePS;
