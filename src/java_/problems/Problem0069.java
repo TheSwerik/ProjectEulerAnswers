@@ -5,24 +5,23 @@ import java.text.DecimalFormat;
 public class Problem0069 {
     public Problem0069() {
         long startTime = System.nanoTime();
-        double result = 0;
+        int result = 0;
 
         // Solution:
         DecimalFormat format = new DecimalFormat("0.##%");
-        for (int i = 990990; i > 0; i -= 10) {
-//            if (i % 1001 == 0)
-//                System.out.print("\r" + format.format((double) i / 1_000_000));
+        double max = 0;
+        for (int i = 990990; i > 0; i -= 60060) {
             int count = 0;
             for (int j = 1; j < i; j++) {
                 if (gcd(i, j) == 1) {
                     count++;
                 }
             }
-            if ((double) i / count > result) {
-                System.out.println(result + "\t<\t" + (double) i / count + "\t|\t" + count + "\tat\t" + i);
-                result = (double) i / count;
+            double f = (double) i / count;
+            if (f > max) {
+                max = f;
+                result = i;
             }
-//            result = Math.max((double) i / count, result);
         }
 
         long timeToResolve = System.nanoTime() - startTime;
