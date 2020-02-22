@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Problem0703 {
-    private final int n = 3;
-
     public Problem0703() {
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
-        boolean[][] b = b();
+        boolean[][] b = b(3);
         // S:
         for (boolean[] boolArr : b) {
             boolean[] f = f(boolArr);
@@ -28,7 +26,7 @@ public class Problem0703 {
                 (((double) timeToResolve / 1_000_000) + "ms")));
     }
 
-    private boolean[][] b() {
+    private boolean[][] b(int n) {
         boolean[][] b = new boolean[(int) Math.pow(2, n)][n];
         int ic = 0;
         for (int i = 0; i < 2; i++) {
@@ -53,9 +51,9 @@ public class Problem0703 {
     }
 
     private boolean[] f(boolean[] b) {
-        boolean[] c = new boolean[n];
+        boolean[] c = new boolean[b.length];
         if (b.length - 1 >= 0) System.arraycopy(b, 1, c, 0, b.length - 1);
-        c[n - 1] = b[0] && (b[1] ^ b[2]);
+        c[b.length - 1] = b[0] && (b[1] ^ b[2]);
 //        System.out.println(Arrays.toString(b));
 //        System.out.println(Arrays.toString(c) + "\n");
         return c;
