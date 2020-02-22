@@ -13,13 +13,12 @@ public class Problem0703 {
         // Solution:
         boolean[][] b = b();
         // S:
-        outer:
         for (boolean[] boolArr : b) {
             boolean[] f = f(boolArr);
             for (int i = 0; i < boolArr.length; i++) {
-                if ((boolArr[i] && f[i])) continue outer;
+                if (!(boolArr[i] && f[i])) result++;
             }
-            result++;
+
         }
 
 
