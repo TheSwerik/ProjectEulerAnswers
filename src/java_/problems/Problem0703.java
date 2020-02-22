@@ -54,8 +54,6 @@ public class Problem0703 {
         boolean[] c = new boolean[b.length];
         if (b.length - 1 >= 0) System.arraycopy(b, 1, c, 0, b.length - 1);
         c[b.length - 1] = b[0] && (b[1] ^ b[2]);
-//        System.out.println(Arrays.toString(b));
-//        System.out.println(Arrays.toString(c) + "\n");
         return c;
     }
 }
