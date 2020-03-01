@@ -16,9 +16,7 @@ public class Problem0703 {
             for (int i = 0; i < boolArr.length; i++) {
                 if (!(boolArr[i] && f[i])) result++;
             }
-
         }
-
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
