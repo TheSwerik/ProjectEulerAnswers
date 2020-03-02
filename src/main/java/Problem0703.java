@@ -1,5 +1,3 @@
-package java_.problems;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

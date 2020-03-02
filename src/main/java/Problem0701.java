@@ -1,5 +1,3 @@
-package java_.problems;
-
 import java.util.Arrays;
 
 public class Problem0701 {

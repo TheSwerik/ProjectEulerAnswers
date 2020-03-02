@@ -1,5 +1,3 @@
-package java_.problems;
-
 import java.awt.*;
 import java.math.BigInteger;
 
