@@ -120,3 +120,5 @@ hs_err_pid*
 /Debug/*
 /.vs/*
 /x64/*
+
+.gradle/
