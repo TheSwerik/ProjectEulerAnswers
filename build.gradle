@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+//    id 'cpp-application'
+//    id 'cpp-library'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_13
+    targetCompatibility = JavaVersion.VERSION_13
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += "--enable-preview"
+}
+
+tasks.withType(Test) {
+    jvmArgs += "--enable-preview"
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += '--enable-preview'
+}
+
+group 'org.example'
+version '1.0'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir 'src/main/cpp'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+            srcDir 'src/test/cpp'
+        }
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.1'
+}
