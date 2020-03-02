@@ -29,6 +29,7 @@ sourceSets {
         java {
             srcDir 'src/main/java'
             srcDir 'src/main/cpp'
+            srcDir 'src/main/c_sharp'
         }
         resources {
             srcDir 'src/main/resources'
