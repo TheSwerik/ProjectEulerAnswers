@@ -14,14 +14,14 @@ public class Problem0050
         // Solution:
         int[] primes = PrimeSieveButFast(1_000_000);
         int maxNumber = 0;
-        for (int i = 0; i < primes.Length-1; i++)
+        for (int i = 0; i < primes.Length - 1; i++)
         {
             int count = 1;
             int sum = primes[i];
             while (sum < 1_000_000) sum += primes[i + count++];
             sum -= primes[i + count - 1];
 
-            if (primes.Contains(sum) && maxNumber < count)
+            if (maxNumber < count && primes.Contains(sum))
             {
                 maxNumber = count;
                 result = sum;
@@ -54,7 +54,7 @@ public class Problem0050
         }
 
         ArrayList primes = new ArrayList();
-        primes.Add( 2);
+        primes.Add(2);
         for (int i = 3; i < range; i += 2)
         {
             if (bools[i])
