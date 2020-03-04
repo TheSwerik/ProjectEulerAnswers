@@ -15,9 +15,9 @@ public class Problem0049
 
         // Solution:
         GenPrimes();
-        for (int i = 45;; i++)
+        foreach (int j in _primes)
         {
-            foreach (int j in _primes)
+            for (int i = 45;; i++)
             {
                 if (i == 3330 && j == 1487) continue;
                 int b = j + i;
