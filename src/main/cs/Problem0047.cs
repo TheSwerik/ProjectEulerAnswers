@@ -5,21 +5,20 @@ using System.Linq;
 
 public class Problem0047
 {
-    private UInt64[] primes;
+    private ulong[] primes;
 
     public Problem0047()
     {
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
-        UInt64 result = 0;
+        ulong result = 0;
 
         // Solution:
-        primes = primeSieveButFast(1000);
-        for (UInt64 i = 0;; i++)
+        primes = primeSieveButFast(150_000);
+        for (ulong i = 20;; i++)
         {
-            // if (areConsecutive(new UInt64[] {i, i + 1, i + 2, i + 3}))
-            // if (areConsecutive(new UInt64[] {i, i + 1}))
-            if (areConsecutive(new UInt64[] {i, i + 1, i + 2}))
+            if (primes.Contains(i)) continue;
+            if (numberOfPrimFactors(new ulong[] {i, i + 1, i + 2, i + 3}))
             {
                 result = i;
                 break;
@@ -34,42 +33,44 @@ public class Problem0047
                               : double.Parse(test.Substring(test.IndexOf(".") + 1)) / 10_000 + " ms"));
     }
 
-    private bool areConsecutive(UInt64[] numbers)
+    private bool numberOfPrimFactors(ulong[] numbers)
     {
-        ArrayList foundPrimes = new ArrayList();
-        foreach (UInt64 n in numbers)
+        for (int j = 0; j < numbers.Length; j++)
         {
-            UInt64 root = (UInt64) Math.Sqrt(n);
-            for (UInt64 i = 0; primes[i] <= root; i++)
+            int count = 0;
+            ulong n = numbers[j];
+            for (ulong i = 0; primes[i] <= n; i++)
             {
-                if (foundPrimes.Contains(primes[i])) continue;
-                if (n % primes[i] == 0 && primes[i] != n / primes[i] && primes.Contains(n / primes[i]))
+                if (n % primes[i] == 0)
                 {
-                    foundPrimes.Add(primes[i]);
-                    foundPrimes.Add(n / primes[i]);
-                    goto end_of_loop;
+                    count++;
+                }
+
+                while (n % primes[i] == 0)
+                {
+                    n /= primes[i];
                 }
             }
 
-            return false;
-            end_of_loop:
+            if (count != 4)
             {
+                return false;
             }
         }
 
         return true;
     }
 
-    private UInt64[] primeSieveButFast(UInt64 range)
+    private ulong[] primeSieveButFast(ulong range)
     {
         bool[] bools = new bool[range + 1];
         Array.Fill(bools, true);
         double root = Math.Sqrt(range) + 0.5;
-        for (UInt64 i = 3; i < root; i += 2)
+        for (ulong i = 3; i < root; i += 2)
         {
             if (bools[i])
             {
-                for (UInt64 j = i * i; j < range; j += i * 2)
+                for (ulong j = i * i; j < range; j += i * 2)
                 {
                     bools[j] = false;
                 }
@@ -77,8 +78,8 @@ public class Problem0047
         }
 
         ArrayList primes = new ArrayList();
-        primes.Add((UInt64) 2);
-        for (UInt64 i = 3; i < range; i += 2)
+        primes.Add((ulong) 2);
+        for (ulong i = 3; i < range; i += 2)
         {
             if (bools[i])
             {
@@ -86,6 +87,6 @@ public class Problem0047
             }
         }
 
-        return primes.OfType<UInt64>().ToArray();
+        return primes.OfType<ulong>().ToArray();
     }
 }
