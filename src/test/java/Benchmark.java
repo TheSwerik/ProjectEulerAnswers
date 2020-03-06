@@ -1,3 +1,4 @@
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -13,7 +14,7 @@ import java.util.stream.DoubleStream;
 public class Benchmark {
 
     private static final int max = 1000;
-    private static final int checks = 1;
+    private static final int checks = 25;
     private static final ArrayList<Integer> skip = new ArrayList<>(Arrays.asList(684, 688, 699, 701, 703, 704));
     private static PrintStream dummyPS;
     private static PrintStream cfilePS;
@@ -87,6 +88,11 @@ public class Benchmark {
     private static void writeToExcel(String[] jTimes, String[] cTimes) {
         System.out.println("Writing Sheet...");
 
+        if (new File("EulerBenchmark.xlsx").exists()) {
+            writeToOldExcel(jTimes, cTimes);
+            return;
+        }
+
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet spreadsheet = workbook.createSheet("Project Euler Benchmark");
         XSSFRow row;
@@ -118,9 +124,58 @@ public class Benchmark {
         }
 
         //Write the workbook in file system
-        try (FileOutputStream out = new FileOutputStream(new File("EulerBenchmark2.xlsx"))) {
+        try (FileOutputStream out = new FileOutputStream(new File("EulerBenchmark.xlsx"))) {
             workbook.write(out);
             System.out.println("\nEulerBenchmark.xlsx written successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void writeToOldExcel(String[] jTimes, String[] cTimes) {
+        try {
+            FileInputStream is = new FileInputStream(new File("EulerBenchmark.xlsx"));
+            XSSFWorkbook workbook = new XSSFWorkbook(is);
+            XSSFSheet spreadsheet = workbook.getSheetAt(0);
+            XSSFRow row;
+
+            //Java:
+            row = spreadsheet.getRow(0);
+            int index = 1;
+            for (int i = row.getFirstCellNum(); i <= row.getLastCellNum(); i++) {
+                if (row.getCell(i).getStringCellValue().contains("Java")) {
+                    index = i;
+                    break;
+                }
+            }
+            for (int i = 1; i <= max; i++) {
+                row = spreadsheet.getRow(i);
+                row.getCell(index).setCellValue(jTimes[i - 1]);
+            }
+
+            //C++:
+            row = spreadsheet.getRow(0);
+            index = 2;
+            for (int i = row.getFirstCellNum(); i <= row.getLastCellNum(); i++) {
+                if (row.getCell(i).getStringCellValue().contains("C++")) {
+                    index = i;
+                    break;
+                }
+            }
+            for (int i = 1; i <= max; i++) {
+                row = spreadsheet.getRow(i);
+                row.getCell(index).setCellValue(cTimes[i - 1]);
+            }
+
+
+            //Write the workbook in file system
+            is.close();
+            try (FileOutputStream out = new FileOutputStream(new File("EulerBenchmark.xlsx"))) {
+                workbook.write(out);
+                System.out.println("\nEulerBenchmark.xlsx written successfully.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

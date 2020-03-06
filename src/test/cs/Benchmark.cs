@@ -11,7 +11,7 @@ namespace Euler.test.cs
     public class Benchmark
     {
         private static readonly int max = 1000;
-        private static readonly int checks = 25;
+        private static readonly int checks = 1;
         private static readonly ArrayList Skip = new ArrayList {148, 704};
         private static Dictionary<int, ArrayList> _times;
 
@@ -60,7 +60,7 @@ namespace Euler.test.cs
             using var workbook =
                 new XLWorkbook("G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\EulerBenchmark.xlsx");
             var worksheet = workbook.Worksheet(1);
-            int index = 10;
+            int index = 4;
             foreach (var cell in worksheet.Row(1).Cells())
             {
                 if (cell.GetString().Contains("C#"))
@@ -68,6 +68,7 @@ namespace Euler.test.cs
                     index = cell.WorksheetColumn().ColumnNumber();
                 }
             }
+            worksheet.Column(index).Cell(1).Value = "C# Times";
 
             //write Excel
             for (int i = 1; i <= max; i++)
