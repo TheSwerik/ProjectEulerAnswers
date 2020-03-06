@@ -11,7 +11,7 @@ namespace Euler.test.cs
     public class Benchmark
     {
         private static readonly int max = 1000;
-        private static readonly int checks = 1;
+        private static readonly int checks = 25;
         private static readonly ArrayList Skip = new ArrayList {148, 704};
         private static Dictionary<int, ArrayList> _times;
 
