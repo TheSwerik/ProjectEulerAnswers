@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0002
+    public class Problem0003
     {
-        public Problem0002()
+        public Problem0003()
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             ulong result = 0;
 
             // Solution:
-            ulong fibo1 = 1;
-            ulong fibo2 = 1;
-            while (fibo2 < 4000000) {
-                if ((fibo1 = fibo2 + (fibo2 = fibo1)) % 2 == 0) result += fibo1;
+            ulong i;
+            ulong maxNumber = 600_851_475_143;
+
+            for (i = 2; i <= maxNumber; i++) {
+                if (maxNumber % i == 0) {
+                    maxNumber /= i;
+                    i--;
+                }
             }
+            result = i;
 
 
             stopWatch.Stop();
@@ -30,7 +34,7 @@ namespace Euler.main.cs
                                     " ms"));
             if (Test.DoBenchmark)
             {
-                Benchmark.AddTime(2, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                Benchmark.AddTime(3, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
             }
         }
     }
