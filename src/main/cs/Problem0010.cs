@@ -31,16 +31,15 @@ namespace Euler.main.cs
 
             //better (Maurice):
             bool[] bools = new bool[2000000];
-            Array.Fill(bools, true);
 
             for (int i = 2; i < bools.Length; i++)
             {
-                if (bools[i])
+                if (!bools[i])
                 {
                     result += i;
                     for (int j = i; j < bools.Length; j += i)
                     {
-                        bools[j] = false;
+                        bools[j] = true;
                     }
                 }
             }
