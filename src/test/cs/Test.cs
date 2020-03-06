@@ -7,9 +7,16 @@ namespace Euler.test.cs
 {
     public class Test
     {
+        public const bool DoBenchmark = true;
+
         static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+            if (DoBenchmark)
+            {
+                Benchmark benchmark = new Benchmark();
+                return;
+            }
             if (args.Length > 0)
             {
                 //start Problem:

@@ -1,92 +1,100 @@
 using System;
 using System.Diagnostics;
+using Euler.test.cs;
 
-public class Problem0704
+namespace Euler.main.cs
 {
-    public Problem0704()
+    public class Problem0704
     {
-        Stopwatch stopWatch = new Stopwatch();
-        stopWatch.Start();
-        UInt64 result = 0;
-
-        // Solution:
-        UInt64 max = 10000000;
-        int lastPercent = 0;
-        for (UInt64 n = 1; n <= max; n++)
+        public Problem0704()
         {
-            double percent = (double) n / max * 100;
-            if (percent * 100 > lastPercent)
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            UInt64 result = 0;
+
+            // Solution:
+            UInt64 max = 10000000;
+            int lastPercent = 0;
+            for (UInt64 n = 1; n <= max; n++)
             {
-                System.Console.Write("\r" + (percent).ToString("0.##") + "%");
-                lastPercent = (int) (percent * 100);
+                double percent = (double) n / max * 100;
+                if (percent * 100 > lastPercent)
+                {
+                    System.Console.Write("\r" + (percent).ToString("0.##") + "%");
+                    lastPercent = (int) (percent * 100);
+                }
+
+                result += f(n);
             }
 
-            result += f(n);
-        }
-
-        stopWatch.Stop();
-        string test = stopWatch.Elapsed.ToString();
-        Console.WriteLine("Result:\t" + result + "\tTime:\t" +
-                          (double.Parse(test.Substring(test.LastIndexOf(":") + 1, 2)) >= 1
-                              ? double.Parse(test.Substring(test.LastIndexOf(":") + 1)) + " s"
-                              : double.Parse(test.Substring(test.IndexOf(".") + 1)) / 10_000 + " ms"));
-    }
-
-    private UInt64 f(UInt64 n)
-    {
-        UInt64 result = 0;
-        for (UInt64 m = 0; m <= n; m++)
-        {
-            UInt64 g = this.g(n, m);
-            if (g > result)
+            stopWatch.Stop();
+            string elapsedTime = stopWatch.Elapsed.ToString();
+            Console.WriteLine("Result:\t" + result + "\tTime:\t" +
+                              (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
+                                  ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
+                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 + " ms"));
+            if (Test.DoBenchmark)
             {
-                result = g;
+                Benchmark.AddTime(704, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
             }
         }
 
-        return result;
-    }
-
-    private UInt64 g(UInt64 n, UInt64 m)
-    {
-        // n over m
-        n = fac(n, n - m) / fac(m);
-
-        // find biggest potenz of 2
-        UInt64 max = 0;
-        UInt64 j = 1;
-        for (UInt64 i = 0; j < n; i++, j = j * 2)
+        private UInt64 f(UInt64 n)
         {
-            if (n % j != 0)
+            UInt64 result = 0;
+            for (UInt64 m = 0; m <= n; m++)
             {
-                return max;
+                UInt64 g = this.g(n, m);
+                if (g > result)
+                {
+                    result = g;
+                }
             }
 
-            max = i;
+            return result;
         }
 
-        return max;
-    }
-
-    private UInt64 fac(UInt64 n)
-    {
-        if (n == 0) return 1;
-        for (UInt64 i = n - 1; i > 1; i--)
+        private UInt64 g(UInt64 n, UInt64 m)
         {
-            n = n * i;
+            // n over m
+            n = fac(n, n - m) / fac(m);
+
+            // find biggest potenz of 2
+            UInt64 max = 0;
+            UInt64 j = 1;
+            for (UInt64 i = 0; j < n; i++, j = j * 2)
+            {
+                if (n % j != 0)
+                {
+                    return max;
+                }
+
+                max = i;
+            }
+
+            return max;
         }
 
-        return n > 0 ? n : 1;
-    }
-
-    private UInt64 fac(UInt64 n, UInt64 m)
-    {
-        if (n == 0) return 1;
-        for (UInt64 i = n - 1; i > m; i--)
+        private UInt64 fac(UInt64 n)
         {
-            n = n * i;
+            if (n == 0) return 1;
+            for (UInt64 i = n - 1; i > 1; i--)
+            {
+                n = n * i;
+            }
+
+            return n > 0 ? n : 1;
         }
 
-        return n > 0 ? n : 1;
+        private UInt64 fac(UInt64 n, UInt64 m)
+        {
+            if (n == 0) return 1;
+            for (UInt64 i = n - 1; i > m; i--)
+            {
+                n = n * i;
+            }
+
+            return n > 0 ? n : 1;
+        }
     }
 }
