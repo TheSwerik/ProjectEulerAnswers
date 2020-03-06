@@ -1,5 +1,3 @@
-package manage;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,9 +12,9 @@ import java.util.stream.DoubleStream;
 
 public class Benchmark {
 
-    private static final int max = 700;
-    private static final int checks = 25;
-    private static final ArrayList<Integer> skip = new ArrayList<>(Arrays.asList(684, 688, 699));
+    private static final int max = 1000;
+    private static final int checks = 1;
+    private static final ArrayList<Integer> skip = new ArrayList<>(Arrays.asList(684, 688, 699, 701, 703, 704));
     private static PrintStream dummyPS;
     private static PrintStream cfilePS;
 
@@ -83,7 +81,7 @@ public class Benchmark {
 
     private static void startJava(String inputString) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         int inputInt = Integer.parseInt(inputString);
-        Class.forName("java_.problems" + ".Problem" + "0".repeat(4 - inputString.length()) + inputString).getDeclaredConstructor().newInstance();
+        Class.forName("Problem" + "0".repeat(4 - inputString.length()) + inputString).getDeclaredConstructor().newInstance();
     }
 
     private static void writeToExcel(String[] jTimes, String[] cTimes) {
@@ -120,7 +118,7 @@ public class Benchmark {
         }
 
         //Write the workbook in file system
-        try (FileOutputStream out = new FileOutputStream(new File("EulerBenchmark.xlsx"))) {
+        try (FileOutputStream out = new FileOutputStream(new File("EulerBenchmark2.xlsx"))) {
             workbook.write(out);
             System.out.println("\nEulerBenchmark.xlsx written successfully.");
         } catch (IOException e) {
@@ -154,18 +152,18 @@ public class Benchmark {
 
     private static void startCpp(String inputString) {
         int inputInt = Integer.parseInt(inputString);
-        compileAndRunC("cpp\\problems" + "\\Problem" + "0".repeat(4 - inputString.length()) + inputString);
+        compileAndRunC("main\\cpp" + "\\Problem" + "0".repeat(4 - inputString.length()) + inputString);
     }
 
     private static void compileAndRunC(String path) {
         try {
             //get Path & Command:
-            String pathIn = new File("").getAbsolutePath() + "\\src\\" + path + ".cpp";
+            String pathIn = "\"" + new File("").getAbsolutePath() + "\\src\\" + path + ".cpp" + "\"";
             if (!new File(pathIn).exists()) {
                 cfilePS.println("/");
                 return;
             }
-            String pathOut = new File("").getAbsolutePath() + "\\out\\exe" + path.substring(path.lastIndexOf('\\')) + ".exe";
+            String pathOut = "\"" + new File("").getAbsolutePath() + "\\out\\exe" + path.substring(path.lastIndexOf('\\')) + ".exe" + "\"";
             String pathToCmd = "C:\\Windows\\System32";
             String command = "g++ " + pathIn + " -o " + pathOut;
 
