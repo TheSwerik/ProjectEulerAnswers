@@ -104,10 +104,10 @@ public class Benchmark {
         cell.setCellValue("Problem");
         // Java Time:
         cell = row.createCell(1);
-        cell.setCellValue("Java Times (ms)");
+        cell.setCellValue("Java");
         // C++ time:
-        cell = row.createCell(2);
-        cell.setCellValue("C++ Times (ms)");
+        cell = row.createCell(3);
+        cell.setCellValue("C++");
         for (int i = 0; i < jTimes.length; i++) {
             System.out.print("\r" + String.format("%.2f", (double) (i + 1) / jTimes.length * 100) + "%");
             row = spreadsheet.createRow(1 + i);
@@ -119,7 +119,7 @@ public class Benchmark {
             cell = row.createCell(1);
             cell.setCellValue(jTimes[i]);
             // C++ time:
-            cell = row.createCell(2);
+            cell = row.createCell(3);
             cell.setCellValue(cTimes[i]);
         }
 
@@ -155,7 +155,7 @@ public class Benchmark {
 
             //C++:
             row = spreadsheet.getRow(0);
-            index = 2;
+            index = 3;
             for (int i = row.getFirstCellNum(); i <= row.getLastCellNum(); i++) {
                 if (row.getCell(i).getStringCellValue().contains("C++")) {
                     index = i;

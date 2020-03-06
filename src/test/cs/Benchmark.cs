@@ -60,7 +60,7 @@ namespace Euler.test.cs
             using var workbook =
                 new XLWorkbook("G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\EulerBenchmark.xlsx");
             var worksheet = workbook.Worksheet(1);
-            int index = 4;
+            int index = 3;
             foreach (var cell in worksheet.Row(1).Cells())
             {
                 if (cell.GetString().Contains("C#"))
@@ -68,7 +68,7 @@ namespace Euler.test.cs
                     index = cell.WorksheetColumn().ColumnNumber();
                 }
             }
-            worksheet.Column(index).Cell(1).Value = "C# Times";
+            worksheet.Column(index).Cell(1).Value = "C#";
 
             //write Excel
             for (int i = 1; i <= max; i++)

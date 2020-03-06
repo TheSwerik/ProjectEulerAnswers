@@ -7,7 +7,7 @@ namespace Euler.test.cs
 {
     public class Test
     {
-        public const bool DoBenchmark = true;
+        public const bool DoBenchmark = false;
 
         static void Main(string[] args)
         {
