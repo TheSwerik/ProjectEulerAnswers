@@ -9,32 +9,30 @@ namespace Euler.main.cs
     {
         public Problem0015()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             // Solution:
             BigInteger n = 1;
             BigInteger k = 1;
-            for (int i = 21; i < 40; i++)
+            for (var i = 21; i < 40; i++)
             {
                 n = n * i;
                 k = k * (i - 20);
             }
 
-            n = (n / k) * 2;
+            n = n / k * 2;
 
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + n + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(15, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

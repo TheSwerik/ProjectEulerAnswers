@@ -8,7 +8,7 @@ namespace Euler.main.cs
     {
         public Problem0010()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
             long result = 0;
 
@@ -30,32 +30,25 @@ namespace Euler.main.cs
             // }
 
             //better (Maurice):
-            bool[] bools = new bool[2000000];
+            var bools = new bool[2000000];
 
-            for (int i = 2; i < bools.Length; i++)
-            {
+            for (var i = 2; i < bools.Length; i++)
                 if (!bools[i])
                 {
                     result += i;
-                    for (int j = i; j < bools.Length; j += i)
-                    {
-                        bools[j] = true;
-                    }
+                    for (var j = i; j < bools.Length; j += i) bools[j] = true;
                 }
-            }
 
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(10, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

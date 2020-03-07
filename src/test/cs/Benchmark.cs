@@ -19,29 +19,27 @@ namespace Euler.test.cs
             // Test every Problem:
             Console.WriteLine("Starting Benchmark...");
             for (var i = 1; i <= max; i++)
+            for (var j = 0; j < checks + 2; j++)
             {
-                for (int j = 0; j < checks + 2; j++)
+                Test.DoBenchmark = j >= 2;
+                Console.WriteLine("Checking Problem " + i + "\t Run: " + (j + 1));
+                //start Problems:
+                var input = i + "";
+                var path = "Euler.main.cs.Problem" + new string('0', 4 - input.Length) + input;
+                var problem = Type.GetType(path);
+                if (problem == null || Skip.Contains(i))
                 {
-                    Test.DoBenchmark = j >= 2;
-                    Console.WriteLine("Checking Problem " + i + "\t Run: " + (j + 1));
-                    //start Problems:
-                    string input = i + "";
-                    string path = "Euler.main.cs.Problem" + new string('0', 4 - input.Length) + input;
-                    Type problem = Type.GetType(path);
-                    if (problem == null || Skip.Contains(i))
-                    {
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        ClearCurrentConsoleLine();
-                        break;
-                    }
-
-                    Activator.CreateInstance(problem);
-
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     ClearCurrentConsoleLine();
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    ClearCurrentConsoleLine();
+                    break;
                 }
+
+                Activator.CreateInstance(problem);
+
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                ClearCurrentConsoleLine();
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                ClearCurrentConsoleLine();
             }
 
             Console.SetCursorPosition(0, Console.CursorTop - 1);
@@ -57,19 +55,15 @@ namespace Euler.test.cs
             using var workbook =
                 new XLWorkbook("G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\EulerBenchmark.xlsx");
             var worksheet = workbook.Worksheet(1);
-            int index = 3;
+            var index = 3;
             foreach (var cell in worksheet.Row(1).Cells())
-            {
                 if (cell.GetString().Contains("C#"))
-                {
                     index = cell.WorksheetColumn().ColumnNumber();
-                }
-            }
 
             worksheet.Column(index).Cell(1).Value = "C#";
 
             //write Excel
-            for (int i = 1; i <= max; i++)
+            for (var i = 1; i <= max; i++)
             {
                 if (!_times.ContainsKey(i))
                 {
@@ -77,7 +71,7 @@ namespace Euler.test.cs
                     continue;
                 }
 
-                double avg = _times[i].Cast<double>().Sum();
+                var avg = _times[i].Cast<double>().Sum();
                 avg /= _times[i].Count;
                 worksheet.Column(index).Cell(i + 1).Value = avg;
             }
@@ -91,17 +85,14 @@ namespace Euler.test.cs
 
         public static void AddTime(int number, double timeInMs)
         {
-            if (!_times.ContainsKey(number))
-            {
-                _times.Add(number, new ArrayList());
-            }
+            if (!_times.ContainsKey(number)) _times.Add(number, new ArrayList());
 
             _times[number].Add(timeInMs);
         }
 
         private void ClearCurrentConsoleLine()
         {
-            int currentLineCursor = Console.CursorTop;
+            var currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);

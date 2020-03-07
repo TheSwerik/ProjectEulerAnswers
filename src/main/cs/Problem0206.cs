@@ -8,17 +8,17 @@ namespace Euler.main.cs
     {
         public Problem0206()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
-            UInt64 result = 0;
+            ulong result = 0;
 
             // Solution:
-            UInt64 start = (UInt64) Math.Sqrt(1020304050607080900.0);
-            UInt64 end = (UInt64) Math.Sqrt(1929394959697989990.0);
+            var start = (ulong) Math.Sqrt(1020304050607080900.0);
+            var end = (ulong) Math.Sqrt(1929394959697989990.0);
             // String pattern = "1.2.3.4.5.6.7.8.9.0";
             // Regex regex = new Regex(pattern);
-        
-            for (UInt64 i = start; i <= end; i += 10)
+
+            for (var i = start; i <= end; i += 10)
             {
                 // if (regex.IsMatch((i * i) + ""))
                 // {
@@ -26,11 +26,8 @@ namespace Euler.main.cs
                 //     break;
                 // }
 
-                String s = "" + (i * i);
-                if (s.Length != 19)
-                {
-                    continue;
-                }
+                var s = "" + i * i;
+                if (s.Length != 19) continue;
 
                 if (s[16] == '9' &&
                     s[14] == '8' &&
@@ -49,15 +46,14 @@ namespace Euler.main.cs
             }
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
-                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 + " ms"));
+                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
+                                    " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(206, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

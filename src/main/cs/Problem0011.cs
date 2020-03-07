@@ -8,72 +8,58 @@ namespace Euler.main.cs
     {
         public Problem0011()
         {
-            int lineLength = 20;
-            int rowLength = 20;
-            int multiples = 4;
-            int[,] grid = FillGrid();
+            var lineLength = 20;
+            var rowLength = 20;
+            var multiples = 4;
+            var grid = FillGrid();
             bool[] allowed = {true, true, true, false};
 
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
             long result = 0;
 
             // Solution:
-            for (int i = 0; i < lineLength; i++)
+            for (var i = 0; i < lineLength; i++)
+            for (var j = 0; j < rowLength; j++)
             {
-                for (int j = 0; j < rowLength; j++)
+                //change allowed:
+                allowed[0] = !(j >= rowLength - multiples);
+                allowed[1] = !(j >= rowLength - multiples || i >= lineLength - multiples);
+                allowed[2] = !(i >= lineLength - multiples);
+                allowed[3] = !(i >= lineLength - multiples || j < multiples - 1);
+
+                long temp = 0;
+                //check right:
+                if (allowed[0])
                 {
-                    //change allowed:
-                    allowed[0] = !(j >= rowLength - multiples);
-                    allowed[1] = !(j >= rowLength - multiples || i >= lineLength - multiples);
-                    allowed[2] = !(i >= lineLength - multiples);
-                    allowed[3] = !(i >= lineLength - multiples || j < multiples - 1);
+                    temp = grid[i, j] * grid[i, j + 1] * grid[i, j + 2] * grid[i, j + 3];
+                    if (temp > result) result = temp;
+                }
 
-                    long temp = 0;
-                    //check right:
-                    if (allowed[0])
-                    {
-                        temp = grid[i, j] * grid[i, j + 1] * grid[i, j + 2] * grid[i, j + 3];
-                        if (temp > result)
-                        {
-                            result = temp;
-                        }
-                    }
+                //check diagDownRight:
+                if (allowed[1])
+                {
+                    temp = grid[i, j] * grid[i + 1, j + 1] * grid[i + 2, j + 2] * grid[i + 3, j + 3];
+                    if (temp > result) result = temp;
+                }
 
-                    //check diagDownRight:
-                    if (allowed[1])
-                    {
-                        temp = grid[i, j] * grid[i + 1, j + 1] * grid[i + 2, j + 2] * grid[i + 3, j + 3];
-                        if (temp > result)
-                        {
-                            result = temp;
-                        }
-                    }
+                //check down:
+                if (allowed[2])
+                {
+                    temp = grid[i, j] * grid[i + 1, j] * grid[i + 2, j] * grid[i + 3, j];
+                    if (temp > result) result = temp;
+                }
 
-                    //check down:
-                    if (allowed[2])
-                    {
-                        temp = grid[i, j] * grid[i + 1, j] * grid[i + 2, j] * grid[i + 3, j];
-                        if (temp > result)
-                        {
-                            result = temp;
-                        }
-                    }
-
-                    //check diagDownLeft:
-                    if (allowed[3])
-                    {
-                        temp = grid[i, j] * grid[i + 1, j - 1] * grid[i + 2, j - 2] * grid[i + 3, j - 3];
-                        if (temp > result)
-                        {
-                            result = temp;
-                        }
-                    }
+                //check diagDownLeft:
+                if (allowed[3])
+                {
+                    temp = grid[i, j] * grid[i + 1, j - 1] * grid[i + 2, j - 2] * grid[i + 3, j - 3];
+                    if (temp > result) result = temp;
                 }
             }
 
             //check last row
-            for (int j = 0; j < rowLength; j++)
+            for (var j = 0; j < rowLength; j++)
             {
                 //change allowed:
                 allowed[0] = !(j >= rowLength - multiples);
@@ -84,56 +70,42 @@ namespace Euler.main.cs
                 if (allowed[0])
                 {
                     temp = grid[19, j] * grid[19, j + 1] * grid[19, j + 2] * grid[19, j + 3];
-                    if (temp > result)
-                    {
-                        result = temp;
-                    }
+                    if (temp > result) result = temp;
 
                     temp = grid[19, j] * grid[19 - 1, j + 1] * grid[19 - 2, j + 2] * grid[19 - 3, j + 3];
-                    if (temp > result)
-                    {
-                        result = temp;
-                    }
+                    if (temp > result) result = temp;
                 }
 
                 //check up:
                 temp = grid[19, j] * grid[19 - 1, j] * grid[19 - 2, j] * grid[19 - 3, j];
-                if (temp > result)
-                {
-                    result = temp;
-                }
+                if (temp > result) result = temp;
 
                 //check diagUpLeft:
                 if (allowed[3])
                 {
                     temp = grid[19, j] * grid[19 - 1, j - 1] * grid[19 - 2, j - 2] * grid[19 - 3, j - 3];
-                    if (temp > result)
-                    {
-                        result = temp;
-                    }
+                    if (temp > result) result = temp;
                 }
             }
 
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(11, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private int[,] FillGrid()
         {
-            int lineLength = 20;
-            int rowLength = 20;
-            int multiples = 4;
-            String[] gridS =
+            var lineLength = 20;
+            var rowLength = 20;
+            var multiples = 4;
+            string[] gridS =
             {
                 "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08",
                 "49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00",
@@ -156,14 +128,10 @@ namespace Euler.main.cs
                 "20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54",
                 "01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"
             };
-            int[,] grid = new int[lineLength, rowLength];
-            for (int i = 0; i < lineLength; i++)
-            {
-                for (int j = 0; j < rowLength; j++)
-                {
-                    grid[i, j] = int.Parse(gridS[i].Substring(j * 3, 2));
-                }
-            }
+            var grid = new int[lineLength, rowLength];
+            for (var i = 0; i < lineLength; i++)
+            for (var j = 0; j < rowLength; j++)
+                grid[i, j] = int.Parse(gridS[i].Substring(j * 3, 2));
 
             return grid;
         }

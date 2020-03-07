@@ -8,15 +8,15 @@ namespace Euler.main.cs
     {
         public Problem0019()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
             ulong result = 0;
 
             // Solution:
             //for every year:
             long count = -1;
-            bool once = false;
-            for (int i = 0; i <= 100; i++)
+            var once = false;
+            for (var i = 0; i <= 100; i++)
             {
                 if (!once && i == 1)
                 {
@@ -24,7 +24,7 @@ namespace Euler.main.cs
                     once = true;
                 }
 
-                for (int j = 0; j < 12; j++)
+                for (var j = 0; j < 12; j++)
                 {
                     int days;
                     switch (j)
@@ -45,38 +45,31 @@ namespace Euler.main.cs
                             days = 30;
                             break;
                         case 1:
-                            days = ((i) % 4 == 0) && !once ? 29 : 28;
+                            days = i % 4 == 0 && !once ? 29 : 28;
                             break;
                         default:
                             throw new ArgumentException("Unexpected value: " + j);
                     }
 
-                    for (int k = 0; k < days; k++)
-                    {
+                    for (var k = 0; k < days; k++)
                         if (++count == 7)
                         {
                             count = 0;
-                            if (k == 0)
-                            {
-                                result++;
-                            }
+                            if (k == 0) result++;
                         }
-                    }
                 }
             }
 
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(19, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

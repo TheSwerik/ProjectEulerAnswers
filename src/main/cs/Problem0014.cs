@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using Euler.test.cs;
 
@@ -9,7 +8,7 @@ namespace Euler.main.cs
     {
         public Problem0014()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
             long result = 0;
 
@@ -49,12 +48,12 @@ namespace Euler.main.cs
             // }
 
             //faster: array > map
-            int[] map = new int[1000001];
-            int maxCount = 0;
-            for (int i = 2; i <= 1000000; i++)
+            var map = new int[1000001];
+            var maxCount = 0;
+            for (var i = 2; i <= 1000000; i++)
             {
                 long test = i;
-                int count = 0;
+                var count = 0;
                 do
                 {
                     if (test < 1000001 && map[(int) test] != 0)
@@ -64,13 +63,9 @@ namespace Euler.main.cs
                     }
 
                     if ((test & 1) == 0)
-                    {
                         test /= 2;
-                    }
                     else
-                    {
                         test = test * 3 + 1;
-                    }
 
                     count++;
                 } while (test != 1);
@@ -85,16 +80,14 @@ namespace Euler.main.cs
 
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(14, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

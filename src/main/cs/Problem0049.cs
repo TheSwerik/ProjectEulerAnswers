@@ -12,19 +12,18 @@ namespace Euler.main.cs
 
         public Problem0049()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
-            string result = "";
+            var result = "";
 
             // Solution:
             GenPrimes();
-            foreach (int j in _primes)
-            {
-                for (int i = 45;; i++)
+            foreach (var j in _primes)
+                for (var i = 45;; i++)
                 {
                     if (i == 3330 && j == 1487) continue;
-                    int b = j + i;
-                    int c = b + i;
+                    var b = j + i;
+                    var c = b + i;
                     if (c > 9999) break;
                     if (ArePermutes(j, b, c) && ArePrimes(j, b, c))
                     {
@@ -32,19 +31,17 @@ namespace Euler.main.cs
                         goto end;
                     }
                 }
-            }
 
             end:
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
-                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 + " ms"));
+                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
+                                    " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(49, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private bool ArePrimes(int a, int b, int c)
@@ -54,16 +51,16 @@ namespace Euler.main.cs
 
         private bool ArePermutes(int a, int b, int c)
         {
-            string aS = a + "";
-            char[] bS = (b + "").ToCharArray();
-            char[] cS = (c + "").ToCharArray();
-            char[] digits = aS.ToCharArray();
+            var aS = a + "";
+            var bS = (b + "").ToCharArray();
+            var cS = (c + "").ToCharArray();
+            var digits = aS.ToCharArray();
 
-            bool[] bIndices = new bool[4];
-            bool[] cIndices = new bool[4];
-            for (int i = 0; i < 4; i++)
+            var bIndices = new bool[4];
+            var cIndices = new bool[4];
+            for (var i = 0; i < 4; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (var j = 0; j < 4; j++)
                 {
                     if (bIndices[j]) continue;
                     if (digits[i] == bS[j])
@@ -73,7 +70,7 @@ namespace Euler.main.cs
                     }
                 }
 
-                for (int j = 0; j < 4; j++)
+                for (var j = 0; j < 4; j++)
                 {
                     if (cIndices[j]) continue;
                     if (digits[i] == cS[j])
@@ -89,49 +86,34 @@ namespace Euler.main.cs
 
         private void GenPrimes()
         {
-            ulong[] allPrimes = PrimeSieveButFast(10_000);
+            var allPrimes = PrimeSieveButFast(10_000);
             _primes = new int[0];
-            int i = 0;
+            var i = 0;
             for (; i < allPrimes.Length; i++)
-            {
                 if (allPrimes[i] >= 1000)
                 {
                     _primes = new int[allPrimes.Length - i];
                     break;
                 }
-            }
 
-            for (int j = 0; j < _primes.Length; j++, i++)
-            {
-                _primes[j] = (int) allPrimes[i];
-            }
+            for (var j = 0; j < _primes.Length; j++, i++) _primes[j] = (int) allPrimes[i];
         }
 
         private ulong[] PrimeSieveButFast(ulong range)
         {
-            bool[] bools = new bool[range + 1];
+            var bools = new bool[range + 1];
             Array.Fill(bools, true);
-            double root = Math.Sqrt(range) + 0.5;
+            var root = Math.Sqrt(range) + 0.5;
             for (ulong i = 3; i < root; i += 2)
-            {
                 if (bools[i])
-                {
-                    for (ulong j = i * i; j < range; j += i * 2)
-                    {
+                    for (var j = i * i; j < range; j += i * 2)
                         bools[j] = false;
-                    }
-                }
-            }
 
-            ArrayList primes = new ArrayList();
+            var primes = new ArrayList();
             primes.Add((ulong) 2);
             for (ulong i = 3; i < range; i += 2)
-            {
                 if (bools[i])
-                {
                     primes.Add(i);
-                }
-            }
 
             return primes.OfType<ulong>().ToArray();
         }

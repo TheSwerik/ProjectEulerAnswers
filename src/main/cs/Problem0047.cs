@@ -8,11 +8,11 @@ namespace Euler.main.cs
 {
     public class Problem0047
     {
-        private ulong[] primes;
+        private readonly ulong[] primes;
 
         public Problem0047()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
             ulong result = 0;
 
@@ -21,7 +21,7 @@ namespace Euler.main.cs
             for (ulong i = 20;; i++)
             {
                 if (primes.Contains(i)) continue;
-                if (numberOfPrimFactors(new ulong[] {i, i + 1, i + 2, i + 3}))
+                if (numberOfPrimFactors(new[] {i, i + 1, i + 2, i + 3}))
                 {
                     result = i;
                     break;
@@ -29,40 +29,30 @@ namespace Euler.main.cs
             }
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
-                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 + " ms"));
+                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
+                                    " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(47, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private bool numberOfPrimFactors(ulong[] numbers)
         {
-            for (int j = 0; j < numbers.Length; j++)
+            for (var j = 0; j < numbers.Length; j++)
             {
-                int count = 0;
-                ulong n = numbers[j];
+                var count = 0;
+                var n = numbers[j];
                 for (ulong i = 0; primes[i] <= n; i++)
                 {
-                    if (n % primes[i] == 0)
-                    {
-                        count++;
-                    }
+                    if (n % primes[i] == 0) count++;
 
-                    while (n % primes[i] == 0)
-                    {
-                        n /= primes[i];
-                    }
+                    while (n % primes[i] == 0) n /= primes[i];
                 }
 
-                if (count != 4)
-                {
-                    return false;
-                }
+                if (count != 4) return false;
             }
 
             return true;
@@ -70,29 +60,19 @@ namespace Euler.main.cs
 
         private ulong[] primeSieveButFast(ulong range)
         {
-            bool[] bools = new bool[range + 1];
+            var bools = new bool[range + 1];
             Array.Fill(bools, true);
-            double root = Math.Sqrt(range) + 0.5;
+            var root = Math.Sqrt(range) + 0.5;
             for (ulong i = 3; i < root; i += 2)
-            {
                 if (bools[i])
-                {
-                    for (ulong j = i * i; j < range; j += i * 2)
-                    {
+                    for (var j = i * i; j < range; j += i * 2)
                         bools[j] = false;
-                    }
-                }
-            }
 
-            ArrayList primes = new ArrayList();
+            var primes = new ArrayList();
             primes.Add((ulong) 2);
             for (ulong i = 3; i < range; i += 2)
-            {
                 if (bools[i])
-                {
                     primes.Add(i);
-                }
-            }
 
             return primes.OfType<ulong>().ToArray();
         }

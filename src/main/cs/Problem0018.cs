@@ -6,7 +6,7 @@ namespace Euler.main.cs
 {
     public class Problem0018
     {
-        private const String Pyramid =
+        private const string Pyramid =
             "75\n" +
             "95 64\n" +
             "17 47 82\n" +
@@ -25,16 +25,16 @@ namespace Euler.main.cs
 
         public Problem0018()
         {
-            int[][] arr = Fill();
+            var arr = Fill();
 
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
             long result = 0;
 
             // Solution:
-            for (int i = arr.Length - 1; i > 0; i--)
+            for (var i = arr.Length - 1; i > 0; i--)
             {
-                for (int j = 0; j < arr[i].Length - 1; j++)
+                for (var j = 0; j < arr[i].Length - 1; j++)
                 {
                     arr[i - 1][j] += Math.Max(arr[i][j], arr[i][1 + j]);
                 }
@@ -43,7 +43,7 @@ namespace Euler.main.cs
             result = arr[0][0];
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
@@ -58,14 +58,14 @@ namespace Euler.main.cs
 
         private int[][] Fill()
         {
-            int[][] result = new int[Pyramid.Split("\n").Length][];
+            var result = new int[Pyramid.Split("\n").Length][];
 
-            int i = 0;
-            foreach (String s in Pyramid.Split("\n"))
+            var i = 0;
+            foreach (var s in Pyramid.Split("\n"))
             {
-                int j = 0;
+                var j = 0;
                 result[i] = new int[s.Split(" ").Length];
-                foreach (String number in s.Split(" "))
+                foreach (var number in s.Split(" "))
                 {
                     result[i][j] = int.Parse(number);
                     j++;

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Diagnostics;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Euler.test.cs;
 
 namespace Euler.main.cs
@@ -10,7 +8,7 @@ namespace Euler.main.cs
     {
         public Problem0007()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
             ulong result = 0;
 
@@ -20,12 +18,8 @@ namespace Euler.main.cs
             {
                 //check if i is prime:
                 for (ulong j = 3; j <= (ulong) Math.Sqrt(i); j++)
-                {
                     if (i % j == 0)
-                    {
                         goto end;
-                    }
-                }
 
                 //check if it's the 10001st:
                 if (++counter == 10001)
@@ -33,6 +27,7 @@ namespace Euler.main.cs
                     result = i;
                     break;
                 }
+
                 end:
                 {
                 }
@@ -62,16 +57,14 @@ namespace Euler.main.cs
             */
 
             stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
+            var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(7, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }
