@@ -1,13 +1,11 @@
 using System;
-using System.Net.Mime;
 using System.Threading;
-using Microsoft.VisualBasic;
 
 namespace Euler.test.cs
 {
     public class Test
     {
-        public const bool DoBenchmark = false;
+        public static bool DoBenchmark = false;
 
         static void Main(string[] args)
         {

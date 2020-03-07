@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using ClosedXML.Excel;
-using ExcelDataReader;
 
 namespace Euler.test.cs
 {
@@ -22,9 +20,10 @@ namespace Euler.test.cs
             Console.WriteLine("Starting Benchmark...");
             for (var i = 1; i <= max; i++)
             {
-                for (int j = 0; j < checks; j++)
+                for (int j = 0; j < checks + 2; j++)
                 {
-                    System.Console.WriteLine("Checking Problem " + i + "\t Run: " + (j + 1));
+                    Test.DoBenchmark = j >= 2;
+                    Console.WriteLine("Checking Problem " + i + "\t Run: " + (j + 1));
                     //start Problems:
                     string input = i + "";
                     string path = "Euler.main.cs.Problem" + new string('0', 4 - input.Length) + input;
@@ -35,10 +34,8 @@ namespace Euler.test.cs
                         ClearCurrentConsoleLine();
                         break;
                     }
-                    else
-                    {
-                        Activator.CreateInstance(problem);
-                    }
+
+                    Activator.CreateInstance(problem);
 
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     ClearCurrentConsoleLine();
@@ -68,6 +65,7 @@ namespace Euler.test.cs
                     index = cell.WorksheetColumn().ColumnNumber();
                 }
             }
+
             worksheet.Column(index).Cell(1).Value = "C#";
 
             //write Excel
@@ -85,7 +83,7 @@ namespace Euler.test.cs
             }
 
             workbook.SaveAs("G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\EulerBenchmark.xlsx");
-            
+
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             ClearCurrentConsoleLine();
             Console.WriteLine("Excel file written!");
