@@ -6,7 +6,7 @@ namespace Euler.main.cs
 {
     public class Problem0043
     {
-        private int counter = 0;
+        private int counter;
 
         public Problem0043()
         {
@@ -18,7 +18,7 @@ namespace Euler.main.cs
             int n = 3_265_920;
             string[] permutations = new string[n];
             string first = "9876543210";
-            this.permute(n, permutations, "", first);
+            permute(n, permutations, "", first);
 
             foreach (string number in permutations)
             {
@@ -72,7 +72,7 @@ namespace Euler.main.cs
             int n = s.Length;
             if (n == 0)
             {
-                permutations[this.counter++] = prefix;
+                permutations[counter++] = prefix;
             }
             else
             {

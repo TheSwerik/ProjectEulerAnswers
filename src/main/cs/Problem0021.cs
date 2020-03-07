@@ -18,18 +18,16 @@ namespace Euler.main.cs
                 long sum1 = 1;
                 double root = Math.Sqrt(i);
                 for (int j = 2; j <= root; j++)
-                {
-                    if (i % j == 0) sum1 += j + (i / j);
-                }
+                    if (i % j == 0)
+                        sum1 += j + i / j;
 
                 if (sum1 == i) continue;
 
                 long sum2 = 1;
                 root = Math.Sqrt(sum1);
                 for (int j = 2; j <= root; j++)
-                {
-                    if (sum1 % j == 0) sum2 += j + (sum1 / j);
-                }
+                    if (sum1 % j == 0)
+                        sum2 += j + sum1 / j;
 
                 if (sum2 == i) result += i;
             }
@@ -43,9 +41,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(21, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

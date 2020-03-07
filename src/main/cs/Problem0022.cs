@@ -6,40 +6,7 @@ namespace Euler.main.cs
 {
     public class Problem0022
     {
-        public Problem0022()
-        {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-            long result = 0;
-
-            // Solution:
-            Array.Sort(names);
-            for (int i = 0; i < names.Length; i++)
-            {
-                long score = 0;
-                foreach (char c in names[i])
-                {
-                    score += c - 64;
-                }
-
-                result += score * (i + 1);
-            }
-
-
-            stopWatch.Stop();
-            string elapsedTime = stopWatch.Elapsed.ToString();
-            Console.WriteLine("Result:\t" + result + "\tTime:\t" +
-                              (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
-                                  ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
-                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
-                                    " ms"));
-            if (Test.DoBenchmark)
-            {
-                Benchmark.AddTime(22, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
-        }
-
-        private readonly string[] names = new string[]
+        private readonly string[] names =
         {
             "MARY", "PATRICIA", "LINDA", "BARBARA", "ELIZABETH", "JENNIFER", "MARIA", "SUSAN", "MARGARET", "DOROTHY",
             "LISA", "NANCY", "KAREN", "BETTY", "HELEN", "SANDRA", "DONNA", "CAROL", "RUTH", "SHARON", "MICHELLE",
@@ -536,5 +503,33 @@ namespace Euler.main.cs
             "KENETH", "JACINTO", "GRAIG", "FRANKLYN", "EDMUNDO", "SID", "PORTER", "LEIF", "JERAMY", "BUCK", "WILLIAN",
             "VINCENZO", "SHON", "LYNWOOD", "JERE", "HAI", "ELDEN", "DORSEY", "DARELL", "BRODERICK", "ALONSO"
         };
+
+        public Problem0022()
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            long result = 0;
+
+            // Solution:
+            Array.Sort(names);
+            for (int i = 0; i < names.Length; i++)
+            {
+                long score = 0;
+                foreach (char c in names[i]) score += c - 64;
+
+                result += score * (i + 1);
+            }
+
+
+            stopWatch.Stop();
+            string elapsedTime = stopWatch.Elapsed.ToString();
+            Console.WriteLine("Result:\t" + result + "\tTime:\t" +
+                              (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
+                                  ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
+                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
+                                    " ms"));
+            if (Test.DoBenchmark)
+                Benchmark.AddTime(22, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+        }
     }
 }

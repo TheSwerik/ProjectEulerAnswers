@@ -6,7 +6,7 @@ namespace Euler.main.cs
 {
     public class Problem0041
     {
-        private int counter = 0;
+        private int counter;
 
         public Problem0041()
         {
@@ -25,9 +25,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(41, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private long solvePanToPrime()
@@ -39,12 +37,8 @@ namespace Euler.main.cs
             {
                 this.permute(max, permutes, "", maxS);
                 foreach (string permute in permutes)
-                {
                     if (isPrime(long.Parse(permute)))
-                    {
                         return long.Parse(permute);
-                    }
-                }
 
                 maxS = maxS.Substring(1);
             }
@@ -52,19 +46,12 @@ namespace Euler.main.cs
 
         private bool isPrime(long n)
         {
-            if (n % 2 == 0)
-            {
-                return false;
-            }
+            if (n % 2 == 0) return false;
 
             double root = Math.Sqrt(n);
             for (int i = 3; i < root; i += 2)
-            {
                 if (n % i == 0)
-                {
                     return false;
-                }
-            }
 
             return true;
         }
@@ -75,16 +62,10 @@ namespace Euler.main.cs
 
             int n = s.Length;
             if (n == 0)
-            {
-                permutations[this.counter++] = prefix;
-            }
+                permutations[counter++] = prefix;
             else
-            {
                 for (int i = 0; i < n; i++)
-                {
                     permute(max, permutations, prefix + s[i], s.Substring(0, i) + s.Substring(i + 1, n - i - 1));
-                }
-            }
         }
     }
 }

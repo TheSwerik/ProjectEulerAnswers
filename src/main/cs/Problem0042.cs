@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using Euler.test.cs;
 
 namespace Euler.main.cs
@@ -19,12 +18,8 @@ namespace Euler.main.cs
             // Solution:
             List<int> triangles = generateTriangles(15 * 26);
             foreach (string word in words)
-            {
                 if (triangles.Contains((int) wordValue(word)))
-                {
                     result++;
-                }
-            }
 
 
             stopWatch.Stop();
@@ -35,19 +30,14 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(42, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private List<int> generateTriangles(long range)
         {
             List<int> triangles = new List<int>();
 
-            for (int i = 1; i <= range; i++)
-            {
-                triangles.Add((int) (0.5 * i * (i + 1)));
-            }
+            for (int i = 1; i <= range; i++) triangles.Add((int) (0.5 * i * (i + 1)));
 
             return triangles;
         }
@@ -56,25 +46,21 @@ namespace Euler.main.cs
         {
             long result = 0;
 
-            foreach (char c in word)
-            {
-                result += (c - 64);
-            }
+            foreach (char c in word) result += c - 64;
 
             return result;
         }
 
         private string[] readWords()
         {
-            string[] file = File.ReadAllLines("G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\src\\main\\resources\\problem0042_words.txt");
+            string[] file =
+                File.ReadAllLines(
+                    "G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\src\\main\\resources\\problem0042_words.txt");
 
             string st = "";
-            foreach (string s in file)
-            {
-                st += s;
-            }
+            foreach (string s in file) st += s;
 
-            return (st.Replace("\"", "")).Split(",");
+            return st.Replace("\"", "").Split(",");
         }
     }
 }

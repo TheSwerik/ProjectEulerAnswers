@@ -33,9 +33,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(39, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private int numberOfSolutions(int n)
@@ -43,15 +41,10 @@ namespace Euler.main.cs
             int result = 0;
 
             for (int c = n / 2; c > 2; c--)
+            for (int b = c; b > 1; b--)
             {
-                for (int b = c; b > 1; b--)
-                {
-                    double a = Math.Sqrt(c * c - b * b);
-                    if (a + b + c == n)
-                    {
-                        result++;
-                    }
-                }
+                double a = Math.Sqrt(c * c - b * b);
+                if (a + b + c == n) result++;
             }
 
             return result;

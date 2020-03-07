@@ -17,12 +17,8 @@ namespace Euler.main.cs
             // Solution:
             HashSet<BigInteger> set = new HashSet<BigInteger>();
             for (int i = 2; i <= 100; i++)
-            {
-                for (int j = 2; j <= 100; j++)
-                {
-                    set.Add(BigInteger.Pow(j, i));
-                }
-            }
+            for (int j = 2; j <= 100; j++)
+                set.Add(BigInteger.Pow(j, i));
 
             result = set.Count;
 
@@ -35,9 +31,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(29, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

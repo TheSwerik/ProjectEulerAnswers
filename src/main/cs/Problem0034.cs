@@ -16,7 +16,7 @@ namespace Euler.main.cs
             long result = 0;
 
             // Solution:
-            _factorials = new int[]
+            _factorials = new[]
             {
                 1, 1, 2, 6,
                 Factorial(4),
@@ -28,14 +28,10 @@ namespace Euler.main.cs
             };
             List<long> list = new List<long>();
             for (long i = 3; i < 2540161; i++)
-            {
-                if (GetDigitFactorial(i) == i) list.Add(i);
-            }
+                if (GetDigitFactorial(i) == i)
+                    list.Add(i);
 
-            foreach (long n in list)
-            {
-                result += n;
-            }
+            foreach (long n in list) result += n;
 
             stopWatch.Stop();
             string elapsedTime = stopWatch.Elapsed.ToString();
@@ -45,25 +41,17 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(34, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private long GetDigitFactorial(long n)
         {
-            String asString = n + "";
+            string asString = n + "";
             int[] numbers = new int[asString.Length];
-            for (int i = 0; i < asString.Length; i++)
-            {
-                numbers[i] = asString[i] - 48;
-            }
+            for (int i = 0; i < asString.Length; i++) numbers[i] = asString[i] - 48;
 
             long result = 0;
-            foreach (int number in numbers)
-            {
-                result += _factorials[number];
-            }
+            foreach (int number in numbers) result += _factorials[number];
 
             return result;
         }
@@ -71,10 +59,7 @@ namespace Euler.main.cs
         private int Factorial(int n)
         {
             int result = n;
-            for (int i = n - 1; i > 1; i--)
-            {
-                result *= i;
-            }
+            for (int i = n - 1; i > 1; i--) result *= i;
 
             return result;
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Euler.test.cs;
 
 namespace Euler.main.cs
@@ -49,9 +48,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(45, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

@@ -33,12 +33,8 @@ namespace Euler.main.cs
 
             // Solution:
             for (var i = arr.Length - 1; i > 0; i--)
-            {
-                for (var j = 0; j < arr[i].Length - 1; j++)
-                {
-                    arr[i - 1][j] += Math.Max(arr[i][j], arr[i][1 + j]);
-                }
-            }
+            for (var j = 0; j < arr[i].Length - 1; j++)
+                arr[i - 1][j] += Math.Max(arr[i][j], arr[i][1 + j]);
 
             result = arr[0][0];
 
@@ -50,9 +46,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(18, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
 

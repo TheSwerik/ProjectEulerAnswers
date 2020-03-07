@@ -40,19 +40,14 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(44, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private long[] fillarr(int n)
         {
             long[] arr = new long[n];
 
-            for (int i = 1; i <= n; i++)
-            {
-                arr[i - 1] = i * (3 * i - 1) / 2L;
-            }
+            for (int i = 1; i <= n; i++) arr[i - 1] = i * (3 * i - 1) / 2L;
 
             return arr;
         }

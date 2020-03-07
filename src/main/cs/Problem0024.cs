@@ -6,7 +6,7 @@ namespace Euler.main.cs
 {
     public class Problem0024
     {
-        private int _counter = 0;
+        private int _counter;
 
         public Problem0024()
         {
@@ -29,9 +29,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(24, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private void Permute(string[] permutations, string prefix, string s)
@@ -39,12 +37,10 @@ namespace Euler.main.cs
             if (_counter >= 1000000) return;
 
             int n = s.Length;
-            if (n == 0) permutations[this._counter++] = prefix;
+            if (n == 0) permutations[_counter++] = prefix;
             else
                 for (int i = 0; i < n; i++)
-                {
                     Permute(permutations, prefix + s[i], s.Substring(0, i) + s.Substring(i + 1, n - i - 1));
-                }
         }
     }
 }

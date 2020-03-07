@@ -54,8 +54,8 @@ namespace Euler.main.cs
                     double fractal = (double) numerator / denominator;
                     if (fractal == (double) (numeratorC - 48) / (denominatorC - 48))
                     {
-                        numerators[counter] = (numeratorC - 48);
-                        denominators[counter++] = (denominatorC - 48);
+                        numerators[counter] = numeratorC - 48;
+                        denominators[counter++] = denominatorC - 48;
                     }
                 }
             }
@@ -80,14 +80,12 @@ namespace Euler.main.cs
             for (int i = 0; i < numerators.Length; i++)
             {
                 for (int j = 2; j < denominators[i]; j++)
-                {
                     if (numerators[i] % j == 0 && denominators[i] % j == 0)
                     {
                         numerators[i] /= j;
                         denominators[i] /= j;
                         j = 1;
                     }
-                }
 
                 if (i == 0)
                 {
@@ -107,14 +105,12 @@ namespace Euler.main.cs
         private long getLowestDenominatorProduct(int numerator, int denominator)
         {
             for (int j = 2; j < denominator; j++)
-            {
                 if (numerator % j == 0 && denominator % j == 0)
                 {
                     numerator /= j;
                     denominator /= j;
                     j = 1;
                 }
-            }
 
             return denominator;
         }

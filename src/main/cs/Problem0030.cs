@@ -27,13 +27,10 @@ namespace Euler.main.cs
                         for (int l = 0; l < 10; l++)
                         {
                             long d = (long) Math.Pow(l, 5);
-                            String testString = i + "" + j + "" + k + "" + l;
+                            string testString = i + "" + j + "" + k + "" + l;
                             long testNumber = a + b + c + d;
 
-                            if ((testNumber + "").Equals(testString))
-                            {
-                                numbers.Add(testNumber);
-                            }
+                            if ((testNumber + "").Equals(testString)) numbers.Add(testNumber);
 
                             for (int m = 0; m < 10; m++)
                             {
@@ -57,10 +54,7 @@ namespace Euler.main.cs
                 }
             }
 
-            foreach (long l in numbers)
-            {
-                result += l;
-            }
+            foreach (long l in numbers) result += l;
 
 
             stopWatch.Stop();
@@ -71,9 +65,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(30, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }

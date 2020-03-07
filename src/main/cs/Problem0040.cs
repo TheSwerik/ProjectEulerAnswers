@@ -13,7 +13,7 @@ namespace Euler.main.cs
             long result = 0;
 
             // Solution:
-            String concatenated = concatenate(1_000_000);
+            string concatenated = concatenate(1_000_000);
             int n = 1;
             result = concatenated[n] - 48;
             for (int i = 0; i < 6; i++)
@@ -31,18 +31,13 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(40, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
-        private String concatenate(long n)
+        private string concatenate(long n)
         {
             string result = ".";
-            for (int i = 1; result.Length <= n + 1; i++)
-            {
-                result += i;
-            }
+            for (int i = 1; result.Length <= n + 1; i++) result += i;
 
             return result;
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Text;
 using Euler.test.cs;
 
 namespace Euler.main.cs
@@ -15,16 +14,13 @@ namespace Euler.main.cs
 
             // Solution:
             int counter = 0;
-            String nines = "99";
-            String tens = "0";
+            string nines = "99";
+            string tens = "0";
             // under 10,000:
             for (long i = 11; i < 10_000;)
             {
-                String binary = Convert.ToString(i, 2);
-                if (binary.Equals(ReverseString(binary)))
-                {
-                    result += i;
-                }
+                string binary = Convert.ToString(i, 2);
+                if (binary.Equals(ReverseString(binary))) result += i;
 
                 // 99 or 999 or 9999 or 99999
                 if (i % int.Parse(nines) == 0)
@@ -53,10 +49,7 @@ namespace Euler.main.cs
                 }
 
                 // < 100:
-                if (i < 99)
-                {
-                    i += 11;
-                }
+                if (i < 99) i += 11;
             }
 
             // over 10,000:
@@ -67,10 +60,7 @@ namespace Euler.main.cs
             int addNumber3 = 9001;
             for (long i = lastI, j = 0; i < 1_000_000;)
             {
-                if (Convert.ToString(i, 2).Equals(ReverseString(Convert.ToString(i, 2))))
-                {
-                    result += i;
-                }
+                if (Convert.ToString(i, 2).Equals(ReverseString(Convert.ToString(i, 2)))) result += i;
 
                 i += addNumber1;
                 // when middle number(s) are 9 (xx9xx or xx99xx):
@@ -110,9 +100,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(36, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private string ReverseString(string s)

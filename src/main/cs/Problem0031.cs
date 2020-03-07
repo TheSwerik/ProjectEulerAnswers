@@ -6,8 +6,8 @@ namespace Euler.main.cs
 {
     public class Problem0031
     {
-        private readonly int[] _coins = new int[] {200, 100, 50, 20, 10, 5, 2, 1};
-        private long _result = 0;
+        private readonly int[] _coins = {200, 100, 50, 20, 10, 5, 2, 1};
+        private long _result;
 
         public Problem0031()
         {
@@ -25,9 +25,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(31, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
 
         private void Combinations(int rest, int coin)
@@ -39,9 +37,8 @@ namespace Euler.main.cs
             }
 
             for (int a = coin; a < _coins.Length; a++)
-            {
-                if (rest - _coins[a] >= 0) Combinations(rest - _coins[a], a);
-            }
+                if (rest - _coins[a] >= 0)
+                    Combinations(rest - _coins[a], a);
         }
     }
 }

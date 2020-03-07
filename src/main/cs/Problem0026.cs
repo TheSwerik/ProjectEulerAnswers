@@ -23,13 +23,12 @@ namespace Euler.main.cs
                 int rest = 10;
                 List<int> list = new List<int>();
                 while (true)
-                {
                     if (rest % i != 0)
                     {
                         counter++;
                         int divisor = rest / i;
                         if (rest > divisor * i) rest -= divisor * i;
-                        
+
                         rest *= 10;
                         if (list.Contains(rest)) break;
                         list.Add(rest);
@@ -39,7 +38,6 @@ namespace Euler.main.cs
                         counter = 0;
                         break;
                     }
-                }
 
                 if (counter > resultCounter)
                 {
@@ -56,9 +54,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-            {
                 Benchmark.AddTime(26, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
-            }
         }
     }
 }
