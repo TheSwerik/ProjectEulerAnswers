@@ -2,7 +2,7 @@ import java.math.BigInteger;
 
 public class Problem0013 {
     public Problem0013() {
-        BigInteger[] numbers = fill();
+        BigInteger[] numbers = this.fill();
 
         long startTime = System.nanoTime();
         BigInteger result = new BigInteger("0");

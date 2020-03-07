@@ -9,10 +9,10 @@ public class Problem0046 {
         long result = 0;
 
         // Solution:
-        primes = primeSieveButFast(10_000);
+        this.primes = primeSieveButFast(10_000);
 
         for (long i = 9; ; i += 2)
-            if (isComposite(i) && !IsGoldbach(i)) {
+            if (this.isComposite(i) && !this.IsGoldbach(i)) {
                 result = i;
                 break;
             }
@@ -25,8 +25,8 @@ public class Problem0046 {
     }
 
     private boolean IsGoldbach(long n) {
-        for (var i = 0; i < primes.length; i++) {
-            var p = primes[i];
+        for (var i = 0; i < this.primes.length; i++) {
+            var p = this.primes[i];
             if (p > (int) n - 2) break;
 
             for (var j = 1; ; j++) {

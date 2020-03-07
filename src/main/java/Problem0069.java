@@ -11,7 +11,7 @@ public class Problem0069 {
         for (int i = 990990; i > 0; i -= 60060) {
             int count = 0;
             for (int j = 1; j < i; j++) {
-                if (gcd(i, j) == 1) {
+                if (this.gcd(i, j) == 1) {
                     count++;
                 }
             }

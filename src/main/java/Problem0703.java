@@ -7,10 +7,10 @@ public class Problem0703 {
         long result = 0;
 
         // Solution:
-        boolean[][] b = b(3);
+        boolean[][] b = this.b(3);
         // S:
         for (boolean[] boolArr : b) {
-            boolean[] f = f(boolArr);
+            boolean[] f = this.f(boolArr);
             for (int i = 0; i < boolArr.length; i++) {
                 if (!(boolArr[i] && f[i])) result++;
             }

@@ -20,7 +20,7 @@ public class Problem0024 {
     }
 
     private void permute(String[] permutations, String prefix, String s) {
-        if (counter >= 1000000) {
+        if (this.counter >= 1000000) {
             return;
         }
         int n = s.length();
@@ -28,7 +28,7 @@ public class Problem0024 {
             permutations[this.counter++] = prefix;
         } else {
             for (int i = 0; i < n; i++) {
-                permute(permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
+                this.permute(permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
             }
         }
     }

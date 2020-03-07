@@ -4,18 +4,18 @@ import java.util.HashSet;
 
 public class Problem0035 {
 
-    private ArrayList<Integer> primes;
+    private final ArrayList<Integer> primes;
 
     public Problem0035() {
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
-        primes = genPrimes(1000000);
+        this.primes = this.genPrimes(1000000);
         HashSet<Integer> circularPrimes = new HashSet<>();
-        for (Integer prime : primes) {
+        for (Integer prime : this.primes) {
             if (circularPrimes.contains(prime)) continue;
-            Integer[] primeSwapped = swapped(prime);
+            Integer[] primeSwapped = this.swapped(prime);
 
             if (primeSwapped != null) {
                 circularPrimes.addAll(Arrays.asList(primeSwapped));
@@ -44,7 +44,7 @@ public class Problem0035 {
 
         for (int i = 1; i < permutations.length; i++) {
             permutations[i] = (permutations[i - 1].substring(1) + permutations[i - 1].charAt(0));
-            if (!primes.contains(Integer.parseInt(permutations[i]))) {
+            if (!this.primes.contains(Integer.parseInt(permutations[i]))) {
                 return null;
             }
             primeSwapped.add(Integer.parseInt(permutations[i]));

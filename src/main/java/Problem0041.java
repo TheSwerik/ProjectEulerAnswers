@@ -11,7 +11,7 @@ public class Problem0041 {
 
         // Solution:
 //        result = solvePrimeToPan();
-        result = solvePanToPrime();
+        result = this.solvePanToPrime();
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
@@ -27,7 +27,7 @@ public class Problem0041 {
         while (true) {
             this.permute(max, permutes, "", maxS);
             for (String permute : permutes) {
-                if (isPrime(Long.parseLong(permute))) {
+                if (this.isPrime(Long.parseLong(permute))) {
                     return Long.parseLong(permute);
                 }
             }
@@ -49,7 +49,7 @@ public class Problem0041 {
     }
 
     private void permute(int max, String[] permutations, String prefix, String s) {
-        if (counter >= max) {
+        if (this.counter >= max) {
             return;
         }
         int n = s.length();
@@ -57,16 +57,16 @@ public class Problem0041 {
             permutations[this.counter++] = prefix;
         } else {
             for (int i = 0; i < n; i++) {
-                permute(max, permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
+                this.permute(max, permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
             }
         }
     }
 
     private long solvePrimeToPan() {
-        Integer[] primes = primeSieveButFast(7654321);
+        Integer[] primes = this.primeSieveButFast(7654321);
 //        System.out.println("generated " + primes.length + " primes");
         for (int i = primes.length - 1; i >= 0; i--) {
-            if (isPandigital(primes[i].toString())) {
+            if (this.isPandigital(primes[i].toString())) {
                 return primes[i];
             }
         }

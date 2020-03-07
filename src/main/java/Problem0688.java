@@ -2,7 +2,7 @@ import java.math.BigInteger;
 
 public class Problem0688 {
 
-    private BigInteger mod = new BigInteger("1000000007");
+    private final BigInteger mod = new BigInteger("1000000007");
 
     public Problem0688() {
         long startTime = System.nanoTime();
@@ -11,7 +11,7 @@ public class Problem0688 {
         // Solution:
         long max = 10_000_000_000_000_000L;
 //        long gausMax = 4_294_967_295L; // max for long
-        long gausMax = findGausMax(10_000_000_000_000_000L); // max for max
+        long gausMax = this.findGausMax(10_000_000_000_000_000L); // max for max
         long tempMax = 1_000_000;
          tempMax = max;
         int percent = 0;
@@ -39,7 +39,7 @@ public class Problem0688 {
                 System.out.println((percent = temp) + "%");
             }
         }
-        result += Long.parseLong((new BigInteger(F(gausMax) + "").multiply(new BigInteger((max - gausMax - 1) + "")).mod(mod)).toString());
+        result += Long.parseLong((new BigInteger(this.F(gausMax) + "").multiply(new BigInteger((max - gausMax - 1) + "")).mod(this.mod)).toString());
 
         //TODO finish
 
@@ -88,7 +88,7 @@ public class Problem0688 {
                     continue;
                 }
 
-                if (max - gaus(temp) > 0) {
+                if (max - this.gaus(temp) > 0) {
                     result.append(j);
                     continue outer;
                 }

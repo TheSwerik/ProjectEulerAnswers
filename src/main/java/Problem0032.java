@@ -38,7 +38,7 @@ public class Problem0032 {
     }
 
     private void permute(String[] permutations, String prefix, String s) {
-        if (counter >= 362880) {
+        if (this.counter >= 362880) {
             return;
         }
         int n = s.length();
@@ -46,7 +46,7 @@ public class Problem0032 {
             permutations[this.counter++] = prefix;
         } else {
             for (int i = 0; i < n; i++) {
-                permute(permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
+                this.permute(permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
             }
         }
     }

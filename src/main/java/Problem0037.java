@@ -11,10 +11,10 @@ public class Problem0037 {
 //        result = solveSlowButOptimized();
 
         //gen all primes < 1000000:
-        ArrayList<Integer> primes = new ArrayList<Integer>(Arrays.asList(primeSieveButFast(1_000_000)));
+        ArrayList<Integer> primes = new ArrayList<Integer>(Arrays.asList(this.primeSieveButFast(1_000_000)));
 
         int count = 0;
-        String[] firstPrimesArr = new String[]{"2", "3", "5", "7"};
+        String[] firstPrimesArr = {"2", "3", "5", "7"};
         ArrayList<String> firstPrimes = new ArrayList<>(Arrays.asList(firstPrimesArr));
         for (int i = 0; i < 11; ) {
             ArrayList<String> newPrimes = new ArrayList<>();
@@ -54,7 +54,7 @@ public class Problem0037 {
         long result = 0;
 
         int count = 0;
-        ArrayList<Integer> primes = new ArrayList<Integer>(Arrays.asList(primeSieveButFast(1_000_000)));
+        ArrayList<Integer> primes = new ArrayList<Integer>(Arrays.asList(this.primeSieveButFast(1_000_000)));
         outer:
         for (Integer i : primes) {
             String testString = i + "";
@@ -89,7 +89,7 @@ public class Problem0037 {
         for (int k = 2; ; k++) {
             int count = 0;
             result = 0;
-            ArrayList<Integer> primes = new ArrayList<Integer>(Arrays.asList(primeSieveButFast((int) Math.pow(10.0, (double) k))));
+            ArrayList<Integer> primes = new ArrayList<Integer>(Arrays.asList(this.primeSieveButFast((int) Math.pow(10.0, k))));
             middle:
             for (Integer i : primes) {
                 if (i < 10) {

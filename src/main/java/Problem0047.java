@@ -2,17 +2,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Problem0047 {
-    private Integer[] primes;
+    private final Integer[] primes;
 
     public Problem0047() {
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
-        primes = primeSieveButFast(150_000);
+        this.primes = primeSieveButFast(150_000);
         for (int i = 20; ; i++) {
-            if (Arrays.binarySearch(primes, i) >= 0) continue;
-            if (numberOfPrimFactors(new long[]{i, i + 1, i + 2, i + 3})) {
+            if (Arrays.binarySearch(this.primes, i) >= 0) continue;
+            if (this.numberOfPrimFactors(new long[]{i, i + 1, i + 2, i + 3})) {
                 result = i;
                 break;
             }
@@ -28,10 +28,10 @@ public class Problem0047 {
         for (var j = 0; j < numbers.length; j++) {
             var count = 0;
             var n = numbers[j];
-            for (int i = 0; primes[i] <= n; i++) {
-                if (n % primes[i] == 0) count++;
+            for (int i = 0; this.primes[i] <= n; i++) {
+                if (n % this.primes[i] == 0) count++;
 
-                while (n % primes[i] == 0) n /= primes[i];
+                while (n % this.primes[i] == 0) n /= this.primes[i];
             }
 
             if (count != 4) return false;

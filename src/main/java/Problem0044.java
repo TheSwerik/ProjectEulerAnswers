@@ -7,13 +7,13 @@ public class Problem0044 {
         long result = 0;
 
         // Solution:
-        long[] arr = fillarr(2500);
+        long[] arr = this.fillarr(2500);
         outer:
         for (int i = 1; ; i++) {
             long l1 = arr[i];
             for (int j = 1; j <= i; j++) {
                 long l2 = arr[j];
-                if (isPartOfFormular(arr,l1 + l2) && isPartOfFormular(arr,l1 - l2)) {
+                if (this.isPartOfFormular(arr,l1 + l2) && this.isPartOfFormular(arr,l1 - l2)) {
                     result = l1 - l2 > 0 ? l1 - l2 : l2 - l1;
 //                    System.out.println(l1 + " at " + i);
 //                    System.out.println(l2 + " at " + j);

@@ -2,17 +2,17 @@ import java.math.BigInteger;
 
 public class Problem0684 {
 
-    private int[] oneToNine = new int[]{0, 1, 3, 6, 10, 15, 21, 28, 36, 45};
+    private final int[] oneToNine = {0, 1, 3, 6, 10, 15, 21, 28, 36, 45};
 
     public Problem0684() {
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
-        long[] fibo = findFibos(90);
+        long[] fibo = this.findFibos(90);
         float i = 1;
         for (long f : fibo) {
-            result += bigS(f) % 1_000_000_007;
+            result += this.bigS(f) % 1_000_000_007;
             System.out.println(i++ / 90 * 100 + " %");
 //            i++;
         }
@@ -60,7 +60,7 @@ public class Problem0684 {
         while (n > 0) {
             String test = n + "";
             if (test.length() == 1) {
-                result = result.add(BigInteger.valueOf(oneToNine[(int) n]));
+                result = result.add(BigInteger.valueOf(this.oneToNine[(int) n]));
                 n -= n;
             } else {
                 result = result.add(new BigInteger("5" + "9".repeat(firstNumberOfNines) + "3" +

@@ -20,7 +20,7 @@ public class Problem0038 {
         ArrayList<String> permutationsList = new ArrayList<String>(Arrays.asList(permutations));
         //find number:
         for (int i = 9487; i > 0; i--) {
-            if (permutationsList.contains(concatenate(i))) {
+            if (permutationsList.contains(this.concatenate(i))) {
                 result = Long.parseLong(i + "" + i * 2);
                 break;
             }
@@ -58,7 +58,7 @@ public class Problem0038 {
             }
 //            System.out.println(number);
             for (int i = Integer.parseInt(number.substring(0, 4)); i > 0; i--) {
-                if (concatenate(i).equals(number)) {
+                if (this.concatenate(i).equals(number)) {
                     result = Integer.parseInt(number);
                     break loop;
                 }
@@ -68,7 +68,7 @@ public class Problem0038 {
     }
 
     private void permute(int max, String[] permutations, String prefix, String s) {
-        if (counter >= max) {
+        if (this.counter >= max) {
             return;
         }
         int n = s.length();
@@ -76,7 +76,7 @@ public class Problem0038 {
             permutations[this.counter++] = prefix;
         } else {
             for (int i = 0; i < n; i++) {
-                permute(max, permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
+                this.permute(max, permutations, prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n));
             }
         }
     }

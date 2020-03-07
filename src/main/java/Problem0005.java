@@ -16,7 +16,7 @@ public class Problem0005 {
 
         int[] primes = {3, 5, 7, 11, 13, 17, 19};
         for (int p : primes) {
-            result *= p * (int) (20 / p);
+            result *= p * (20 / p);
         }
 
         long timeToResolve = System.nanoTime() - startTime;

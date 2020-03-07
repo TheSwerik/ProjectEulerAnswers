@@ -1,6 +1,6 @@
 public class Problem0067 {
     public Problem0067() {
-        int[][] arr = fill();
+        int[][] arr = this.fill();
 
         long startTime = System.nanoTime();
         long result = 0;
@@ -20,10 +20,10 @@ public class Problem0067 {
     }
 
     private int[][] fill() {
-        int[][] result = new int[pyramid.split("\n").length][];
+        int[][] result = new int[this.pyramid.split("\n").length][];
 
         int i = 0;
-        for (String s : pyramid.split("\n")) {
+        for (String s : this.pyramid.split("\n")) {
             int j = 0;
             result[i] = new int[s.split(" ").length];
             for (String number : s.split(" ")) {
@@ -36,7 +36,7 @@ public class Problem0067 {
         return result;
     }
 
-    private String pyramid =
+    private final String pyramid =
                     "59\n" +
                     "73 41\n" +
                     "52 40 09\n" +

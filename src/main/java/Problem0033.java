@@ -38,7 +38,7 @@ public class Problem0033 {
                 }
             }
         }
-        result = getLowestDenominatorProduct(numerators, denominators);
+        result = this.getLowestDenominatorProduct(numerators, denominators);
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
@@ -65,7 +65,7 @@ public class Problem0033 {
                 num *= numerators[i];
             }
         }
-        return getLowestDenominatorProduct(num, denom);
+        return this.getLowestDenominatorProduct(num, denom);
     }
 
     private long getLowestDenominatorProduct(int numerator, int denominator) {

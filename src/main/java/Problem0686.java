@@ -6,8 +6,8 @@ public class Problem0686 {
     private static final boolean SCALABLE = false;
 
     public Problem0686() {
-        double lowBorder = findDecimal(true);
-        double highBorder = findDecimal(false);
+        double lowBorder = this.findDecimal(true);
+        double highBorder = this.findDecimal(false);
         long startTime = System.nanoTime();
         long exponent = 90;
 
@@ -16,8 +16,8 @@ public class Problem0686 {
         long max = 678910;
         long[] increments;
         if (SCALABLE) {
-            exponent = findFirst(pattern);
-            increments = findIncrements(max, pattern, 100);
+            exponent = this.findFirst(pattern);
+            increments = this.findIncrements(max, pattern, 100);
         } else {
             increments = new long[]{196, 289, 379, 485};
         }
@@ -84,7 +84,7 @@ public class Problem0686 {
         } else {
             l = 1_239_999_999_999_999_999L;
         }
-        return (log2(l) * Math.log10(2)) % 1;
+        return (this.log2(l) * Math.log10(2)) % 1;
     }
 
     private double log2(long l) {

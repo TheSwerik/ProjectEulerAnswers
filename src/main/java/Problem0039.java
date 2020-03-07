@@ -6,7 +6,7 @@ public class Problem0039 {
         // Solution:
         int maxSolutions = 0;
         for (int i = 1000; i > 2; i--) {
-            int solutions = numberOfSolutions(i);
+            int solutions = this.numberOfSolutions(i);
             if (solutions > maxSolutions) {
                 maxSolutions = solutions;
                 result = i;

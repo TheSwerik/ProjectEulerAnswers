@@ -4,7 +4,7 @@ public class Problem0040 {
         long result = 0;
 
         // Solution:
-        String concatenated = concatenate(1_000_000);
+        String concatenated = this.concatenate(1_000_000);
         int n = 1;
         result = concatenated.charAt(n) - 48;
         for (int i = 0; i < 6; i++) {

@@ -7,7 +7,7 @@ public class Problem0704 {
 
         // Solution:
         for (long n = 1; n <= 10000000L; n++) {
-            result += f(n);
+            result += this.f(n);
         }
 
         long timeToResolve = System.nanoTime() - startTime;
@@ -19,7 +19,7 @@ public class Problem0704 {
     private long f(long n) {
         long result = 0;
         for (int m = 0; m <= n; m++) {
-            long g = g(n, m);
+            long g = this.g(n, m);
             if (g > result) {
                 result = g;
             }
@@ -29,7 +29,7 @@ public class Problem0704 {
 
     private long g(long lN, long m) {
         // n over m
-        BigInteger n = fac(lN, lN - m).divide(fac(m));
+        BigInteger n = this.fac(lN, lN - m).divide(this.fac(m));
 
         // find biggest potenz of 2
         long max = 0;

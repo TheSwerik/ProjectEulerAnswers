@@ -2,26 +2,26 @@ import java.util.ArrayList;
 
 public class Problem0034 {
 
-    private int[] factorials;
+    private final int[] factorials;
 
     public Problem0034() {
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
-        factorials = new int[]{
+        this.factorials = new int[]{
                 1, 1, 2, 6,
-                factorial(4),
-                factorial(5),
-                factorial(6),
-                factorial(7),
-                factorial(8),
-                factorial(9)
+                this.factorial(4),
+                this.factorial(5),
+                this.factorial(6),
+                this.factorial(7),
+                this.factorial(8),
+                this.factorial(9)
         };
 //        System.out.println(Arrays.toString(factorials));
         ArrayList<Long> list = new ArrayList<>();
         for (long i = 3; i < 2540161; i++) {
-            if (getDigitFactorial(i) == i) {
+            if (this.getDigitFactorial(i) == i) {
                 list.add(i);
 //                System.out.println(i);
             }
@@ -45,7 +45,7 @@ public class Problem0034 {
 
         long result = 0;
         for (int number : numbers) {
-            result += factorials[number];
+            result += this.factorials[number];
         }
         return result;
     }

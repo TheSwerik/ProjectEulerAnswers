@@ -24,7 +24,7 @@ public class Problem0699 {
                 }
             }
 
-            result += denomReduced(num, denom);             // reduce the fraction and add the denominator if it's 3^k
+            result += this.denomReduced(num, denom);             // reduce the fraction and add the denominator if it's 3^k
 
             if ((double) denom / max * 100 > percent) {
                 System.out.println((percent += 0.000001d) + "%");
@@ -48,12 +48,12 @@ public class Problem0699 {
     }
 
     private long denomReduced(long num, long denom) {
-        long gcd = gcd(num, denom);
+        long gcd = this.gcd(num, denom);
         if (gcd != 0) {
             num /= gcd;
             denom /= gcd;
         }
-        if (denom % 3 != 0 || !checkPow3(denom)) {
+        if (denom % 3 != 0 || !this.checkPow3(denom)) {
             return 0;
         }
         return denom;

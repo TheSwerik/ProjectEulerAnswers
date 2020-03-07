@@ -6,7 +6,7 @@ public class Problem0076 {
         long startTime = System.nanoTime();
         long result = 0L;
         // Solution:
-        result = fastCombinations(100, 0);
+        result = this.fastCombinations(100, 0);
 
         long timeToResolve = System.nanoTime() - startTime;
         System.out.println("Result:\t" + result + "\tTime:\t" + (((double) timeToResolve / 1_000_000) > 1000 ?
@@ -16,12 +16,12 @@ public class Problem0076 {
 
     private void combinations(int rest, int number) {       //should work but not enough memory
         if (rest == 0) {
-            result++;
+            this.result++;
             return;
         }
         for (int a = number; a < 100; a++) {
             if (rest - a >= 0) {
-                combinations(rest - a, a);
+                this.combinations(rest - a, a);
             }
         }
     }

@@ -9,15 +9,15 @@ public class Problem0049 {
         String result = "";
 
         // Solution:
-        GenPrimes();
+        this.GenPrimes();
         outer:
-        for (var j : _primes)
+        for (var j : this._primes)
             for (var i = 45; ; i++) {
                 if (i == 3330 && j == 1487) continue;
                 var b = j + i;
                 var c = b + i;
                 if (c > 9999) break;
-                if (ArePermutes(j, b, c) && ArePrimes(j, b, c)) {
+                if (this.ArePermutes(j, b, c) && this.ArePrimes(j, b, c)) {
                     result = "" + j + b + c;
                     break outer;
                 }
@@ -30,7 +30,7 @@ public class Problem0049 {
     }
 
     private boolean ArePrimes(int a, int b, int c) {
-        return Arrays.binarySearch(_primes, a) >= 0 && Arrays.binarySearch(_primes, b) >= 0 && Arrays.binarySearch(_primes, c) >= 0;
+        return Arrays.binarySearch(this._primes, a) >= 0 && Arrays.binarySearch(this._primes, b) >= 0 && Arrays.binarySearch(this._primes, c) >= 0;
     }
 
     private boolean ArePermutes(int a, int b, int c) {
@@ -64,15 +64,15 @@ public class Problem0049 {
 
     private void GenPrimes() {
         var allPrimes = primeSieveButFast(10_000);
-        _primes = new int[0];
+        this._primes = new int[0];
         var i = 0;
         for (; i < allPrimes.length; i++)
             if (allPrimes[i] >= 1000) {
-                _primes = new int[allPrimes.length - i];
+                this._primes = new int[allPrimes.length - i];
                 break;
             }
 
-        for (var j = 0; j < _primes.length; j++, i++) _primes[j] = (int) allPrimes[i];
+        for (var j = 0; j < this._primes.length; j++, i++) this._primes[j] = allPrimes[i];
     }
 
     public static Integer[] primeSieveButFast(int range) {

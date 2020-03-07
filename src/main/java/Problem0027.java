@@ -10,7 +10,7 @@ public class Problem0027 {
         for (int a = -1000; a <= 1000; a++) {
             for (int b = -1000; b <= 1000; b++) {
                 int n = 0;
-                while (isPrim(formula(a, b, n))) {
+                while (this.isPrim(this.formula(a, b, n))) {
                     n++;
                 }
                 if (n > nMax) {

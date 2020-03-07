@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 public class Problem0042 {
     public Problem0042() {
-        String[] words = readWords();
+        String[] words = this.readWords();
         long startTime = System.nanoTime();
         long result = 0;
 
         // Solution:
-        ArrayList<Integer> triangles = generateTriangles(15 * 26);
+        ArrayList<Integer> triangles = this.generateTriangles(15 * 26);
         for (String word : words) {
-            if (triangles.contains((int) wordValue(word))) {
+            if (triangles.contains((int) this.wordValue(word))) {
                 result++;
             }
         }
