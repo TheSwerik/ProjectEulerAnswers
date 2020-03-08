@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Euler.test.cs;
 
@@ -13,23 +14,42 @@ namespace Euler.main.cs
             ulong result = 0;
 
             // Solution:
+            byte[] found = new byte[10_000_000];
             for (int i = 2; i < 10_000_000; i++)
             {
                 string number = i + "";
-                while (number != "1")
+                List<int> tempFound = new List<int>();
+                bool one = false;
+                while (true)
                 {
-                    long  temp = 0;
+                    int temp = 0;
                     foreach (char c in number)
                     {
                         temp += ((c - 48) * (c - 48));
                     }
 
                     number = temp + "";
-                    if (number.Equals("89"))
+                    if (number.Equals("89") || found[temp] == 1)
                     {
                         result++;
                         break;
                     }
+
+                    if (number.Equals("1") || found[temp] == 2)
+                    {
+                        one = true;
+                        break;
+                    }
+
+                    tempFound.Add(temp);
+                }
+
+                byte add = 0;
+                if (one) add = 2;
+                else add = 1;
+                foreach (int foundInt in tempFound)
+                {
+                    found[foundInt] = add;
                 }
             }
 
