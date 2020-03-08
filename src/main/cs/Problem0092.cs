@@ -46,7 +46,7 @@ namespace Euler.main.cs
                     tempFound.Add(temp);
                 }
 
-                foreach (int foundInt in tempFound)
+                foreach (int foundInt in tempFound.ToArray())
                 {
                     found[foundInt] = add;
                 }
