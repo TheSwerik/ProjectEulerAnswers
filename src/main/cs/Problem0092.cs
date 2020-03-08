@@ -14,28 +14,30 @@ namespace Euler.main.cs
             ulong result = 0;
 
             // Solution:
-            byte[] found = new byte[10_000_000];
+            byte[] found = new byte[1_000_000];
             for (int i = 2; i < 10_000_000; i++)
             {
-                string number = i + "";
                 List<int> tempFound = new List<int>();
                 bool one = false;
+                int temp = i;
                 while (true)
                 {
-                    int temp = 0;
-                    foreach (char c in number)
+                    int input = temp;
+                    temp = 0;
+                    while (input > 0)
                     {
-                        temp += ((c - 48) * (c - 48));
+                        int digit = input % 10;
+                        temp += digit * digit;
+                        input /= 10;
                     }
 
-                    number = temp + "";
-                    if (number.Equals("89") || found[temp] == 1)
+                    if (temp == 89 || found[temp] == 1)
                     {
                         result++;
                         break;
                     }
 
-                    if (number.Equals("1") || found[temp] == 2)
+                    if (temp == 1 || found[temp] == 2)
                     {
                         one = true;
                         break;
