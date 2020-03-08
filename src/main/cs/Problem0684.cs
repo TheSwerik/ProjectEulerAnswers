@@ -26,6 +26,8 @@ namespace Euler.main.cs
                 result %= mod;
             }
 
+            if (result < 0) result += mod;
+
             stopWatch.Stop();
             string elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
@@ -41,15 +43,15 @@ namespace Euler.main.cs
 
         private long ModS(ulong k)
         {
-            int n = (int) (k / 9);
-            BigInteger sum = Mod(2 * (BigInteger.ModPow(2, n, mod) * BigInteger.ModPow(5, n + 2, mod) - 7) - 9 * n);
+            long n = (long) (k / 9);
+            BigInteger sum = (2 * (BigInteger.ModPow(2, n, mod) * BigInteger.ModPow(5, n + 2, mod) - 7) - 9 * n) % mod;
 
-            for (ulong r = k % 9 + 2; r <= 9; r++)
+            for (ulong r = (k % 9) + 2; r <= 9; r++)
             {
-                sum -= Mod(r * BigInteger.ModPow(10, n, mod) - 1);
+                sum -= (r * BigInteger.ModPow(10, n, mod) - 1) % mod;
             }
 
-            return (long) Mod(sum);
+            return (long) (sum % mod);
         }
 
         private ulong[] Fibo(ulong n)
@@ -64,16 +66,10 @@ namespace Euler.main.cs
                 ulong help = b;
                 b += a;
                 a = help;
-                result[i] = b % (ulong) mod;
+                result[i] = b;
             }
 
             return result;
-        }
-
-        private BigInteger Mod(BigInteger n)
-        {
-            BigInteger nMod = n % mod;
-            return nMod >= 0 ? nMod : nMod + mod;
         }
     }
 }
