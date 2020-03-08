@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Euler.test.cs;
 
 namespace Euler.main.cs
@@ -17,37 +18,25 @@ namespace Euler.main.cs
 
             // Solution:
             string passcode = "";
-            foreach (string line in lines)
+            for (int i = 1_000_000;; i++)
             {
-                int[] found = new int[3];
-                Array.Fill(found, -1);
-                string search = passcode;
-                if (search.Contains(line[0]))
+                passcode = i + "";
+                foreach (string line in lines)
                 {
-                    found[0] = search.IndexOf(line[0]);
-                    search = search.Substring(found[0]);
+                    string search = passcode;
+                    if (search.Contains(line[0])) search = search.Substring(search.IndexOf(line[0]));
+                    else goto end;
+
+                    if (search.Contains(line[1])) search = search.Substring(search.IndexOf(line[1]));
+                    else goto end;
+
+                    if (!search.Contains(line[2])) goto end;
                 }
 
-                if (search.Contains(line[1]))
+                break;
+                end:
                 {
-                    found[1] = search.IndexOf(line[1]);
-                    search = search.Substring(found[1]);
                 }
-
-                if (search.Contains(line[2]))
-                {
-                    found[2] = search.IndexOf(line[2]);
-                    search = search.Substring(found[2]);
-                }
-
-                if (found[0] == -1 && found[1] == -1 && found[2] == -1) passcode += line;
-                if (found[0] != -1 && found[1] == -1 && found[2] == -1) passcode += line;
-                if (found[0] == -1 && found[1] == -1 && found[2] == -1) passcode += line;
-                if (found[0] == -1 && found[1] == -1 && found[2] == -1) passcode += line;
-                if (found[0] == -1 && found[1] == -1 && found[2] == -1) passcode += line;
-                if (found[0] == -1 && found[1] == -1 && found[2] == -1) passcode += line;
-                if (found[0] == -1 && found[1] == -1 && found[2] == -1) passcode += line;
-                if (found[0] == -1 && found[1] == -1 && found[2] == -1) passcode += line;
             }
 
 
