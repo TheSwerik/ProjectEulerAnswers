@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Numerics;
+using System.Reflection.Emit;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Euler.test.cs;
 using Microsoft.VisualBasic;
 
@@ -8,20 +10,19 @@ namespace Euler.main.cs
 {
     public class Problem0684
     {
-        private ulong mod = 1_000_000_007;
+        private long mod = 1_000_000_007;
 
         public Problem0684()
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            ulong result = 0;
+            long result = 0;
 
             // Solution:
             ulong[] fibo = Fibo(90);
-            for (int i = fibo.Length-1; i > 1; i--)
+            for (int k = 2; k <= 90; k++)
             {
-                System.Console.WriteLine(i);
-                result += DigitSum(fibo[i]);
+                result += ModS(fibo[k]);
                 result %= mod;
             }
 
@@ -38,17 +39,17 @@ namespace Euler.main.cs
             }
         }
 
-        private ulong DigitSum(ulong n)
+        private long ModS(ulong k)
         {
-            if (n < 10) return n;
-            string nines = "";
-            ulong max = n / 9;
-            for (ulong i = 0; i < max; i++)
+            int n = (int) (k / 9);
+            BigInteger sum = Mod(2 * (BigInteger.ModPow(2, n, mod) * BigInteger.ModPow(5, n + 2, mod) - 7) - 9 * n);
+
+            for (ulong r = k % 9 + 2; r <= 9; r++)
             {
-                nines += '9';
+                sum -= Mod(r * BigInteger.ModPow(10, n, mod) - 1);
             }
 
-            return (ulong) (BigInteger.Parse((n % 9) + nines) % mod);
+            return (long) Mod(sum);
         }
 
         private ulong[] Fibo(ulong n)
@@ -63,10 +64,16 @@ namespace Euler.main.cs
                 ulong help = b;
                 b += a;
                 a = help;
-                result[i] = b % mod;
+                result[i] = b % (ulong) mod;
             }
 
             return result;
+        }
+
+        private BigInteger Mod(BigInteger n)
+        {
+            BigInteger nMod = n % mod;
+            return nMod >= 0 ? nMod : nMod + mod;
         }
     }
 }
