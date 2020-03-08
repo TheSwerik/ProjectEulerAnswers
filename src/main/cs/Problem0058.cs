@@ -62,7 +62,7 @@ namespace Euler.main.cs
         {
             // ulong root = Math.Sqrt(n);
             double max = Math.Sqrt((double) n);
-            for (int i = 0; primeArr[i] < max; i++)
+            for (int i = 0; primeArr[i] <= max; i++)
             {
                 if (n % primeArr[i] == 0) return false;
             }
