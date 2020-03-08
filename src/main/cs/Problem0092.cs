@@ -14,11 +14,11 @@ namespace Euler.main.cs
             ulong result = 0;
 
             // Solution:
-            byte[] found = new byte[1_000_000];
+            byte[] found = new byte[600];
             for (int i = 2; i < 10_000_000; i++)
             {
                 List<int> tempFound = new List<int>();
-                bool one = false;
+                byte add = 1;
                 int temp = i;
                 while (true)
                 {
@@ -39,16 +39,13 @@ namespace Euler.main.cs
 
                     if (temp == 1 || found[temp] == 2)
                     {
-                        one = true;
+                        add = 2;
                         break;
                     }
 
                     tempFound.Add(temp);
                 }
 
-                byte add = 0;
-                if (one) add = 2;
-                else add = 1;
                 foreach (int foundInt in tempFound)
                 {
                     found[foundInt] = add;
