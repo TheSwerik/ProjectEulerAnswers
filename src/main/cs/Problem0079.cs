@@ -18,24 +18,33 @@ namespace Euler.main.cs
 
             // Solution:
             string passcode = "";
-            for (int i = 1_000_000;; i++)
+            bool[,] before = new bool[10, 10];
+            foreach (string line in lines)
             {
-                passcode = i + "";
-                foreach (string line in lines)
+                before[line[2] - 48, line[1] - 48] =
+                    before[line[2] - 48, line[0] - 48] = before[line[1] - 48, line[0] - 48] = true;
+            }
+
+            int[] beforeI = new int[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
                 {
-                    string search = passcode;
-                    if (search.Contains(line[0])) search = search.Substring(search.IndexOf(line[0]));
-                    else goto end;
-
-                    if (search.Contains(line[1])) search = search.Substring(search.IndexOf(line[1]));
-                    else goto end;
-
-                    if (!search.Contains(line[2])) goto end;
+                    if (before[i, j]) beforeI[i]++;
                 }
+            }
 
-                break;
-                end:
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
                 {
+                    if (j == 5 || j == 4) continue;
+                    if (beforeI[j] == i)
+                    {
+                        passcode += j;
+                        break;
+                    }
                 }
             }
 
