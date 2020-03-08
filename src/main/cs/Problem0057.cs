@@ -38,11 +38,5 @@ namespace Euler.main.cs
                 Benchmark.AddTime(57, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
             }
         }
-
-        private decimal FractionLoop(int iteration)
-        {
-            if (iteration == 1) return 2.5m;
-            return 2 + 1 / FractionLoop(iteration - 1);
-        }
     }
 }
