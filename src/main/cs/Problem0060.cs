@@ -15,38 +15,8 @@ namespace Euler.main.cs
             long result = 3 + 7 + 109 + 673;
 
             // Solution:
-            long[] primes = PrimeSieveButFast(100_000_000);
-            int[] firstPrimes = new[] {3, 7, 109, 673};
-            foreach (long prime in primes)
-            {
-                long[] newPrimes = new[]
-                {
-                    long.Parse("" + firstPrimes[0] + prime),
-                    long.Parse("" + prime + firstPrimes[0]),
-                    long.Parse("" + firstPrimes[1] + prime),
-                    long.Parse("" + 3 + prime + firstPrimes[1]),
-                    long.Parse("" + firstPrimes[2] + prime),
-                    long.Parse("" + 3 + prime + firstPrimes[2]),
-                    long.Parse("" + firstPrimes[3] + prime),
-                    long.Parse("" + 3 + prime + firstPrimes[3]),
-                };
-                if (
-                    primes.Contains(newPrimes[0]) &&
-                    primes.Contains(newPrimes[1]) &&
-                    primes.Contains(newPrimes[2]) &&
-                    primes.Contains(newPrimes[3]) &&
-                    primes.Contains(newPrimes[4]) &&
-                    primes.Contains(newPrimes[5]) &&
-                    primes.Contains(newPrimes[6]) &&
-                    primes.Contains(newPrimes[7])
-                )
-                {
-                    result += prime;
-                    goto end;
-                }
-            }
 
-            end:
+            
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
