@@ -15,7 +15,7 @@ namespace Euler.main.cs
             long result = 3 + 7 + 109 + 673;
 
             // Solution:
-            long[] primes = PrimeSieveButFast(10_000_000);
+            long[] primes = PrimeSieveButFast(100_000_000);
             int[] firstPrimes = new[] {3, 7, 109, 673};
             foreach (long prime in primes)
             {
