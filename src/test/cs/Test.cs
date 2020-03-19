@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.IO;
 using System.Threading;
 
 namespace Euler.test.cs
@@ -10,7 +11,8 @@ namespace Euler.test.cs
 
         private static void Main(string[] args)
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+            Environment.CurrentDirectory = ("..\\..\\..\\src");
+            File.Create("tetststs.txt");
             if (DoBenchmark)
             {
                 var benchmark = new Benchmark();
