@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Euler.test.cs;
 
 namespace Euler.main.cs
@@ -33,7 +34,7 @@ namespace Euler.main.cs
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
-            Console.WriteLine("Result:\t" + (result - max) + "\tTime:\t" +
+            Console.WriteLine("Result:\t" + (max - result) + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
@@ -50,10 +51,18 @@ namespace Euler.main.cs
             {
                 for (int j = 0; j < roman.Count; j++)
                 {
-                    while (values[i] > roman.ElementAt(j).Value)
+                    while (values[i] >= roman.ElementAt(j).Value)
                     {
                         values[i] -= roman.ElementAt(j).Value;
                         result[i] += roman.ElementAt(j).Key;
+                    }
+
+                    char subtractChar = '#';
+                    if (j < 6) subtractChar = roman.Keys.ElementAt(j % 2 == 1 ? j + 1 : j + 2);
+                    if (subtractChar != '#' && values[i] >= roman.ElementAt(j).Value - roman[subtractChar])
+                    {
+                        values[i] -= (roman.ElementAt(j).Value - roman[subtractChar]);
+                        result[i] += subtractChar + "" + roman.Keys.ElementAt(j);
                     }
                 }
             }
@@ -88,10 +97,13 @@ namespace Euler.main.cs
                         char subtractChar = '#';
                         if (j < 6) subtractChar = roman.Keys.ElementAt(j % 2 == 1 ? j + 1 : j + 2);
                         string part = line.Substring(0, line.LastIndexOf(currentChar) + 1);
-                        if (part[0] == subtractChar)
+                        if (part.Contains(subtractChar))
                         {
                             values[i] -= roman[subtractChar];
-                            part = part.Substring(1);
+                            part = part.Substring(0, part.IndexOf(subtractChar)) +
+                                   part.Substring(part.IndexOf(subtractChar) + 1);
+                            line = line.Substring(0, line.IndexOf(subtractChar)) +
+                                   line.Substring(line.IndexOf(subtractChar) + 1);
                         }
 
                         values[i] += (part.Length * roman[currentChar]);
