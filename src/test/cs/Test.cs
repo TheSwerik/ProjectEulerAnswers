@@ -12,7 +12,6 @@ namespace Euler.test.cs
         private static void Main(string[] args)
         {
             Environment.CurrentDirectory = ("..\\..\\..\\src");
-            File.Create("tetststs.txt");
             if (DoBenchmark)
             {
                 var benchmark = new Benchmark();
