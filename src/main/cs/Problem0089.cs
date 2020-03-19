@@ -37,16 +37,16 @@ namespace Euler.main.cs
                     char currentChar = roman.Keys.ElementAt(j);
                     if (line.Contains(currentChar))
                     {
-                        char subtractChar = '0';
-                        if (j < 6)= roman.Keys.ElementAt(j % 2 == 1 ? j + 1 : j + 2);
+                        char subtractChar = '#';
+                        if (j < 6) subtractChar = roman.Keys.ElementAt(j % 2 == 1 ? j + 1 : j + 2);
                         string part = line.Substring(0, line.LastIndexOf(currentChar) + 1);
                         if (part[0] == subtractChar)
                         {
-                            values[j] -= roman[subtractChar];
+                            values[i] -= roman[subtractChar];
                             part = part.Substring(1);
                         }
 
-                        values[j] += (part.Length * roman[currentChar]);
+                        values[i] += (part.Length * roman[currentChar]);
                         line = line.Substring(part.Length);
                     }
                 }
