@@ -11,9 +11,7 @@ namespace Euler.main.cs
     {
         public Problem0054()
         {
-            string[] lines =
-                File.ReadAllLines(
-                    "G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\src\\main\\resources\\p054_poker.txt");
+            string[] lines = File.ReadAllLines("main\\resources\\p054_poker.txt");
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             ulong result = 0;
@@ -23,17 +21,40 @@ namespace Euler.main.cs
             {
                 string[] player1 = sort(line.Substring(0, 15).Split(' '));
                 string[] player2 = sort(line.Substring(15).Split(' '));
-                if (
-                    checkStraightFlush(player1, player2) ||
-                    checkFourOfAKind(player1, player2) ||
-                    checkFullHouse(player1, player2) ||
-                    checkFlush(player1, player2) ||
-                    checkStraight(player1, player2) ||
-                    checkThreeOfAKind(player1, player2) ||
-                    checkTwoTimesTwoOfAKind(player1, player2) ||
-                    checkTwoOfAKind(player1, player2) ||
-                    HighCard(player1, player2)
-                )
+
+                int check = checkStraightFlush(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                check = checkFourOfAKind(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                check = checkFullHouse(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                check = checkFlush(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                check = checkStraight(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                check = checkThreeOfAKind(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                check = checkTwoTimesTwoOfAKind(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                check = checkTwoOfAKind(player1, player2);
+                if (check > 0) result++;
+                if (check != 0) continue;
+
+                if (HighCard(player1, player2))
                 {
                     result++;
                     continue;
@@ -53,15 +74,15 @@ namespace Euler.main.cs
             }
         }
 
-        private bool checkTwoTimesTwoOfAKind(string[] player1, string[] player2)
+        private int checkTwoTimesTwoOfAKind(string[] player1, string[] player2)
         {
             if (TwoTimesTwoOfAKind(player1) || TwoTimesTwoOfAKind(player2))
             {
-                if (TwoTimesTwoOfAKind(player1) && !TwoTimesTwoOfAKind(player2)) return true;
+                if (TwoTimesTwoOfAKind(player1) && !TwoTimesTwoOfAKind(player2)) return 1;
 
                 if (TwoTimesTwoOfAKind(player1) && TwoTimesTwoOfAKind(player2)
                                                 && (player1[1][0] > player2[1][0] || player1[3][0] > player2[3][0]))
-                    return true;
+                    return 1;
 
                 if (TwoTimesTwoOfAKind(player1) && TwoTimesTwoOfAKind(player2)
                                                 && (player1[1][0] == player2[1][0] || player1[3][0] == player2[3][0]))
@@ -69,8 +90,9 @@ namespace Euler.main.cs
                                              "\t" + player1[4] + "\t" + player2[0] + "\t" + player2[1] + "\t" +
                                              player2[2] + "\t" + player2[3] + "\t" + player2[4]);
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
         private bool TwoTimesTwoOfAKind(string[] hand)
@@ -78,9 +100,9 @@ namespace Euler.main.cs
             int index = 0;
             for (int i = 0; i < 2; i++)
             {
-                if (hand[1 + i][0] == hand[ i][0])
+                if (hand[1 + i][0] == hand[i][0])
                 {
-                    index = i+1;
+                    index = i + 1;
                     break;
                 }
             }
@@ -89,7 +111,7 @@ namespace Euler.main.cs
 
             for (int i = index; i < 4; i++)
             {
-                if (hand[1 + i][0] == hand[ i][0]) return true;
+                if (hand[1 + i][0] == hand[i][0]) return true;
             }
 
             return false;
@@ -124,11 +146,11 @@ namespace Euler.main.cs
             return max1 > max2;
         }
 
-        private bool checkTwoOfAKind(string[] player1, string[] player2)
+        private int checkTwoOfAKind(string[] player1, string[] player2)
         {
             if (TwoOfAKind(player1) || TwoOfAKind(player1))
             {
-                if (TwoOfAKind(player1) && !TwoOfAKind(player2)) return true;
+                if (TwoOfAKind(player1) && !TwoOfAKind(player2)) return 1;
 
                 if (TwoOfAKind(player1) && TwoOfAKind(player2))
                 {
@@ -153,98 +175,105 @@ namespace Euler.main.cs
                         }
                     }
 
-                    if (pairValue1 > pairValue2) return true;
-                    if (pairValue1 < pairValue2) return false;
+                    if (pairValue1 > pairValue2) return 1;
+                    if (pairValue1 < pairValue2) return -1;
 
-                    if (HighCard(player1, player2)) return true;
+                    if (HighCard(player1, player2)) return 1;
                 }
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
-        private bool checkThreeOfAKind(string[] player1, string[] player2)
+        private int checkThreeOfAKind(string[] player1, string[] player2)
         {
             if (ThreeOfAKind(player1) || ThreeOfAKind(player1))
             {
-                if (ThreeOfAKind(player1) && !ThreeOfAKind(player2)) return true;
+                if (ThreeOfAKind(player1) && !ThreeOfAKind(player2)) return 1;
 
                 if (ThreeOfAKind(player1) && ThreeOfAKind(player2) &&
-                    parse(player1[2][0]) > parse(player2[2][0])) return true;
+                    parse(player1[2][0]) > parse(player2[2][0])) return 1;
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
-        private bool checkFlush(string[] player1, string[] player2)
+        private int checkFlush(string[] player1, string[] player2)
         {
             if (Flush(player1) || Flush(player1))
             {
-                if (Flush(player1) && !Flush(player2)) return true;
+                if (Flush(player1) && !Flush(player2)) return 1;
 
                 if (Flush(player1) && Flush(player2) &&
-                    parse(player1[0][0]) > parse(player2[0][0])) return true;
+                    HighCard(player1, player2)) return 1;
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
-        private bool checkStraight(string[] player1, string[] player2)
+        private int checkStraight(string[] player1, string[] player2)
         {
             if (Straight(player1) || Straight(player1))
             {
-                if (Straight(player1) && !Straight(player2)) return true;
+                if (Straight(player1) && !Straight(player2)) return 1;
 
                 if (Straight(player1) && Straight(player2) &&
-                    parse(player1[0][0]) > parse(player2[0][0])) return true;
+                    parse(player1[0][0]) > parse(player2[0][0])) return 1;
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
-        private bool checkFullHouse(string[] player1, string[] player2)
+        private int checkFullHouse(string[] player1, string[] player2)
         {
             if (FullHouse(player1) || FullHouse(player1))
             {
-                if (FullHouse(player1) && !FullHouse(player2)) return true;
+                if (FullHouse(player1) && !FullHouse(player2)) return 1;
 
                 if (FullHouse(player1) && FullHouse(player2) &&
-                    parse(player1[2][0]) > parse(player2[2][0])) return true;
+                    parse(player1[2][0]) > parse(player2[2][0])) return 1; //TODO
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
-        private bool checkFourOfAKind(string[] player1, string[] player2)
+        private int checkFourOfAKind(string[] player1, string[] player2)
         {
             if (FourOfAKind(player1) || FourOfAKind(player1))
             {
-                if (FourOfAKind(player1) && !FourOfAKind(player2)) return true;
+                if (FourOfAKind(player1) && !FourOfAKind(player2)) return 1;
 
                 if (FourOfAKind(player1) && FourOfAKind(player2) &&
-                    parse(player1[2][0]) > parse(player2[2][0])) return true;
+                    parse(player1[2][0]) > parse(player2[2][0])) return 1;
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
-        private bool checkStraightFlush(string[] player1, string[] player2)
+        private int checkStraightFlush(string[] player1, string[] player2)
         {
             if (StraightFlush(player1) || StraightFlush(player1))
             {
                 if (StraightFlush(player1) && !StraightFlush(player2))
                 {
-                    return true;
+                    return 1;
                 }
 
                 if (StraightFlush(player1) && StraightFlush(player2) &&
                     parse(player1[0][0]) > parse(player2[0][0]))
                 {
-                    return true;
+                    return 1;
                 }
             }
+            else return 0;
 
-            return false;
+            return -1;
         }
 
         private int parse(char card)
