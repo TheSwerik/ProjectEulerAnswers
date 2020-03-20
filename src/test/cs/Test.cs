@@ -11,6 +11,7 @@ namespace Euler.test.cs
 
         private static void Main(string[] args)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
             Environment.CurrentDirectory = ("..\\..\\..\\src");
             if (DoBenchmark)
             {
