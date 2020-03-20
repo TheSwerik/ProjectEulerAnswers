@@ -235,7 +235,7 @@ namespace Euler.main.cs
                 if (FullHouse(player1) && !FullHouse(player2)) return 1;
 
                 if (FullHouse(player1) && FullHouse(player2) &&
-                    parse(player1[2][0]) > parse(player2[2][0])) return 1; //TODO
+                    parse(player1[2][0]) > parse(player2[2][0])) return 1;
             }
             else return 0;
 
