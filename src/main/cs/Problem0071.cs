@@ -18,7 +18,7 @@ namespace Euler.main.cs
             int foundD = 1;
             for (int d = 2; d <= 1_000_000; d++)
             {
-                for (int n = 1; n < 1_000_000; n++)
+                for (int n = 1; n < d; n++)
                 {
                     if (d % n != 0 && (double) n / d < (double) goalN / goalD &&
                         (double) n / d > (double) result / foundD)
