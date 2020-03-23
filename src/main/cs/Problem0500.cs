@@ -32,6 +32,8 @@ namespace Euler.main.cs
                 primes[0] = help;
             }
 
+            System.Console.WriteLine("calculating...");
+            
             foreach (BigInteger p in primes)
             {
                 result = (result * p) % 500500507;
