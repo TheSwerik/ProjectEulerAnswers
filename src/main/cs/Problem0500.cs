@@ -15,27 +15,29 @@ namespace Euler.main.cs
             BigInteger result = 1;
 
             // Solution:
-            List<long> primes = Primes(7376508);
+            List<BigInteger> primes = Primes(7376508);
 
             for (int i = 1; i < 500500; i++)
             {
                 primes[0] *= primes[0];
-                var index = primes.BinarySearch(primes[0]);
+                int index = primes.BinarySearch(1, primes.Count - 2, primes[0], null);
                 if (index < 0)
                 {
                     index = ~index;
                     if (index == primes.Count) index--;
                 }
 
-                long help = primes[index];
+                BigInteger help = primes[index];
                 primes[index] = primes[0];
                 primes[0] = help;
             }
 
-            foreach (long p in primes)
+            foreach (BigInteger p in primes)
             {
                 result = (result * p) % 500500507;
             }
+
+            if (result < 0) result = result + 500500507;
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
@@ -48,10 +50,10 @@ namespace Euler.main.cs
                 Benchmark.AddTime(500, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
 
-        private static List<long> Primes(int upper)
+        private static List<BigInteger> Primes(int upper)
         {
             var primeSieve = new bool[upper];
-            var primeList = new List<long> {2};
+            var primeList = new List<BigInteger> {2};
 
             var sqrt = (int) Math.Sqrt(primeSieve.Length);
             for (var i = 3; i < sqrt; i += 2)
@@ -62,7 +64,7 @@ namespace Euler.main.cs
                     for (var j = i * i; j < primeSieve.Length; j += i * 2) primeSieve[j] = true;
                 }
 
-            for (long i = ((sqrt + 1) & 1) == 0 ? sqrt + 2 : sqrt + 1; i < upper && primeList.Count < 500500; i += 2)
+            for (int i = ((sqrt + 1) & 1) == 0 ? sqrt + 2 : sqrt + 1; i < upper && primeList.Count < 500500; i += 2)
                 if (!primeSieve[i])
                     primeList.Add(i);
 
