@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using Euler.test.cs;
 
-namespace Euler.main.cs
+namespace Euler.main.cs._00
 {
     public class Problem0079
     {

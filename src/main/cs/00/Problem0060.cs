@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using Euler.test.cs;
 
-namespace Euler.main.cs
+namespace Euler.main.cs._00
 {
     public class Problem0060
     {
