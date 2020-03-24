@@ -2,17 +2,20 @@ using System;
 using System.Diagnostics;
 using Euler.test.cs;
 
-namespace Euler.main.cs
+namespace Euler.main.cs._00
 {
-    public class Problem0357
+    public class Problem0001
     {
-        public Problem0357()
+        public Problem0001()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            ulong result = 0;
+            long result = 0;
 
             // Solution:
+            for (var i = 3; i < 1000; i++)
+                if (i % 3 == 0 || i % 5 == 0)
+                    result += i;
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
@@ -22,7 +25,7 @@ namespace Euler.main.cs
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
             if (Test.DoBenchmark)
-                Benchmark.AddTime(357, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                Benchmark.AddTime(1, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
     }
 }
