@@ -1,4 +1,3 @@
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -19,7 +18,7 @@ public class Benchmark {
     private static PrintStream dummyPS;
     private static PrintStream cfilePS;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         dummyPS = new PrintStream(new OutputStream() {
             public void write(int b) {
             }
@@ -46,7 +45,10 @@ public class Benchmark {
                 continue;
             }
             // run Java:
-            consolePS.print("\r" + String.format("%.2f", (double) i / max * 100) + "%\t" + "Problem " + i + " in Java...");
+            consolePS.print("\r" + String.format(
+                    "%.2f",
+                    (double) i / max * 100
+                                                ) + "%\t" + "Problem " + i + " in Java...");
             try {
                 for (int j = 0; j < (2 + checks); j++) {
                     if (j == 0) {
@@ -60,7 +62,10 @@ public class Benchmark {
                 jfilePS.println("/");
             }
             // run C++:
-            consolePS.print("\r" + String.format("%.2f", (double) i / max * 100) + "%\t" + "Problem " + i + " in C++...");
+            consolePS.print("\r" + String.format(
+                    "%.2f",
+                    (double) i / max * 100
+                                                ) + "%\t" + "Problem " + i + " in C++...");
             startCpp(i + "");
         }
 
@@ -82,7 +87,8 @@ public class Benchmark {
 
     private static void startJava(String inputString) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         int inputInt = Integer.parseInt(inputString);
-        Class.forName("Problem" + "0".repeat(4 - inputString.length()) + inputString).getDeclaredConstructor().newInstance();
+        Class.forName("_0" + (inputString.length() < 3 ? '0' : inputString.charAt(0)) + "Problem" + "0".repeat(4 - inputString
+                .length()) + inputString).getDeclaredConstructor().newInstance();
     }
 
     private static void writeToExcel(String[] jTimes, String[] cTimes) {
@@ -193,7 +199,11 @@ public class Benchmark {
                     double[] problemTimes = new double[checks];
                     for (int j = 0; j < problemTimes.length; j++) {
                         String s = lines[i].substring(lines[i].indexOf("Time:\t") + 6);
-                        problemTimes[j] = Double.parseDouble(s.substring(0, s.indexOf("s") - 1)) * ((s.substring(s.indexOf("s") - 1).contains("ms")) ? 1 : 1000);
+                        problemTimes[j] = Double.parseDouble(s.substring(
+                                0,
+                                s.indexOf("s") - 1
+                                                                        )) * ((s.substring(s.indexOf("s") - 1)
+                                                                                .contains("ms")) ? 1 : 1000);
                         i++;
                     }
                     times.add(new DecimalFormat("0.######").format(DoubleStream.of(problemTimes).average().orElse(-1)));
@@ -233,7 +243,7 @@ public class Benchmark {
             p.waitFor();
 
             //Start built Process
-            String s = null;
+            String s;
             for (int i = 0; i < 2 + checks; i++) {
                 if (i == 0) {
                     System.setOut(dummyPS);

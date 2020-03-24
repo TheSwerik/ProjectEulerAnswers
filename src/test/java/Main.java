@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -36,7 +35,8 @@ public class Main {
     private static void startJava(String inputString) {
         try {
             int inputInt = Integer.parseInt(inputString);
-            Class.forName("Problem" + "0".repeat(4 - inputString.length()) + inputString).getDeclaredConstructor().newInstance();
+            Class.forName("_0" + (inputString.length() < 3 ? '0' : inputString.charAt(0)) + "Problem" + "0".repeat(4 - inputString
+                    .length()) + inputString).getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             System.out.println("not valid");
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class Main {
             Process p = new ProcessBuilder("cmd", "/c", command).directory(new File(pathToCmd)).start();
 
             //Konsolen Output:
-            String s = null;
+            String s;
             BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
             while ((s = stdError.readLine()) != null) {
                 System.out.println(s);
