@@ -13,4 +13,15 @@
       <None Remove="src\tetststs.txt" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="src\main\java\00" />
+      <Folder Include="src\main\java\01" />
+      <Folder Include="src\main\java\02" />
+      <Folder Include="src\main\java\03" />
+      <Folder Include="src\main\java\04" />
+      <Folder Include="src\main\java\05" />
+      <Folder Include="src\main\java\06" />
+      <Folder Include="src\main\java\07" />
+    </ItemGroup>
+
 </Project>

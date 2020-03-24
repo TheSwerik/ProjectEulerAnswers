@@ -8,8 +8,8 @@ namespace Euler.test.cs
 {
     public class Benchmark
     {
-        private static readonly int max = 1000;
-        private static readonly int checks = 25;
+        private const int Max = 1000;
+        private const int Checks = 25;
         private static readonly ArrayList Skip = new ArrayList {148, 704};
         private static Dictionary<int, ArrayList> _times;
 
@@ -18,8 +18,8 @@ namespace Euler.test.cs
             _times = new Dictionary<int, ArrayList>();
             // Test every Problem:
             Console.WriteLine("Starting Benchmark...");
-            for (var i = 1; i <= max; i++)
-            for (var j = 0; j < checks + 2; j++)
+            for (var i = 1; i <= Max; i++)
+            for (var j = 0; j < Checks + 2; j++)
             {
                 Test.DoBenchmark = j >= 2;
                 Console.WriteLine("Checking Problem " + i + "\t Run: " + (j + 1));
@@ -53,7 +53,7 @@ namespace Euler.test.cs
         {
             Console.WriteLine("Writing to Excel...");
             using var workbook =
-                new XLWorkbook("G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\EulerBenchmark.xlsx");
+                new XLWorkbook("..\\EulerBenchmark.xlsx");
             var worksheet = workbook.Worksheet(1);
             var index = 3;
             foreach (var cell in worksheet.Row(1).Cells())
@@ -63,7 +63,7 @@ namespace Euler.test.cs
             worksheet.Column(index).Cell(1).Value = "C#";
 
             //write Excel
-            for (var i = 1; i <= max; i++)
+            for (var i = 1; i <= Max; i++)
             {
                 if (!_times.ContainsKey(i))
                 {
@@ -76,7 +76,7 @@ namespace Euler.test.cs
                 worksheet.Column(index).Cell(i + 1).Value = avg;
             }
 
-            workbook.SaveAs("G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\EulerBenchmark.xlsx");
+            workbook.SaveAs("..\\EulerBenchmark.xlsx");
 
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             ClearCurrentConsoleLine();
@@ -90,7 +90,7 @@ namespace Euler.test.cs
             _times[number].Add(timeInMs);
         }
 
-        private void ClearCurrentConsoleLine()
+        private static void ClearCurrentConsoleLine()
         {
             var currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);

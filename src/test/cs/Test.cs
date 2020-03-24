@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using System.IO;
 using System.Threading;
 
 namespace Euler.test.cs
@@ -9,13 +8,13 @@ namespace Euler.test.cs
     {
         public static bool DoBenchmark = false;
 
-        private static void Main(string[] args)
+        private static void Main()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            Environment.CurrentDirectory = ("..\\..\\..\\src");
+            Environment.CurrentDirectory = "..\\..\\..\\src";
             if (DoBenchmark)
             {
-                var benchmark = new Benchmark();
+                new Benchmark();
                 return;
             }
 
@@ -26,7 +25,8 @@ namespace Euler.test.cs
                 if (input.Equals("0")) return;
 
                 //start Problems:
-                var path = "Euler.main.cs.Problem" + new string('0', 4 - input.Length) + input;
+                var path = "Euler.main.cs._0" + (input.Length < 3 ? '0' : input[0]) + ".Problem" +
+                           new string('0', 4 - input.Length) + input;
                 var problem = Type.GetType(path);
                 if (problem == null)
                 {
