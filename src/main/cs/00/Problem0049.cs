@@ -6,11 +6,11 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class _00.Problem0049
+    public class Problem0049
     {
         private int[] _primes;
 
-        public _00.Problem0049()
+        public Problem0049()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();

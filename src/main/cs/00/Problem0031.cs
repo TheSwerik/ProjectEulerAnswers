@@ -4,12 +4,12 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class _00.Problem0031
+    public class Problem0031
     {
         private readonly int[] _coins = {200, 100, 50, 20, 10, 5, 2, 1};
         private long _result;
 
-        public _00.Problem0031()
+        public Problem0031()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();

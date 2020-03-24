@@ -62,7 +62,7 @@ namespace Euler.main.cs._07
             for (var i = min; i < max; i++)
                 if (f(i + "") % 3 == 0)
                     result++;
-                // System.Console.WriteLine(i);
+            // System.Console.WriteLine(i);
 
             return result;
         }
