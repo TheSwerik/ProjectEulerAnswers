@@ -5,11 +5,11 @@ using Euler.test.cs;
 
 namespace Euler.main.cs._06
 {
-    public class Problem0684
+    public class _06.Problem0684
     {
         private readonly long mod = 1_000_000_007;
 
-        public Problem0684()
+        public _06.Problem0684()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();

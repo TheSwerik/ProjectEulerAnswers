@@ -4,9 +4,9 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0004
+    public class _00.Problem0004
     {
-        public Problem0004()
+        public _00.Problem0004()
         {
             ulong biggestFactor = 9999;
             var stopWatch = new Stopwatch();

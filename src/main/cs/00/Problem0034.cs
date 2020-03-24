@@ -5,11 +5,11 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0034
+    public class _00.Problem0034
     {
         private readonly int[] _factorials;
 
-        public Problem0034()
+        public _00.Problem0034()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();

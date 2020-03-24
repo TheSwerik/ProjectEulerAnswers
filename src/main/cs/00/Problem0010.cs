@@ -4,9 +4,9 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0010
+    public class _00.Problem0010
     {
-        public Problem0010()
+        public _00.Problem0010()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();

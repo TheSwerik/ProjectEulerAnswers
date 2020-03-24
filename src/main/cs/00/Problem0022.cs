@@ -4,7 +4,7 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0022
+    public class _00.Problem0022
     {
         private readonly string[] names =
         {
@@ -504,7 +504,7 @@ namespace Euler.main.cs
             "VINCENZO", "SHON", "LYNWOOD", "JERE", "HAI", "ELDEN", "DORSEY", "DARELL", "BRODERICK", "ALONSO"
         };
 
-        public Problem0022()
+        public _00.Problem0022()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();

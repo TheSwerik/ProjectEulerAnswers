@@ -4,7 +4,7 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0018
+    public class _00.Problem0018
     {
         private const string Pyramid =
             "75\n" +
@@ -23,7 +23,7 @@ namespace Euler.main.cs
             "63 66 04 68 89 53 67 30 73 16 69 87 40 31\n" +
             "04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
 
-        public Problem0018()
+        public _00.Problem0018()
         {
             var arr = Fill();
 

@@ -4,9 +4,9 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0011
+    public class _00.Problem0011
     {
-        public Problem0011()
+        public _00.Problem0011()
         {
             var lineLength = 20;
             var rowLength = 20;

@@ -6,9 +6,9 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0042
+    public class _00.Problem0042
     {
-        public Problem0042()
+        public _00.Problem0042()
         {
             var words = readWords();
             var stopWatch = new Stopwatch();

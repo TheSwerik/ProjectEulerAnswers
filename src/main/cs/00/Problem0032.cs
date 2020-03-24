@@ -5,11 +5,11 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class Problem0032
+    public class _00.Problem0032
     {
         private int counter;
 
-        public Problem0032()
+        public _00.Problem0032()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
