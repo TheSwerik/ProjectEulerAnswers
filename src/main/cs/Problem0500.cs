@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Numerics;
+using DocumentFormat.OpenXml.Presentation;
 using Euler.test.cs;
 
 namespace Euler.main.cs
@@ -12,34 +14,26 @@ namespace Euler.main.cs
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            BigInteger result = 1;
+            ulong result = 1;
 
             // Solution:
-            List<BigInteger> primes = Primes(7376508);
+            List<ulong> primes = Primes(7376508);
 
-            for (int i = 1; i < 500500; i++)
+            for (int i = 1; i <= 500500; i++)
             {
+                result = (result * primes[0]) % 500500507;
                 primes[0] *= primes[0];
-                int index = primes.BinarySearch(1, primes.Count - 2, primes[0], null);
+                int index = primes.BinarySearch(1, primes.Count - 1, primes[0], null);
                 if (index < 0)
                 {
                     index = ~index;
                     if (index == primes.Count) index--;
                 }
 
-                BigInteger help = primes[index];
-                primes[index] = primes[0];
-                primes[0] = help;
+                primes.Insert(index, primes[0]);
+                primes.Remove(primes[0]);
+                if (i % 5005 == 0) Console.Write("\r" + ((double) i * 100 / 500500) + "%");
             }
-
-            System.Console.WriteLine("calculating...");
-            
-            foreach (BigInteger p in primes)
-            {
-                result = (result * p) % 500500507;
-            }
-
-            if (result < 0) result = result + 500500507;
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
@@ -52,23 +46,23 @@ namespace Euler.main.cs
                 Benchmark.AddTime(500, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
 
-        private static List<BigInteger> Primes(int upper)
+        private static List<ulong> Primes(int upper)
         {
             var primeSieve = new bool[upper];
-            var primeList = new List<BigInteger> {2};
+            var primeList = new List<ulong> {2};
 
             var sqrt = (int) Math.Sqrt(primeSieve.Length);
             for (var i = 3; i < sqrt; i += 2)
                 if (!primeSieve[i])
                 {
-                    primeList.Add(i);
+                    primeList.Add((ulong) i);
 
                     for (var j = i * i; j < primeSieve.Length; j += i * 2) primeSieve[j] = true;
                 }
 
             for (int i = ((sqrt + 1) & 1) == 0 ? sqrt + 2 : sqrt + 1; i < upper && primeList.Count < 500500; i += 2)
                 if (!primeSieve[i])
-                    primeList.Add(i);
+                    primeList.Add((ulong) i);
 
             return primeList;
         }
