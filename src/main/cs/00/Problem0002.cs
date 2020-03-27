@@ -10,15 +10,18 @@ namespace Euler.main.cs._00
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            ulong result = 0;
-
+            long result = 0;
+            long n = 10000;
+            
             // Solution:
-            ulong fibo1 = 1;
-            ulong fibo2 = 1;
-            while (fibo2 < 4000000)
-                if ((fibo1 = fibo2 + (fibo2 = fibo1)) % 2 == 0)
+            long fibo1 = 1;
+            long fibo2 = 1;
+            while (fibo1 < n)
+                if ((fibo1 = fibo2 + (fibo2 = fibo1)) % 2 == 0 && fibo1 < n)
+                {
                     result += fibo1;
-
+                    System.Console.WriteLine(fibo1);
+                }
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
