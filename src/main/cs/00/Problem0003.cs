@@ -10,25 +10,20 @@ namespace Euler.main.cs._00
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            ulong result = 0;
+            long largestFact = 0;
 
             // Solution:
-            ulong i;
-            ulong maxNumber = 600_851_475_143;
+            long n = 600_851_475_143;
+            long counter = 2;
+            while (counter * counter <= n)
+                if (n % counter == 0) n /= (largestFact = counter);
+                else counter = (counter == 2) ? 3 : counter + 2;
 
-            for (i = 2; i <= maxNumber; i++)
-                if (maxNumber % i == 0)
-                {
-                    maxNumber /= i;
-                    i--;
-                }
-
-            result = i;
-
+            if (n > largestFact) largestFact = n;
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
-            Console.WriteLine("Result:\t" + result + "\tTime:\t" +
+            Console.WriteLine("Result:\t" + largestFact + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
