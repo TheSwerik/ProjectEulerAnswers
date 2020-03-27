@@ -13,9 +13,8 @@ namespace Euler.main.cs._00
             long result = 0;
 
             // Solution:
-            for (var i = 3; i < 1000; i++)
-                if (i % 3 == 0 || i % 5 == 0)
-                    result += i;
+            long n = 1000;
+            result = sum(--n, 3) + sum(n, 5) - sum(n, 15);
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
@@ -26,6 +25,12 @@ namespace Euler.main.cs._00
                                     " ms"));
             if (Test.DoBenchmark)
                 Benchmark.AddTime(1, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+        }
+
+        private long sum(long n, long step)
+        {
+            n /= step;
+            return n * (n + 1) * step / 2;
         }
     }
 }
