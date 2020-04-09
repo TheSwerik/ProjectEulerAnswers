@@ -74,35 +74,3 @@ if __name__ == "__main__":
 # On 7 January 1734, he married Katharina Gsell (1707–1773), a daughter of Georg Gsell, a painter from the Academy
 # Gymnasium.[18] The young couple bought a house by the Neva River. Of their thirteen children, only five survived
 # childhood.[19]
-#
-# Berlin
-#
-# Stamp of the former German Democratic Republic honoring Euler on the 200th anniversary of his death. Across the
-# centre it shows his polyhedral formula, in English written as "v − e + f = 2". Concerned about the continuing
-# turmoil in Russia, Euler left St. Petersburg on 19 June 1741 to take up a post at the Berlin Academy, which he had
-# been offered by Frederick the Great of Prussia. He lived for 25 years in Berlin, where he wrote over 380 articles.
-# In Berlin, he published the two works for which he would become most renowned: the Introductio in analysin
-# infinitorum, a text on functions published in 1748, and the Institutiones calculi differentialis,[20] published in
-# 1755 on differential calculus.[21] In 1755, he was elected a foreign member of the Royal Swedish Academy of Sciences.
-#
-# In addition, Euler was asked to tutor Friederike Charlotte of Brandenburg-Schwedt, the Princess of Anhalt-Dessau
-# and Frederick's niece. Euler wrote over 200 letters to her in the early 1760s, which were later compiled into a
-# best-selling volume entitled Letters of Euler on different Subjects in Natural Philosophy Addressed to a German
-# Princess.[22] This work contained Euler's exposition on various subjects pertaining to physics and mathematics,
-# as well as offering valuable insights into Euler's personality and religious beliefs. This book became more widely
-# read than any of his mathematical works and was published across Europe and in the United States. The popularity of
-# the "Letters" testifies to Euler's ability to communicate scientific matters effectively to a lay audience,
-# a rare ability for a dedicated research scientist.[21]
-#
-# Despite Euler's immense contribution to the Academy's prestige, he eventually incurred the ire of Frederick and
-# ended up having to leave Berlin. The Prussian king had a large circle of intellectuals in his court, and he found
-# the mathematician unsophisticated and ill-informed on matters beyond numbers and figures. Euler was a simple,
-# devoutly religious man who never questioned the existing social order or conventional beliefs, in many ways the
-# polar opposite of Voltaire, who enjoyed a high place of prestige at Frederick's court. Euler was not a skilled
-# debater and often made it a point to argue subjects that he knew little about, making him the frequent target of
-# Voltaire's wit.[21] Frederick also expressed disappointment with Euler's practical engineering abilities:
-#
-# I wanted to have a water jet in my garden: Euler calculated the force of the wheels necessary to raise the water to
-# a reservoir, from where it should fall back through channels, finally spurting out in Sanssouci. My mill was
-# carried out geometrically and could not raise a mouthful of water closer than fifty paces to the reservoir. Vanity
-# of vanities! Vanity of geometry![23]
