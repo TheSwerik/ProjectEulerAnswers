@@ -46,3 +46,31 @@ if __name__ == "__main__":
 # division, he recommended that the post in physiology that he had vacated be filled by his friend Euler. In November
 # 1726 Euler eagerly accepted the offer, but delayed making the trip to Saint Petersburg while he unsuccessfully
 # applied for a physics professorship at the University of Basel.[15]
+
+# Music Even when dealing with music, Euler's approach is mainly mathematical. His writings on music are not
+# particularly numerous (a few hundred pages, in his total production of about thirty thousand pages),
+# but they reflect an early preoccupation and one that did not leave him throughout his life.[54]
+#
+# A first point of Euler's musical theory is the definition of "genres", i.e. of possible divisions of the octave
+# using the prime numbers 3 and 5. Euler describes 18 such genres, with the general definition 2mA, where A is the
+# "exponent" of the genre (i.e. the sum of the exponents of 3 and 5) and 2m (where "m is an indefinite number,
+# small or large, so long as the sounds are perceptible"[55]), expresses that the relation holds independently of the
+# number of octaves concerned. The first genre, with A = 1, is the octave itself (or its duplicates); the second
+# genre, 2m.3, is the octave divided by the fifth (fifth + fourth, C–G–C); the third genre is 2m.5, major third +
+# minor sixth (C–E–C); the fourth is 2m.32, two-fourths and a tone (C–F–B♭–C); the fifth is 2m.3.5 (C–E–G–B–C); etc.
+# Genres 12 (2m.33.5), 13 (2m.32.52) and 14 (2m.3.53) are corrected versions of the diatonic, chromatic and
+# enharmonic, respectively, of the Ancients. Genre 18 (2m.33.52) is the "diatonico-chromatic", "used generally in all
+# compositions",[56] and which turns out to be identical with the system described by Johann Mattheson.[57] Euler
+# later envisaged the possibility of describing genres including the prime number 7.[58]
+#
+# Euler devised a specific graph, the Speculum musicum,[59] to illustrate the diatonico-chromatic genre,
+# and discussed paths in this graph for specific intervals, recalling his interest in the Seven Bridges of Königsberg
+# (see above). The device drew renewed interest as the Tonnetz in neo-Riemannian theory (see also Lattice (music)).[60]
+#
+# Euler further used the principle of the "exponent" to propose a derivation of the gradus suavitatis (degree of
+# suavity, of agreeableness) of intervals and chords from their prime factors – one must keep in mind that he
+# considered just intonation, i.e. 1 and the prime numbers 3 and 5 only.[61] Formulas have been proposed extending
+# this system to any number of prime numbers, e.g. in the form
+#
+# ds = Σ (kipi – ki) + 1
+# where pi are prime numbers and ki their exponents.[62]
