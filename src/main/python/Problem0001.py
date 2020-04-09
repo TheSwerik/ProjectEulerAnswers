@@ -62,7 +62,3 @@ if __name__ == "__main__":
 # enharmonic, respectively, of the Ancients. Genre 18 (2m.33.52) is the "diatonico-chromatic", "used generally in all
 # compositions",[56] and which turns out to be identical with the system described by Johann Mattheson.[57] Euler
 # later envisaged the possibility of describing genres including the prime number 7.[58]
-#
-# Euler devised a specific graph, the Speculum musicum,[59] to illustrate the diatonico-chromatic genre,
-# and discussed paths in this graph for specific intervals, recalling his interest in the Seven Bridges of Königsberg
-# (see above). The device drew renewed interest as the Tonnetz in neo-Riemannian theory (see also Lattice (music)).[60]
