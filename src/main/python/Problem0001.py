@@ -39,3 +39,10 @@ if __name__ == "__main__":
 # Paris Academy Prize Problem competition; the problem that year was to find the best way to place the masts on a
 # ship. Pierre Bouguer, who became known as "the father of naval architecture", won and Euler took second place.
 # Euler later won this annual prize twelve times.[12]
+#
+# Career Saint Petersburg Around this time Johann Bernoulli's two sons, Daniel and Nicolaus, were working at the
+# Imperial Russian Academy of Sciences in Saint Petersburg. On 31 July 1726, Nicolaus died of appendicitis after
+# spending less than a year in Russia.[13][14] When Daniel assumed his brother's position in the mathematics/physics
+# division, he recommended that the post in physiology that he had vacated be filled by his friend Euler. In November
+# 1726 Euler eagerly accepted the offer, but delayed making the trip to Saint Petersburg while he unsuccessfully
+# applied for a physics professorship at the University of Basel.[15]
