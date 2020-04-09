@@ -30,6 +30,7 @@ sourceSets {
             srcDir 'src/main/java'
             srcDir 'src/main/cpp'
             srcDir 'src/main/cs'
+            srcDir 'src/main/python'
         }
         resources {
             srcDir 'src/main/resources'
@@ -40,6 +41,7 @@ sourceSets {
             srcDir 'src/test/java'
             srcDir 'src/test/cpp'
             srcDir 'src/test/cs'
+            srcDir 'src/test/python'
         }
         resources {
             srcDir 'src/test/resources'
