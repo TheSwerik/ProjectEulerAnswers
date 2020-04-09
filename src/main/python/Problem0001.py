@@ -8,7 +8,7 @@ def solve(limit=1000):
 
 if __name__ == "__main__":
     solve()
-
+#
 # Leonhard Euler (/ˈɔɪlər/ OY-lər;[2] German: [ˈɔʏlɐ] (About this soundlisten)[3]; 15 April 1707 – 18 September 1783)
 # was a Swiss mathematician, physicist, astronomer, geographer, logician and engineer who made important and
 # influential discoveries in many branches of mathematics, such as infinitesimal calculus and graph theory,
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 # afternoon lessons from Johann Bernoulli, who quickly discovered his new pupil's incredible talent for mathematics.[
 # 10] At that time Euler's main studies included theology, Greek and Hebrew at his father's urging to become a
 # pastor, but Bernoulli convinced his father that Leonhard was destined to become a great mathematician.
-#
+
 # Music Even when dealing with music, Euler's approach is mainly mathematical. His writings on music are not
 # particularly numerous (a few hundred pages, in his total production of about thirty thousand pages),
 # but they reflect an early preoccupation and one that did not leave him throughout his life.[54]
