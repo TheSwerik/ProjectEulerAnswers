@@ -33,3 +33,9 @@ if __name__ == "__main__":
 # afternoon lessons from Johann Bernoulli, who quickly discovered his new pupil's incredible talent for mathematics.[
 # 10] At that time Euler's main studies included theology, Greek and Hebrew at his father's urging to become a
 # pastor, but Bernoulli convinced his father that Leonhard was destined to become a great mathematician.
+#
+# In 1726, Euler completed a dissertation on the propagation of sound with the title De Sono.[11] At that time,
+# he was unsuccessfully attempting to obtain a position at the University of Basel. In 1727, he first entered the
+# Paris Academy Prize Problem competition; the problem that year was to find the best way to place the masts on a
+# ship. Pierre Bouguer, who became known as "the father of naval architecture", won and Euler took second place.
+# Euler later won this annual prize twelve times.[12]
