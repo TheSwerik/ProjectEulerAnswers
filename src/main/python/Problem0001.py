@@ -66,11 +66,3 @@ if __name__ == "__main__":
 # Euler devised a specific graph, the Speculum musicum,[59] to illustrate the diatonico-chromatic genre,
 # and discussed paths in this graph for specific intervals, recalling his interest in the Seven Bridges of Königsberg
 # (see above). The device drew renewed interest as the Tonnetz in neo-Riemannian theory (see also Lattice (music)).[60]
-#
-# Euler further used the principle of the "exponent" to propose a derivation of the gradus suavitatis (degree of
-# suavity, of agreeableness) of intervals and chords from their prime factors – one must keep in mind that he
-# considered just intonation, i.e. 1 and the prime numbers 3 and 5 only.[61] Formulas have been proposed extending
-# this system to any number of prime numbers, e.g. in the form
-#
-# ds = Σ (kipi – ki) + 1
-# where pi are prime numbers and ki their exponents.[62]
