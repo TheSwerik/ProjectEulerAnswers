@@ -34,12 +34,6 @@ if __name__ == "__main__":
 # 10] At that time Euler's main studies included theology, Greek and Hebrew at his father's urging to become a
 # pastor, but Bernoulli convinced his father that Leonhard was destined to become a great mathematician.
 #
-# In 1726, Euler completed a dissertation on the propagation of sound with the title De Sono.[11] At that time,
-# he was unsuccessfully attempting to obtain a position at the University of Basel. In 1727, he first entered the
-# Paris Academy Prize Problem competition; the problem that year was to find the best way to place the masts on a
-# ship. Pierre Bouguer, who became known as "the father of naval architecture", won and Euler took second place.
-# Euler later won this annual prize twelve times.[12]
-#
 # Music Even when dealing with music, Euler's approach is mainly mathematical. His writings on music are not
 # particularly numerous (a few hundred pages, in his total production of about thirty thousand pages),
 # but they reflect an early preoccupation and one that did not leave him throughout his life.[54]
