@@ -46,31 +46,3 @@ if __name__ == "__main__":
 # division, he recommended that the post in physiology that he had vacated be filled by his friend Euler. In November
 # 1726 Euler eagerly accepted the offer, but delayed making the trip to Saint Petersburg while he unsuccessfully
 # applied for a physics professorship at the University of Basel.[15]
-#
-#
-# 1957 Soviet Union stamp commemorating the 250th birthday of Euler. The text says: 250 years from the birth of the
-# great mathematician, academician Leonhard Euler. Euler arrived in Saint Petersburg on 17 May 1727. He was promoted
-# from his junior post in the medical department of the academy to a position in the mathematics department. He
-# lodged with Daniel Bernoulli with whom he often worked in close collaboration. Euler mastered Russian and settled
-# into life in Saint Petersburg. He also took on an additional job as a medic in the Russian Navy.[16]
-#
-# The Academy at Saint Petersburg, established by Peter the Great, was intended to improve education in Russia and to
-# close the scientific gap with Western Europe. As a result, it was made especially attractive to foreign scholars
-# like Euler. The academy possessed ample financial resources and a comprehensive library drawn from the private
-# libraries of Peter himself and of the nobility. Very few students were enrolled in the academy to lessen the
-# faculty's teaching burden. The academy emphasized research and offered to its faculty both the time and the freedom
-# to pursue scientific questions.[12]
-#
-# The Academy's benefactress, Catherine I, who had continued the progressive policies of her late husband,
-# died on the day of Euler's arrival. The Russian nobility then gained power upon the ascension of the
-# twelve-year-old Peter II. The nobility, suspicious of the academy's foreign scientists, cut funding and caused
-# other difficulties for Euler and his colleagues.
-#
-# Conditions improved slightly after the death of Peter II, and Euler swiftly rose through the ranks in the academy
-# and was made a professor of physics in 1731. Two years later, Daniel Bernoulli, who was fed up with the censorship
-# and hostility he faced at Saint Petersburg, left for Basel. Euler succeeded him as the head of the mathematics
-# department.[17]
-#
-# On 7 January 1734, he married Katharina Gsell (1707–1773), a daughter of Georg Gsell, a painter from the Academy
-# Gymnasium.[18] The young couple bought a house by the Neva River. Of their thirteen children, only five survived
-# childhood.[19]
