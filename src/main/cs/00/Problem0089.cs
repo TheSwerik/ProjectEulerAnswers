@@ -11,8 +11,7 @@ namespace Euler.main.cs._00
     {
         public Problem0089()
         {
-            var lines =
-                File.ReadAllLines("main\\resources\\p089_roman.txt");
+            var lines = File.ReadAllLines(@"resources\p089_roman.txt");
             var stopWatch = new Stopwatch();
             stopWatch.Start();
             long result = 0;

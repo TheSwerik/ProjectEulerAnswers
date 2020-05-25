@@ -9,9 +9,7 @@ namespace Euler.main.cs._00
     {
         public Problem0081()
         {
-            var lines =
-                File.ReadAllLines(
-                    "G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\src\\main\\resources\\p081_matrix.txt");
+            var lines = File.ReadAllLines(@"resources\p081_matrix.txt");
             var matrix = new int[lines.Length, lines.Length];
             for (var i = 0; i < lines.Length; i++)
             {

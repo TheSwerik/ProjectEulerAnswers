@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Euler.test.cs;
 
 namespace Euler.main.cs._00
@@ -42,23 +43,16 @@ namespace Euler.main.cs._00
             return triangles;
         }
 
-        private long wordValue(string word)
+        private  long wordValue(string word)
         {
-            long result = 0;
-
-            foreach (var c in word) result += c - 64;
-
-            return result;
+            return word.Aggregate<char, long>(0, (current, c) => current + (c - 64));
         }
 
-        private string[] readWords()
+        private  IEnumerable<string> readWords()
         {
-            var file =
-                File.ReadAllLines(
-                    "G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\src\\main\\resources\\problem0042_words.txt");
+            var file = File.ReadAllLines(@"resources\problem0042_words.txt");
 
-            var st = "";
-            foreach (var s in file) st += s;
+            var st = file.Aggregate("", (current, s) => current + s);
 
             return st.Replace("\"", "").Split(",");
         }

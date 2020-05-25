@@ -9,9 +9,7 @@ namespace Euler.main.cs._00
     {
         public Problem0099()
         {
-            var lines =
-                File.ReadAllLines(
-                    "C:\\Users\\seibel\\IdeaProjects\\Privat\\Euler\\src\\main\\resources\\p099_base_exp.txt");
+            var lines = File.ReadAllLines(@"resources\p099_base_exp.txt");
             var numbers = new int[lines.Length, 2];
             for (var i = 0; i < lines.Length; i++)
             {

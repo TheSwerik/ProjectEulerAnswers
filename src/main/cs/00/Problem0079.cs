@@ -9,9 +9,7 @@ namespace Euler.main.cs._00
     {
         public Problem0079()
         {
-            var lines =
-                File.ReadAllLines(
-                    "G:\\Programme\\IntelliJ Projects\\ProjectEulerAnswers\\src\\main\\resources\\p079_keylog.txt");
+            var lines = File.ReadAllLines(@"resources\p079_keylog.txt");
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
