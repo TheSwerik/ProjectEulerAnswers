@@ -11,10 +11,7 @@ configuration: Release
 
 before_build:
   - ps: nuget restore -Verbosity quiet
-
-build_script:
-  - gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
-  - msbuild "C:\projects\projecteuleranswers\$($env:project_name).sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - cmd: gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
 
 cache:
   - C:\Users\appveyor\.gradle
