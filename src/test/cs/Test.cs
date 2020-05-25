@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace Euler.test.cs
@@ -19,7 +21,12 @@ namespace Euler.test.cs
                 return;
             }
 
-            if (args.Length > 0) Start(args[0]);
+            if (args.Length > 0)
+            {
+                if (Regex.IsMatch(args[0], "\\d+")) Start(args[0]);
+                else StartPython(args[1]);
+            }
+
             while (args.Length == 0)
             {
                 Console.WriteLine("\nWhich do you want to try out?");
@@ -44,6 +51,21 @@ namespace Euler.test.cs
             {
                 Activator.CreateInstance(problem);
             }
+        }
+
+        private static void StartPython(string input)
+        {
+            var start = new ProcessStartInfo
+                        {
+                            FileName = "python",
+                            Arguments = Environment.CurrentDirectory +
+                                        $@"\python\Problem{new string('0', 4 - input.Length) + input}.py",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true
+                        };
+            using var process = Process.Start(start);
+            using var reader = process.StandardOutput;
+            Console.Write(reader.ReadToEnd());
         }
     }
 }

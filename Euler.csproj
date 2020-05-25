@@ -18,6 +18,7 @@
 
     <ItemGroup>
         <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\resources\**" CopyToOutputDirectory="PreserveNewest" TargetPath="resources\%(Filename)%(Extension)"/>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\python\**" CopyToOutputDirectory="PreserveNewest" TargetPath="python\%(Filename)%(Extension)"/>
     </ItemGroup>
 
 </Project>
