@@ -12,8 +12,9 @@ configuration: Release
 before_build:
   - ps: nuget restore -Verbosity quiet
 
-#build_script:
-#  - gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
+build_script:
+  - gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
+  - msbuild "C:\projects\projecteuleranswers\$($env:project_name).sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 cache:
   - C:\Users\appveyor\.gradle
@@ -37,7 +38,7 @@ for:
       informational_version: '$(my_version_number)'
 
     after_test:
-      - ps: .\gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
+#      - ps: .\gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
       - ps: dotnet publish "-p:PublishProfile=$($env:project_name).csproj" -c:Release -o:Publish\bin -v:m -r:win-x64   --self-contained:true -p:PublishSingleFile=false -p:PublishTrimmed=true
     #      - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config.iss"'
 
