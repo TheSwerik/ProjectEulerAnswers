@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 
@@ -12,7 +13,6 @@ namespace Euler.test.cs
         private static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            // if (!Release) Environment.CurrentDirectory = "..\\..\\..\\src";
             if (DoBenchmark)
             {
                 new Benchmark();
