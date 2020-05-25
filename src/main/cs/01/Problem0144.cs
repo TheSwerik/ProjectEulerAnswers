@@ -22,7 +22,7 @@ namespace Euler.main.cs._01
                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                     " ms"));
-            if (Test.DoBenchmark)
+            if (ProblemTest.DoBenchmark)
                 Benchmark.AddTime(144, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
     }

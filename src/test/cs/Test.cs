@@ -4,14 +4,15 @@ using System.Threading;
 
 namespace Euler.test.cs
 {
-    public class Test
+    public static class ProblemTest
     {
         public static bool DoBenchmark = false;
+        private const bool Release = true;
 
         private static void Main()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            Environment.CurrentDirectory = "..\\..\\..\\src";
+            if (!Release) Environment.CurrentDirectory = "..\\..\\..\\src";
             if (DoBenchmark)
             {
                 new Benchmark();

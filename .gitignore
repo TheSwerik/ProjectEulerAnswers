@@ -125,3 +125,4 @@ hs_err_pid*
 build/
 obj/
 bin/
+publish/

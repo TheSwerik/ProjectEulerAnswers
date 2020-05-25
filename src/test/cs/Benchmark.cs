@@ -21,7 +21,7 @@ namespace Euler.test.cs
             for (var i = 1; i <= Max; i++)
             for (var j = 0; j < Checks + 2; j++)
             {
-                Test.DoBenchmark = j >= 2;
+                ProblemTest.DoBenchmark = j >= 2;
                 Console.WriteLine("Checking Problem " + i + "\t Run: " + (j + 1));
                 //start Problems:
                 var input = i + "";
