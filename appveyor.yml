@@ -11,6 +11,12 @@ configuration: Release
 
 before_build:
   - ps: nuget restore -Verbosity quiet
+    
+build_script:
+  - gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
+
+cache:
+  - C:\Users\appveyor\.gradle
 
 build:
   verbosity: minimal
