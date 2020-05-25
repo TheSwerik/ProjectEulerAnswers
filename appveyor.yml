@@ -20,7 +20,7 @@ cache:
 
 build:
   verbosity: minimal
-  project: $env:project_name.sln
+  project: Euler.sln
 
 for:
   - branches:
