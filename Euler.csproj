@@ -13,13 +13,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ClosedXML" Version="0.95.0-beta2"/>
+        <PackageReference Include="ClosedXML" Version="0.95.0-beta2" />
     </ItemGroup>
 
     <ItemGroup>
-        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\resources\**" CopyToOutputDirectory="PreserveNewest" TargetPath="resources\%(Filename)%(Extension)"/>
-        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\python\**" CopyToOutputDirectory="PreserveNewest" TargetPath="python\%(Filename)%(Extension)"/>
-        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\cpp\**" CopyToOutputDirectory="PreserveNewest" TargetPath="cpp\%(Filename)%(Extension)"/>
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\resources\**" CopyToOutputDirectory="PreserveNewest" TargetPath="resources\%(Filename)%(Extension)" />
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\python\**" CopyToOutputDirectory="PreserveNewest" TargetPath="python\%(Filename)%(Extension)" />
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\cpp\**" CopyToOutputDirectory="PreserveNewest" TargetPath="cpp\%(Filename)%(Extension)" />
     </ItemGroup>
 
 </Project>
