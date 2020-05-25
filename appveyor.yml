@@ -15,7 +15,7 @@ before_build:
   - cmd: gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
 
 cache:
-  - C:\Users\appveyor\.gradle
+  - 'C:\Users\appveyor\.gradle'
 
 build:
   verbosity: minimal
