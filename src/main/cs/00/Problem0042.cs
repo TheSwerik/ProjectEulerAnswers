@@ -27,9 +27,9 @@ namespace Euler.main.cs._00
             var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
-                                  ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
-                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
-                                    " ms"));
+                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
+                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
+                                     " ms"));
             if (ProblemTest.DoBenchmark)
                 Benchmark.AddTime(42, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
@@ -43,12 +43,12 @@ namespace Euler.main.cs._00
             return triangles;
         }
 
-        private  long wordValue(string word)
+        private long wordValue(string word)
         {
             return word.Aggregate<char, long>(0, (current, c) => current + (c - 64));
         }
 
-        private  IEnumerable<string> readWords()
+        private IEnumerable<string> readWords()
         {
             var file = File.ReadAllLines(@"resources\problem0042_words.txt");
 

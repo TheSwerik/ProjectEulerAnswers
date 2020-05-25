@@ -58,9 +58,9 @@ namespace Euler.main.cs._00
             foreach (var a in result) Console.WriteLine(a);
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
-                                  ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
-                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
-                                    " ms"));
+                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
+                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
+                                     " ms"));
             if (ProblemTest.DoBenchmark)
                 Benchmark.AddTime(60, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
@@ -72,8 +72,8 @@ namespace Euler.main.cs._00
 
             var sqrt = (int) Math.Sqrt(pS.Length);
             for (var i = 3;
-                i < sqrt;
-                i += 2)
+                 i < sqrt;
+                 i += 2)
                 if (!pS[i])
                 {
                     pL.Add(i);
@@ -82,8 +82,8 @@ namespace Euler.main.cs._00
                 }
 
             for (var i = ((sqrt + 1) & 1) == 0 ? sqrt + 2 : sqrt + 1;
-                i < pS.Length;
-                i += 2)
+                 i < pS.Length;
+                 i += 2)
                 if (!pS[i])
                     pL.Add(i);
             return pL;
@@ -93,8 +93,8 @@ namespace Euler.main.cs._00
         {
             var nsqrt = Math.Sqrt(n);
             for (var i = 3;
-                i < nsqrt;
-                i += 2)
+                 i < nsqrt;
+                 i += 2)
                 if (n % i == 0)
                     return false;
 

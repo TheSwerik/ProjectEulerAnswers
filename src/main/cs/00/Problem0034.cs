@@ -17,15 +17,15 @@ namespace Euler.main.cs._00
 
             // Solution:
             _factorials = new[]
-            {
-                1, 1, 2, 6,
-                Factorial(4),
-                Factorial(5),
-                Factorial(6),
-                Factorial(7),
-                Factorial(8),
-                Factorial(9)
-            };
+                          {
+                              1, 1, 2, 6,
+                              Factorial(4),
+                              Factorial(5),
+                              Factorial(6),
+                              Factorial(7),
+                              Factorial(8),
+                              Factorial(9)
+                          };
             var list = new List<long>();
             for (long i = 3; i < 2540161; i++)
                 if (GetDigitFactorial(i) == i)
@@ -37,9 +37,9 @@ namespace Euler.main.cs._00
             var elapsedTime = stopWatch.Elapsed.ToString();
             Console.WriteLine("Result:\t" + result + "\tTime:\t" +
                               (double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1, 2)) >= 1
-                                  ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
-                                  : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
-                                    " ms"));
+                                   ? double.Parse(elapsedTime.Substring(elapsedTime.LastIndexOf(":") + 1)) + " s"
+                                   : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
+                                     " ms"));
             if (ProblemTest.DoBenchmark)
                 Benchmark.AddTime(34, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
