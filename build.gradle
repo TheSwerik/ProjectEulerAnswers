@@ -5,20 +5,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_13
-    targetCompatibility = JavaVersion.VERSION_13
-}
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs += "--enable-preview"
-}
-
-tasks.withType(Test) {
-    jvmArgs += "--enable-preview"
-}
-
-tasks.withType(JavaExec) {
-    jvmArgs += '--enable-preview'
+    sourceCompatibility = JavaVersion.VERSION_14
+    targetCompatibility = JavaVersion.VERSION_14
 }
 
 group 'org.example'
@@ -56,4 +44,12 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.1'
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': 'Euler',
+                'Implementation-Version': '1.0',
+                'Main-Class': 'Main')
+    }
 }

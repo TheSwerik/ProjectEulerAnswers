@@ -9,24 +9,27 @@ public class Main {
     private static final boolean isJavaStandard = true;
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("\nWhich do you want to try out?");
-            String input = sc.next();
-            if (input.equals("0")) {
-                System.exit(0);
-            }
+        if (args.length > 0) startJava(args[0]);
+        else {
+            Scanner sc = new Scanner(System.in);
+            while (true) {
+                System.out.println("\nWhich do you want to try out?");
+                String input = sc.next();
+                if (input.equals("0")) {
+                    System.exit(0);
+                }
 
-            //start Problems:
-            if (input.charAt(0) == 'j' || input.charAt(0) == 'J') {
-                startJava(input.substring(1));
-            } else if (input.charAt(0) == 'c' || input.charAt(0) == 'C') {
-                startCpp(input.substring(1));
-            } else if (input.matches("\\d+")) {
-                if (isJavaStandard) {
-                    startJava(input);
-                } else {
-                    startCpp(input);
+                //start Problems:
+                if (input.charAt(0) == 'j' || input.charAt(0) == 'J') {
+                    startJava(input.substring(1));
+                } else if (input.charAt(0) == 'c' || input.charAt(0) == 'C') {
+                    startCpp(input.substring(1));
+                } else if (input.matches("\\d+")) {
+                    if (isJavaStandard) {
+                        startJava(input);
+                    } else {
+                        startCpp(input);
+                    }
                 }
             }
         }
@@ -35,7 +38,7 @@ public class Main {
     private static void startJava(String inputString) {
         try {
             int inputInt = Integer.parseInt(inputString);
-            Class.forName("_0" + (inputString.length() < 3 ? '0' : inputString.charAt(0)) + "Problem" + "0".repeat(4 - inputString
+            Class.forName("_0" + (inputString.length() < 3 ? '0' : inputString.charAt(0)) + ".Problem" + "0".repeat(4 - inputString
                     .length()) + inputString).getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             System.out.println("not valid");
