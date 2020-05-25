@@ -10,7 +10,7 @@ skip_tags: true
 configuration: Release
 
 before_build:
-  - ps: nuget restore -Verbosity quiet
+  - ps: nuget restore $($env:project_name).sln -Verbosity quiet
     
 build_script:
   - gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
