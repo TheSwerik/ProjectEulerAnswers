@@ -1,27 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>Euler</RootNamespace>
+        <Configurations>Release;Debug</Configurations>
+        <Platforms>x64</Platforms>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <AssemblyName>Euler</AssemblyName>
+        <ProjectGuid>{60D76319-ED15-45EF-A4A3-4EE1E80B9E9D}</ProjectGuid>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="ClosedXML" Version="0.95.0-beta2" />
+        <PackageReference Include="ClosedXML" Version="0.95.0-beta2"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="src\tetststs.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="src\main\java\00" />
-      <Folder Include="src\main\java\01" />
-      <Folder Include="src\main\java\02" />
-      <Folder Include="src\main\java\03" />
-      <Folder Include="src\main\java\04" />
-      <Folder Include="src\main\java\05" />
-      <Folder Include="src\main\java\06" />
-      <Folder Include="src\main\java\07" />
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\resources\**" CopyToOutputDirectory="PreserveNewest" TargetPath="resources\%(Filename)%(Extension)"/>
     </ItemGroup>
 
 </Project>

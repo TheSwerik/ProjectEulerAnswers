@@ -7,12 +7,12 @@ namespace Euler.test.cs
     public static class ProblemTest
     {
         public static bool DoBenchmark = false;
-        private const bool Release = true;
+        private const bool Release = false;
 
         private static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            if (!Release) Environment.CurrentDirectory = "..\\..\\..\\src";
+            // if (!Release) Environment.CurrentDirectory = "..\\..\\..\\src";
             if (DoBenchmark)
             {
                 new Benchmark();
