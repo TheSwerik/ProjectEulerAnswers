@@ -11,6 +11,7 @@ configuration: Release
 
 before_build:
   - ps: nuget restore -Verbosity quiet
+  - cmd: gradlew.bat build --info --no-daemon -PbintrayUserName -PbintrayApiKey
   - cmd: gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
 
 cache:
