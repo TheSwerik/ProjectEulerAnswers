@@ -9,30 +9,30 @@ public class Main {
     private static final boolean isJavaStandard = true;
 
     public static void main(String[] args) {
-        if (args.length > 0) startJava(args[0]);
-        else {
-            Scanner sc = new Scanner(System.in);
-            while (true) {
-                System.out.println("\nWhich do you want to try out?");
-                String input = sc.next();
-                if (input.equals("0")) {
-                    System.exit(0);
-                }
+        if (args.length == 1) startJava(args[0]);
+        if (args.length > 1) startCpp(args[1]);
+        Scanner sc = new Scanner(System.in);
+        while (args.length == 0) {
+            System.out.println("\nWhich do you want to try out?");
+            String input = sc.next();
+            if (input.equals("0")) {
+                System.exit(0);
+            }
 
-                //start Problems:
-                if (input.charAt(0) == 'j' || input.charAt(0) == 'J') {
-                    startJava(input.substring(1));
-                } else if (input.charAt(0) == 'c' || input.charAt(0) == 'C') {
-                    startCpp(input.substring(1));
-                } else if (input.matches("\\d+")) {
-                    if (isJavaStandard) {
-                        startJava(input);
-                    } else {
-                        startCpp(input);
-                    }
+            //start Problems:
+            if (input.charAt(0) == 'j' || input.charAt(0) == 'J') {
+                startJava(input.substring(1));
+            } else if (input.charAt(0) == 'c' || input.charAt(0) == 'C') {
+                startCpp(input.substring(1));
+            } else if (input.matches("\\d+")) {
+                if (isJavaStandard) {
+                    startJava(input);
+                } else {
+                    startCpp(input);
                 }
             }
         }
+
     }
 
     private static void startJava(String inputString) {
@@ -48,7 +48,7 @@ public class Main {
 
     private static void startCpp(String inputString) {
         int inputInt = Integer.parseInt(inputString);
-        compileAndRunC("main\\cpp" + "\\Problem" + "0".repeat(4 - inputString.length()) + inputString);
+        compileAndRunC("cpp" + "\\Problem" + "0".repeat(4 - inputString.length()) + inputString);
     }
 
     private static void compileAndRunC(String path) {

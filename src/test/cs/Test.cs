@@ -21,11 +21,8 @@ namespace Euler.test.cs
                 return;
             }
 
-            if (args.Length > 0)
-            {
-                if (Regex.IsMatch(args[0], "\\d+")) Start(args[0]);
-                else StartPython(args[1]);
-            }
+            if (args.Length == 1) Start(args[0]);
+            if (args.Length > 1) StartPython(args[1]);
 
             while (args.Length == 0)
             {
@@ -63,9 +60,13 @@ namespace Euler.test.cs
                             UseShellExecute = false,
                             RedirectStandardOutput = true
                         };
+            var watch = new Stopwatch();
+            watch.Start();
             using var process = Process.Start(start);
             using var reader = process.StandardOutput;
-            Console.Write(reader.ReadToEnd());
+            var solution = reader.ReadToEnd();
+            watch.Stop();
+            Console.WriteLine(watch.Elapsed);
         }
     }
 }
