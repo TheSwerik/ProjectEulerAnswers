@@ -4,9 +4,9 @@ using Euler.test.cs;
 
 namespace Euler.main.cs
 {
-    public class de.swerik.euler.ProblemTemplate
+    public class ProblemTemplate
     {
-        public de.swerik.euler.ProblemTemplate()
+        public ProblemTemplate()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -23,7 +23,7 @@ namespace Euler.main.cs
                                    : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                      " ms"));
             if (ProblemTest.DoBenchmark)
-                Benchmark.AddTime(0, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                ProblemBenchmark.AddTime(0, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
     }
 }

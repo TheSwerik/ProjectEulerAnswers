@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace Euler.test.cs
@@ -12,12 +10,12 @@ namespace Euler.test.cs
         private const bool Release = false;
         public static bool DoBenchmark = false;
 
-        private static void de.swerik.euler.Main(string[] args)
+        private static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
             if (DoBenchmark)
             {
-                new Benchmark();
+                new ProblemBenchmark();
                 return;
             }
 
@@ -73,7 +71,8 @@ namespace Euler.test.cs
         {
             var start = new ProcessStartInfo
                         {
-                            FileName = Environment.CurrentDirectory + $@"\out\cpp\Problem{new string('0', 4 - input.Length) + input}.exe",
+                            FileName = Environment.CurrentDirectory +
+                                       $@"\out\cpp\Problem{new string('0', 4 - input.Length) + input}.exe",
                             UseShellExecute = false,
                             RedirectStandardOutput = true
                         };

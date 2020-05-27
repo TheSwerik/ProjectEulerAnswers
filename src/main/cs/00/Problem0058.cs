@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using Euler.test.cs;
 
-namespace Euler.main.cs.de.swerik.euler._00
+namespace Euler.main.cs._00
 {
     public class Problem0058
     {
@@ -50,7 +50,8 @@ namespace Euler.main.cs.de.swerik.euler._00
                                    : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                      " ms"));
             if (ProblemTest.DoBenchmark)
-                Benchmark.AddTime(58, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                ProblemBenchmark.AddTime(
+                    58, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
 
         private bool IsPrime(decimal n)

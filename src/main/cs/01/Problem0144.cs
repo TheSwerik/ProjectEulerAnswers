@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Euler.test.cs;
 
-namespace Euler.main.cs.de.swerik.euler._01
+namespace Euler.main.cs._01
 {
     public class Problem0144
     {
@@ -23,7 +23,8 @@ namespace Euler.main.cs.de.swerik.euler._01
                                    : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                      " ms"));
             if (ProblemTest.DoBenchmark)
-                Benchmark.AddTime(144, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                ProblemBenchmark.AddTime(
+                    144, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
     }
 }

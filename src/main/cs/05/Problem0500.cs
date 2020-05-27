@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Euler.test.cs;
 
-namespace Euler.main.cs.de.swerik.euler._05
+namespace Euler.main.cs._05
 {
     public class Problem0500
     {
@@ -40,7 +40,8 @@ namespace Euler.main.cs.de.swerik.euler._05
                                    : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                      " ms"));
             if (ProblemTest.DoBenchmark)
-                Benchmark.AddTime(500, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                ProblemBenchmark.AddTime(
+                    500, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
 
         private static List<ulong> Primes(int upper)

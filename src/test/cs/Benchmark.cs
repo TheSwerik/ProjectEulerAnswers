@@ -6,14 +6,14 @@ using ClosedXML.Excel;
 
 namespace Euler.test.cs
 {
-    public class Benchmark
+    public class ProblemBenchmark
     {
         private const int Max = 1000;
         private const int Checks = 25;
         private static readonly ArrayList Skip = new ArrayList {148, 704};
         private static Dictionary<int, ArrayList> _times;
 
-        public Benchmark()
+        public ProblemBenchmark()
         {
             _times = new Dictionary<int, ArrayList>();
             // Test every Problem:

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Numerics;
 using Euler.test.cs;
 
-namespace Euler.main.cs.de.swerik.euler._07
+namespace Euler.main.cs._07
 {
     public class Problem0706
     {
@@ -31,7 +31,8 @@ namespace Euler.main.cs.de.swerik.euler._07
                                    : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                      " ms"));
             if (ProblemTest.DoBenchmark)
-                Benchmark.AddTime(706, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                ProblemBenchmark.AddTime(
+                    706, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
 
         private BigInteger f(string n)

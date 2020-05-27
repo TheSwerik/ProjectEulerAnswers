@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Numerics;
 using Euler.test.cs;
 
-namespace Euler.main.cs.de.swerik.euler._06
+namespace Euler.main.cs._06
 {
     public class Problem0684
     {
@@ -33,7 +33,8 @@ namespace Euler.main.cs.de.swerik.euler._06
                                    : double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000 +
                                      " ms"));
             if (ProblemTest.DoBenchmark)
-                Benchmark.AddTime(684, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
+                ProblemBenchmark.AddTime(
+                    684, double.Parse(elapsedTime.Substring(elapsedTime.IndexOf(".") + 1)) / 10_000);
         }
 
         private long ModS(ulong k)
