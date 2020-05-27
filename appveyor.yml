@@ -45,9 +45,9 @@ for:
       - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config Java.iss"'
 
     artifacts:
-      - path: /Installer/$(application_name) Csharp.exe
+      - path: /Installer/$(application_name)-Csharp.exe
         name: CSharpInstaller
-      - path: /Installer/$(application_name) Java.exe
+      - path: /Installer/$(application_name)-Java.exe
         name: JavaInstaller
 
     deploy:
@@ -55,7 +55,7 @@ for:
         release: $(my_version_number)
         auth_token: # encrypted token:
           secure: HESVuhwKdUbPpbBsQrWslB7GYNy5r03/MN/enpu7UWbY886bOE+EpbEFwAVMrtLO #REPLACE WITH TOKEN
-        artifact: C#Installer, JavaInstaller
+        artifact: C#CSharpInstaller, JavaInstaller
         draft: false
         prerelease: false
         force_update: false
