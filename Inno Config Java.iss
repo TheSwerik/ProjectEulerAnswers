@@ -6,7 +6,7 @@
 #define MyAppExeName "ProjectEulerAnswers.exe"
 
 [Setup]
-AppId={{3EB07062-0F1F-4647-9DDD-C897A0058BB4}
+AppId={{3A9D0714-C3DD-4236-A03D-FD3BA46E323C}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
@@ -32,13 +32,12 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked 
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked   
 
-[Files] 
-Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb"; Flags: ignoreversion recursesubdirs
-Source: "build\libs\Euler-1.0.jar"; DestDir: "{app}\bin\Euler.jar"; Flags: ignoreversion
+[Files]
+Source: "build\jpackage\PasswordSaverV6\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"; Flags: createonlyiffileexists;
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"; Tasks: desktopicon; Flags: createonlyiffileexists;
-Name: "{app}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"; Flags: createonlyiffileexists;
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Flags: createonlyiffileexists;
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; Flags: createonlyiffileexists;
+Name: "{app}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Flags: createonlyiffileexists;

@@ -11,8 +11,6 @@ java {
 
 group 'org.example'
 version '1.0'
-compileJava.options.fork = true
-compileJava.options.forkOptions.executable = 'C:\\Program Files\\Java\\jdk14'
 
 sourceSets {
     main {
