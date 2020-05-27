@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Euler.test.cs;
 
-namespace Euler.main.cs._05
+namespace Euler.main.cs.de.swerik.euler._05
 {
     public class Problem0500
     {

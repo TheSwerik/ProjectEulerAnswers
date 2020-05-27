@@ -11,7 +11,7 @@ java {
 
 group 'de.swerik'
 version '1.0'
-mainClassName = 'Main'
+mainClassName = 'de.swerik.euler.Main'
 
 sourceSets {
     main {
@@ -44,7 +44,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.1'
+    testCompile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.1'
 }
 
 jar {
@@ -60,7 +60,7 @@ jlink {
     launcher {
         name = 'ProjectEulerAnswers'
     }
-    jpackage {
-        imageOptions += ['--icon', 'src/main/resources/img/PasswordSaverV6.ico']
-    }
+//    jpackage {
+//        imageOptions += ['--icon', 'src/main/resources/img/PasswordSaverV6.ico']
+//    }
 }

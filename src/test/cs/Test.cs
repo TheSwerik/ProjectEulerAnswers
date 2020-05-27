@@ -12,7 +12,7 @@ namespace Euler.test.cs
         private const bool Release = false;
         public static bool DoBenchmark = false;
 
-        private static void Main(string[] args)
+        private static void de.swerik.euler.Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
             if (DoBenchmark)

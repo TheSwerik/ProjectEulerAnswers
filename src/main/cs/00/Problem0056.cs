@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Numerics;
 using Euler.test.cs;
 
-namespace Euler.main.cs._00
+namespace Euler.main.cs.de.swerik.euler._00
 {
     public class Problem0056
     {
