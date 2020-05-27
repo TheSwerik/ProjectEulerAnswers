@@ -68,5 +68,23 @@ namespace Euler.test.cs
             watch.Stop();
             Console.WriteLine(watch.Elapsed);
         }
+
+        private static void StartCpp(string input)
+        {
+            var start = new ProcessStartInfo
+                        {
+                            FileName = Environment.CurrentDirectory + $@"\out\cpp\Problem{new string('0', 4 - input.Length) + input}.exe",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true
+                        };
+            var watch = new Stopwatch();
+            watch.Start();
+            using var process = Process.Start(start);
+            using var reader = process.StandardOutput;
+            var solution = reader.ReadToEnd();
+            watch.Stop();
+            Console.WriteLine(solution);
+            Console.WriteLine(watch.Elapsed);
+        }
     }
 }

@@ -19,7 +19,7 @@
     <ItemGroup>
         <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\resources\**" CopyToOutputDirectory="PreserveNewest" TargetPath="resources\%(Filename)%(Extension)" />
         <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\python\**" CopyToOutputDirectory="PreserveNewest" TargetPath="python\%(Filename)%(Extension)" />
-        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)src\main\cpp\**" CopyToOutputDirectory="PreserveNewest" TargetPath="cpp\%(Filename)%(Extension)" />
+        <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)out\cpp\**" CopyToOutputDirectory="PreserveNewest" TargetPath="cpp\%(Filename)%(Extension)" />
     </ItemGroup>
 
 </Project>

@@ -10,10 +10,11 @@ skip_tags: true
 configuration: Release
 
 before_build:
+  - java -jar CppCompiler.jar
   - ps: nuget restore -Verbosity quiet
   - del gradlew.bat
   - ren gradlew-appveyor.bat gradlew.bat
-  - gradlew.bat assemble --info --no-daemon -PbintrayUserName -PbintrayApiKey
+  - gradlew.bat jpackage --info --no-daemon -PbintrayUserName -PbintrayApiKey
 
 cache:
   - 'C:\Users\appveyor\.gradle'
