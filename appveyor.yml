@@ -1,5 +1,5 @@
 ﻿environment:
-  my_version_number: 1.0.0          # DONT FORGET TO CHANGE IS IN THE ISS FILE
+  my_version_number: 1.0.1                      # DONT FORGET TO CHANGE IS IN THE ISS FILE
   application_name: ProjectEulerAnswers         # DONT FORGET TO CHANGE IS IN THE ISS FILE
   project_name: Euler
 
@@ -40,22 +40,19 @@ for:
       informational_version: '$(my_version_number)'
 
     after_test:
-      - ps: dotnet publish "-p:PublishProfile=$($env:project_name).csproj" -c:Release -o:Publish\bin -v:m -r:win-x64   --self-contained:true -p:PublishSingleFile=false -p:PublishTrimmed=true
-      - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config C#.iss"'
-      - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config Java.iss"'
+      - ps: dotnet publish "-p:PublishProfile=$($env:project_name).csproj" -c:Release -o:Publish\bin -v:m -r:win-x64 --self-contained:true -p:PublishSingleFile=false -p:PublishTrimmed=true
+      - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config.iss"'
 
     artifacts:
-      - path: /Installer/$(application_name)-Csharp.exe
-        name: CSharpInstaller
-      - path: /Installer/$(application_name)-Java.exe
-        name: JavaInstaller
+      - path: /Installer/$(application_name).exe
+        name: Installer
 
     deploy:
       - provider: GitHub
         release: $(my_version_number)
         auth_token: # encrypted token:
           secure: HESVuhwKdUbPpbBsQrWslB7GYNy5r03/MN/enpu7UWbY886bOE+EpbEFwAVMrtLO #REPLACE WITH TOKEN
-        artifact: CSharpInstaller, JavaInstaller
+        artifact: Installer
         draft: false
         prerelease: false
         force_update: false

@@ -1,6 +1,6 @@
 ﻿; Variables:
 #define MyAppName "ProjectEulerAnswers"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "Swerik"
 #define MyAppURL "https://github.com/TheSwerik/ProjectEulerAnswers"   
 #define MyAppExeName "ProjectEulerAnswers.exe"
@@ -19,25 +19,37 @@ DefaultGroupName={#MyAppName}
 Compression=lzma2   
 SolidCompression=yes   
 WizardStyle=modern
-OutputBaseFilename={#MyAppName}-Csharp
+OutputBaseFilename={#MyAppName}
 OutputDir=Installer
 ArchitecturesInstallIn64BitMode=x64  
 AllowNoIcons=yes  
 ShowLanguageDialog=auto
 CloseApplications=yes
-CloseApplicationsFilter=*.*
+CloseApplicationsFilter=*.*  
+ChangesEnvironment=yes
+
+[Registry]
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}\bin"; Check: NeedsAddPath('C:\foo')
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 
-[Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked 
-
 [Files] 
 Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb"; Flags: ignoreversion recursesubdirs
+Source: "build\jpackage\ProjectEulerAnswers\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs
 
-[Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"; Flags: createonlyiffileexists;
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"; Tasks: desktopicon; Flags: createonlyiffileexists;
-Name: "{app}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"; Flags: createonlyiffileexists;
+[Code]
+function NeedsAddPath(Param: string): boolean;
+var
+  OrigPath: string;
+begin
+  if not RegQueryStringValue(HKEY_LOCAL_MACHINE,
+    'SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
+    'Path', OrigPath)
+  then begin
+    Result := True;
+    exit;
+  end;
+  Result := Pos(';' + Param + ';', ';' + OrigPath + ';') = 0;
+end;

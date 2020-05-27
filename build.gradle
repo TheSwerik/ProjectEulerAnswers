@@ -10,7 +10,7 @@ java {
 }
 
 group 'de.swerik'
-version '1.0'
+version '1.0.1'
 mainClassName = 'de.swerik.euler.Main'
 
 sourceSets {
@@ -50,7 +50,7 @@ dependencies {
 jar {
     manifest {
         attributes('Implementation-Title': 'Euler',
-                'Implementation-Version': '1.0',
+                'Implementation-Version': '1.0.1',
                 'Main-Class': 'Main')
     }
 }
@@ -58,7 +58,7 @@ jar {
 jlink {
     addOptions('--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages')
     launcher {
-        name = 'ProjectEulerAnswers'
+        name = 'ProjectEulerAnswers-Java'
     }
 //    jpackage {
 //        imageOptions += ['--icon', 'src/main/resources/img/PasswordSaverV6.ico']
