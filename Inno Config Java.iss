@@ -35,7 +35,7 @@ Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked   
 
 [Files]
-Source: "build\jpackage\PasswordSaverV6\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "build\jpackage\ProjectEulerAnswers\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Flags: createonlyiffileexists;

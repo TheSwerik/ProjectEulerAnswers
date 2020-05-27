@@ -46,7 +46,10 @@ public class Problem0042 {
     private String[] readWords() {
         try {
             File file = new File("src/main/resources/problem0042_words.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            BufferedReader br;
+            if (file.exists()) br = new BufferedReader(new FileReader(file));
+            else
+                br = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("problem0042_words.txt")));
 
             StringBuilder st = new StringBuilder();
             String temp = "";

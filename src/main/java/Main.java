@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     private static final boolean isJavaStandard = true;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         if (args.length == 1) startJava(args[0]);
         if (args.length > 1) startCpp(args[1]);
         Scanner sc = new Scanner(System.in);
