@@ -51,7 +51,7 @@ namespace Euler.main.cs._00
             //Optimized:
             if (n > 10 && (asString.Contains("0") || asString.Contains("2") || asString.Contains("4") ||
                            asString.Contains("5") || asString.Contains("6") || asString.Contains("8")))
-                return null;
+                return null!;
 
             var permutations = new string[asString.Length];
             var primeSwapped = new HashSet<int>();
@@ -61,7 +61,7 @@ namespace Euler.main.cs._00
             for (var i = 1; i < permutations.Length; i++)
             {
                 permutations[i] = permutations[i - 1].Substring(1) + permutations[i - 1][0];
-                if (!primes.Contains(int.Parse(permutations[i]))) return null;
+                if (!primes.Contains(int.Parse(permutations[i]))) return null!;
 
                 primeSwapped.Add(int.Parse(permutations[i]));
             }

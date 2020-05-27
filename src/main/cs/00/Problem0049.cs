@@ -8,7 +8,7 @@ namespace Euler.main.cs._00
 {
     public class Problem0049
     {
-        private int[] _primes;
+        private int[] _primes = null!;
 
         public Problem0049()
         {

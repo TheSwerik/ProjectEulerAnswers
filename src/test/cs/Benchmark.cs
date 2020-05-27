@@ -11,7 +11,7 @@ namespace Euler.test.cs
         private const int Max = 1000;
         private const int Checks = 25;
         private static readonly ArrayList Skip = new ArrayList {148, 704};
-        private static Dictionary<int, ArrayList> _times;
+        private static Dictionary<int, ArrayList> _times = null!;
 
         public ProblemBenchmark()
         {
