@@ -10,7 +10,7 @@ skip_tags: true
 configuration: Release
 
 before_build:
-  - 'C:\Program Files\Java\jdk11\bin\java.exe' -jar CppCompiler.jar
+  - 'C:\Program Files\Java\jdk11\bin\java.exe -jar CppCompiler.jar'
   - ps: nuget restore -Verbosity quiet
   - del gradlew.bat
   - ren gradlew-appveyor.bat gradlew.bat
