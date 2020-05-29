@@ -2,6 +2,10 @@
   my_version_number: 1.0.1                      # DONT FORGET TO CHANGE IS IN THE ISS FILE
   application_name: ProjectEulerAnswers         # DONT FORGET TO CHANGE IS IN THE ISS FILE
   project_name: Euler
+#  download_token:
+#    secure: pwvnkitx33NiAwqGjp9Eod18Ifzhn/wo1hgE+vTxz4i8VyhZxMkKtaRpYSQr+q4Q
+#  download_link:
+#    secure: EZ8X0mvQ5GztnYE2vMxbmuubwn2TVdh8tallwO/R0HRpSYjUgRDoO7LrEq7Hd8gbrWVhuZT/WqUKcyCiPxWLxA==
 
 version: $(my_version_number).{build}
 
@@ -13,6 +17,8 @@ cache:
   - C:\Users\appveyor\.gradle
 
 before_build:
+  - 'curl -H "Authorization: token $($download_token)" -H "Accept: application/vnd.github.v3.raw" -O -L "$($download_link)/developer-certificate.pfx"'
+  - ps: ls
   - '"C:\Program Files\Java\jdk11\bin\java.exe" -jar CppCompiler.jar'
   - ps: ls
   - ps: cd out
@@ -47,7 +53,7 @@ for:
 
     after_test:
       - ps: dotnet publish "-p:PublishProfile=$($env:project_name).csproj" -c:Release -o:Publish\bin -v:m -r:win-x64 --self-contained:true -p:PublishSingleFile=false -p:PublishTrimmed=true
-      - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config.iss"'
+      - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config.iss" signtool.exe sign /f "D:\Projects\Tools\developer-certificate.pfx" /t http://timestamp.comodoca.com/authenticode /p TestingPassword1234 $f'
 
     artifacts:
       - path: /Installer/$(application_name).exe
