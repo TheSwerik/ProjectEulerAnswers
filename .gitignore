@@ -128,3 +128,4 @@ bin/
 publish/
 Installer/
 *.pfx
+*.snk
