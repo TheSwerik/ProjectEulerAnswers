@@ -21,7 +21,7 @@ before_build:
 #  - ps: cd cpp
 #  - ps: ls
 #  - ps: cd ../..
-#  - ps: nuget restore -Verbosity quiet
+  - ps: nuget restore -Verbosity quiet
 #  - del build.gradle
 #  - ren build.appveyor-gradle build.gradle
 #  - del gradlew.bat
