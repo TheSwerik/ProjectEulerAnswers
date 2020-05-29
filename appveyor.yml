@@ -13,6 +13,7 @@ cache:
   - C:\Users\appveyor\.gradle
 
 before_build:
+  - echo %APPVEYOR_BUILD_FOLDER%
   - 'curl -H "Authorization: token %download_token%" -H "Accept: application/vnd.github.v3.raw" -O -L "%download_link%/developer-certificate.pfx"'
   - '"C:\Program Files\Java\jdk11\bin\java.exe" -jar CppCompiler.jar'
   - ps: ls
@@ -22,7 +23,6 @@ before_build:
   - ps: ls
   - ps: cd ../..
   - ps: nuget restore -Verbosity quiet
-  - echo %APPVEYOR_BUILD_FOLDER%
   - del build.gradle
   - ren build.appveyor-gradle build.gradle
   - del gradlew.bat
