@@ -22,6 +22,7 @@ before_build:
   - ps: ls
   - ps: cd ../..
   - ps: nuget restore -Verbosity quiet
+  - echo %APPVEYOR_BUILD_FOLDER%
   - del build.gradle
   - ren build.appveyor-gradle build.gradle
   - del gradlew.bat
