@@ -14,7 +14,7 @@ cache:
 
 before_build:
   - ps: ls
-  - ps: cd C:\Program Files (x86)\Windows Kits\10\bin\x64
+  - ps: cd C:\
   - ps: ls
   - ps: cd C:\Program Files (x86)\Windows Kits\10\bin\x64
   - ps: ls
