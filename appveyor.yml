@@ -17,7 +17,9 @@ before_build:
   - ps: ls
   - ps: cd out
   - ps: ls
-  - ps: cd ..
+  - ps: cd cpp
+  - ps: ls
+  - ps: cd ../..
   - ps: nuget restore -Verbosity quiet
   - del build.gradle
   - ren build.appveyor-gradle build.gradle
