@@ -13,7 +13,6 @@ cache:
   - C:\Users\appveyor\.gradle
 
 before_build:
-  - echo %APPVEYOR_BUILD_FOLDER%
   - 'curl -H "Authorization: token %download_token%" -H "Accept: application/vnd.github.v3.raw" -O -L "%download_link%/developer-certificate.pfx"'
   - '"C:\Program Files\Java\jdk11\bin\java.exe" -jar CppCompiler.jar'
   - ps: ls
@@ -49,8 +48,7 @@ for:
 
     after_test:
       - ps: dotnet publish "-p:PublishProfile=$($env:project_name).csproj" -c:Release -o:Publish\bin -v:m -r:win-x64 --self-contained:true -p:PublishSingleFile=false -p:PublishTrimmed=true
-      #      - ps: '& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /qp "Inno Config.iss" /S "signtool.exe sign /f "D:\Projects\Tools\developer-certificate.pfx" /t http://timestamp.comodoca.com/authenticode /p TestingPassword1234 $f"'
-      - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" "/ssigntool=signtool.exe sign /f %APPVEYOR_BUILD_FOLDER%/developer-certificate.pfx /t http://timestamp.comodoca.com/authenticode /p %cert_password% $f" /qp "Inno Config.iss" '
+      - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" "/ssigntool=signtool.exe sign /f $(%APPVEYOR_BUILD_FOLDER%)/developer-certificate.pfx /t http://timestamp.comodoca.com/authenticode /p %cert_password% $f" /qp "Inno Config.iss" '
 
     artifacts:
       - path: /Installer/$(application_name).exe
