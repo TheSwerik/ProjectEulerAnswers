@@ -38,8 +38,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 
 [Files] 
-Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb"; Flags: ignoreversion recursesubdirs signonce
-Source: "build\jpackage\ProjectEulerAnswers-Java\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs signonce
+Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb"; Flags: ignoreversion recursesubdirs 
+Source: "build\jpackage\ProjectEulerAnswers-Java\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs
 
 [Code]
 function NeedsAddPath(Param: string): boolean;
