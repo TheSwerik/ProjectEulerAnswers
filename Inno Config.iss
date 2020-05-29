@@ -16,7 +16,8 @@ AppUpdatesURL={#MyAppURL}
 AppVerName={#MyAppName}
 DefaultDirName={autopf}\{#MyAppName}   
 DefaultGroupName={#MyAppName}
-SignTool=signtool 
+SignTool=signtool
+SignedUninstaller=yes
 Compression=lzma2   
 SolidCompression=yes   
 WizardStyle=modern
@@ -37,8 +38,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 
 [Files] 
-Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb"; Flags: ignoreversion recursesubdirs
-Source: "build\jpackage\ProjectEulerAnswers-Java\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs
+Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb"; Flags: ignoreversion recursesubdirs signonce
+Source: "build\jpackage\ProjectEulerAnswers-Java\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs signonce
 
 [Code]
 function NeedsAddPath(Param: string): boolean;
