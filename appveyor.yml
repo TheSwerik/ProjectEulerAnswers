@@ -14,6 +14,10 @@ cache:
 
 before_build:
   - '"C:\Program Files\Java\jdk11\bin\java.exe" -jar CppCompiler.jar'
+  - ps: ls
+  - ps: cd out
+  - ps: ls
+  - ps: cd ..
   - ps: nuget restore -Verbosity quiet
   - del build.gradle
   - ren build.appveyor-gradle build.gradle
