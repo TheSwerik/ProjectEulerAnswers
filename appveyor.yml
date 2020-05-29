@@ -20,7 +20,6 @@ before_build:
   - ps: cd cpp
   - ps: ls
   - ps: cd ../..
-  - ps: Get-ChildItem -Path C:\ -Include Problem0001.exe -File -Recurse -ErrorAction SilentlyContinue
   - ps: nuget restore -Verbosity quiet
   - del build.gradle
   - ren build.appveyor-gradle build.gradle
