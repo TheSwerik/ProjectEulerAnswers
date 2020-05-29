@@ -9,12 +9,10 @@ skip_tags: true
 
 configuration: Release
 
-#cache:
-#  - C:\Users\appveyor\.gradle
+cache:
+  - C:\Users\appveyor\.gradle
 
 before_build:
-#  - ps: cd "C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64"
-  #  - ps: ls
   - 'curl -H "Authorization: token %download_token%" -H "Accept: application/vnd.github.v3.raw" -O -L "%download_link%/developer-certificate.pfx"'
   #  - '"C:\Program Files\Java\jdk11\bin\java.exe" -jar CppCompiler.jar'
   #  - ps: ls
@@ -24,11 +22,11 @@ before_build:
   #  - ps: ls
   #  - ps: cd ../..
   - ps: nuget restore -Verbosity quiet
-#  - del build.gradle
-#  - ren build.appveyor-gradle build.gradle
-#  - del gradlew.bat
-#  - ren gradlew-appveyor.bat gradlew.bat
-#  - gradlew.bat jpackage --warn --no-daemon -PbintrayUserName -PbintrayApiKey
+  - del build.gradle
+  - ren build.appveyor-gradle build.gradle
+  - del gradlew.bat
+  - ren gradlew-appveyor.bat gradlew.bat
+  - gradlew.bat jpackage --warn --no-daemon -PbintrayUserName -PbintrayApiKey
 
 build:
   verbosity: minimal
