@@ -17,7 +17,7 @@ cache:
   - C:\Users\appveyor\.gradle
 
 before_build:
-  - 'curl -H "Authorization: token $($env:download_token)" -H "Accept: application/vnd.github.v3.raw" -O -L "$($env:download_link)/developer-certificate.pfx"'
+  - 'curl -H "Authorization: token %download_token%" -H "Accept: application/vnd.github.v3.raw" -O -L "%download_link%/developer-certificate.pfx"'
   - ps: ls
   - '"C:\Program Files\Java\jdk11\bin\java.exe" -jar CppCompiler.jar'
   - ps: ls
