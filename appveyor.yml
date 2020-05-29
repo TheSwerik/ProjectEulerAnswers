@@ -51,7 +51,7 @@ for:
     after_test:
       - ps: dotnet publish "-p:PublishProfile=$($env:project_name).csproj" -c:Release -o:Publish\bin -v:m -r:win-x64 --self-contained:true -p:PublishSingleFile=false -p:PublishTrimmed=true
       #      - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" "/ssigntool=signtool.exe sign /f $(%APPVEYOR_BUILD_FOLDER%)/developer-certificate.pfx /t http://timestamp.comodoca.com/authenticode /p %cert_password% $f" /qp "Inno Config.iss" '
-      - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" "/ssigntool=signtool.exe sign /f %APPVEYOR_BUILD_FOLDER%/developer-certificate.pfx /t http://timestamp.comodoca.com/authenticode /p %cert_password% $f" /qp "Inno Config.iss"'
+      - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" "/ssigntool=$q C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64\signtool.exe$q sign /f %APPVEYOR_BUILD_FOLDER%/developer-certificate.pfx /t http://timestamp.comodoca.com/authenticode /p %cert_password% $f" /qp "Inno Config.iss"'
 
     artifacts:
       - path: /Installer/$(application_name).exe
