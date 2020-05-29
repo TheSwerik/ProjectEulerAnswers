@@ -9,8 +9,8 @@ skip_tags: true
 
 configuration: Release
 
-cache:
-  - C:\Users\appveyor\.gradle
+#cache:
+#  - C:\Users\appveyor\.gradle
 
 before_build:
   - ps: ls
