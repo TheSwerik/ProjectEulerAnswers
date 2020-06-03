@@ -1,6 +1,6 @@
 ﻿; Variables:
 #define MyAppName "ProjectEulerAnswers"
-#define MyAppVersion "1.0.2"
+#define MyAppVersion "1.0.3"
 #define MyAppPublisher "Swerik"
 #define MyAppURL "https://github.com/TheSwerik/ProjectEulerAnswers"   
 #define MyAppExeName "ProjectEulerAnswers.exe"
@@ -31,7 +31,7 @@ CloseApplicationsFilter=*.*
 ChangesEnvironment=yes
 
 [Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}\bin"; Check: NeedsAddPath('C:\foo')
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}\bin"; Check: NeedsAddPath('{app}\bin')
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -39,7 +39,9 @@ Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 
 [Files] 
 Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb"; Flags: ignoreversion recursesubdirs 
-Source: "build\jpackage\ProjectEulerAnswers-Java\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs
+Source: "Publish\bin\Euler.exe"; DestDir: "{app}\bin\Euler.exe"; Flags: ignoreversion sign 
+Source: "build\jpackage\ProjectEulerAnswers-Java\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs  
+Source: "build\jpackage\ProjectEulerAnswers-Java\ProjectEulerAnswers-Java.exe"; DestDir: "{app}\bin\ProjectEulerAnswers-Java.exe"; Flags: ignoreversion sign 
 
 [Code]
 function NeedsAddPath(Param: string): boolean;

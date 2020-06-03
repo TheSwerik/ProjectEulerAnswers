@@ -10,7 +10,7 @@ java {
 }
 
 group 'de.swerik'
-version '1.0.2'
+version '1.0.3'
 mainClassName = 'de.swerik.euler.Main'
 
 sourceSets {
@@ -30,7 +30,7 @@ repositories {
 jar {
     manifest {
         attributes('Implementation-Title': 'Euler',
-                'Implementation-Version': '1.0.2',
+                'Implementation-Version': '1.0.3',
                 'Main-Class': 'Main')
     }
 }

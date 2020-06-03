@@ -12,6 +12,7 @@
         <ProjectGuid>{60D76319-ED15-45EF-A4A3-4EE1E80B9E9D}</ProjectGuid>
 <!--        <SignAssembly>true</SignAssembly>-->
 <!--        <AssemblyOriginatorKeyFile>developer-certificate.snk</AssemblyOriginatorKeyFile>-->
+<!--        <DelaySign>true</DelaySign>-->
     </PropertyGroup>
 
     <ItemGroup>
