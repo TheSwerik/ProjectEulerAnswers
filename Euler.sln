@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euler", "Euler.csproj", "{2CC1983E-6A22-4E0F-A24C-A03ACBDE8D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CppCompiler", "CppCompiler\CppCompiler.csproj", "{C58D5ECD-C1B7-4D9A-B041-6A4959AB372D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,9 +12,5 @@ Global
 		{2CC1983E-6A22-4E0F-A24C-A03ACBDE8D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC1983E-6A22-4E0F-A24C-A03ACBDE8D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CC1983E-6A22-4E0F-A24C-A03ACBDE8D89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C58D5ECD-C1B7-4D9A-B041-6A4959AB372D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C58D5ECD-C1B7-4D9A-B041-6A4959AB372D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C58D5ECD-C1B7-4D9A-B041-6A4959AB372D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C58D5ECD-C1B7-4D9A-B041-6A4959AB372D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
