@@ -14,7 +14,7 @@ cache:
 
 before_build:
   - 'curl -H "Authorization: token %download_token%" -H "Accept: application/vnd.github.v3.raw" -O -L "%download_link%/developer-certificate.pfx"'
-  - 'curl -H "Accept: application/vnd.github.v3.raw" -LO "https://github.com/TheSwerik/CppCompiler/releases/download/1.4/CppCompiler.exe"'
+  - 'curl -H "Accept: application/vnd.github.v3.raw" -LO "https://github.com/TheSwerik/CppCompiler/releases/download/1.5/CppCompiler.exe"'
 #  - 'CppCompiler.exe -q'
   - 'CppCompiler.exe'
   - ps: ls
