@@ -23,7 +23,7 @@ namespace Euler.test.cs
             if (args.Length > 1)
             {
                 if (args[0][0] == 'c') StartCpp(args[1]);
-                if (args[0][0] == 'p') StartPython(args[1]);
+                else if (args[0][0] == 'p') StartPython(args[1]);
                 else Console.WriteLine("Wrong Argument. Valid Arguments are \"\", \"Cpp\", \"python\"");
             }
 
@@ -81,14 +81,10 @@ namespace Euler.test.cs
                             UseShellExecute = false,
                             RedirectStandardOutput = true
                         };
-            var watch = new Stopwatch();
-            watch.Start();
             using var process = Process.Start(start);
             using var reader = process.StandardOutput;
             var solution = reader.ReadToEnd();
-            watch.Stop();
             Console.WriteLine(solution);
-            Console.WriteLine(watch.Elapsed);
         }
     }
 }

@@ -25,4 +25,8 @@
         <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)out\cpp\**" CopyToOutputDirectory="PreserveNewest" TargetPath="cpp\%(Filename)%(Extension)" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Publish" />
+    </ItemGroup>
+
 </Project>
