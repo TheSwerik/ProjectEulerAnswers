@@ -1,6 +1,6 @@
 ﻿; Variables:
 #define MyAppName "ProjectEulerAnswers"
-#define MyAppVersion "1.0.3"
+#define MyAppVersion "1.0.4"
 #define MyAppPublisher "Swerik"
 #define MyAppURL "https://github.com/TheSwerik/ProjectEulerAnswers"   
 #define MyAppExeName "ProjectEulerAnswers.exe"
