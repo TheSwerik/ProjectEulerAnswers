@@ -74,11 +74,10 @@ namespace Euler.test.cs
 
         private static void StartCpp(string input)
         {
-            Console.WriteLine(Environment.CurrentDirectory + $@"\cpp\Problem{new string('0', 4 - input.Length) + input}.exe");
             var start = new ProcessStartInfo
                         {
                             FileName = Environment.CurrentDirectory +
-                                       $@"\out\cpp\Problem{new string('0', 4 - input.Length) + input}.exe",
+                                       $@"\cpp\Problem{new string('0', 4 - input.Length) + input}.exe",
                             UseShellExecute = false,
                             RedirectStandardOutput = true
                         };
