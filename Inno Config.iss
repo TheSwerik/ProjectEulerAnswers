@@ -39,9 +39,9 @@ Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 
 [Files] 
 Source: "Publish\bin\*"; DestDir: "{app}\bin"; Excludes:"*.pdb,*/Euler.exe"; Permissions: users-modify; Flags: ignoreversion recursesubdirs
-Source: "Publish\bin\Euler.exe"; DestDir: "{app}\bin\Euler.exe"; Permissions: users-modify; Flags: ignoreversion sign
+Source: "Publish\bin\Euler.exe"; DestDir: "{app}\bin"; Permissions: users-modify; Flags: ignoreversion sign
 Source: "build\jpackage\ProjectEulerAnswers-Java\*"; Excludes:"*/ProjectEulerAnswers-Java.exe"; DestDir: "{app}\bin"; Permissions: users-modify; Flags: ignoreversion recursesubdirs
-Source: "build\jpackage\ProjectEulerAnswers-Java\ProjectEulerAnswers-Java.exe"; DestDir: "{app}\bin\ProjectEulerAnswers-Java.exe"; Permissions: users-modify; Flags: ignoreversion sign
+Source: "build\jpackage\ProjectEulerAnswers-Java\ProjectEulerAnswers-Java.exe"; DestDir: "{app}\bin"; Permissions: users-modify; Flags: ignoreversion sign
 
 [Code]
 function NeedsAddPath(Param: string): boolean;
