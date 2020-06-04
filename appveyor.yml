@@ -16,6 +16,7 @@ before_build:
   - 'curl -H "Authorization: token %download_token%" -H "Accept: application/vnd.github.v3.raw" -O -L "%download_link%/developer-certificate.pfx"'
 #  - 'curl -H "Accept: application/vnd.github.v3.raw" -LO "https://github.com/TheSwerik/CppCompiler/releases/download/1.5/CppCompiler.exe"'
   - 'CppCompiler.exe -q'
+  - '"C:\MinGW\bin\g++" src\main\cpp\Problem001.cpp -o out\cpp\Problem0001.exe'
 #  - 'CppCompiler.exe'
   - ps: ls
   - ps: cd out
