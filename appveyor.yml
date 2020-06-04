@@ -17,6 +17,8 @@ before_build:
 #  - 'curl -H "Accept: application/vnd.github.v3.raw" -LO "https://github.com/TheSwerik/CppCompiler/releases/download/1.5/CppCompiler.exe"'
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
   - cl
+  - cl /EHsc src/main/cpp/Problem0001.cpp  /link /out:Problem0001.exe
+  - ls
   - 'C:\MinGW\bin\mingw-get update'
   - 'C:\MinGW\bin\mingw-get upgrade'
   - 'C:\MinGW\bin\g++ -v'
