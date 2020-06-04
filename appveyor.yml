@@ -24,7 +24,7 @@ before_build:
 #  - ps: ls
 #  - ps: cd ../../..
   - 'CppCompiler.exe -q'
-  - '"C:\MinGW\bin\g++" "C:\projects\projecteuleranswers\src\main\cpp\Problem0001.cpp" -o "C:\projects\projecteuleranswers\out\cpp\Problem0001.exe"'
+  - '"C:\MinGW\bin\g++" -v "C:\projects\projecteuleranswers\src\main\cpp\Problem0001.cpp" -o "C:\projects\projecteuleranswers\out\cpp\Problem0001.exe"'
 #  - 'CppCompiler.exe'
   - ps: ls
   - ps: cd out
