@@ -15,13 +15,12 @@ configuration: Release
 before_build:
 #  - 'curl -H "Authorization: token %download_token%" -H "Accept: application/vnd.github.v3.raw" -LO "%download_link%/developer-certificate.pfx"'
 #  - 'curl -H "Accept: application/vnd.github.v3.raw" -LO "https://github.com/TheSwerik/CppCompiler/releases/download/1.5/CppCompiler.exe"'
-#  - ps: ls
-  - ps: cd C:\MinGW\bin
-#  - ps: cd out
   - ps: ls
-#  - ps: cd cpp
-#  - ps: ls
-#  - ps: cd ../../..
+  - ps: cd out
+  - ps: ls
+  - ps: cd cpp
+  - ps: ls
+  - ps: cd ../..
   - 'C:\MinGW\bin\mingw-get update'
   - 'C:\MinGW\bin\mingw-get upgrade'
   - 'C:\MinGW\bin\g++ -v'
