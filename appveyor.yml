@@ -22,6 +22,8 @@ before_build:
 #  - ps: cd cpp
 #  - ps: ls
 #  - ps: cd ../../..
+  - 'mingw-get update'
+  - 'mingw-get upgrade'
   - '"C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++" -v'
   - 'CppCompiler.exe -q'
   - '"C:\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw64\bin\g++" -v "C:\projects\projecteuleranswers\src\main\cpp\Problem0001.cpp" -o "C:\projects\projecteuleranswers\out\cpp\Problem0001.exe"'
