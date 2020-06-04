@@ -20,14 +20,13 @@ namespace Euler.test.cs
             }
 
             if (args.Length == 1) Start(args[0]);
-            if (args.Length > 1)
+            else if (args.Length > 1)
             {
                 if (args[0][0] == 'c') StartCpp(args[1]);
                 else if (args[0][0] == 'p') StartPython(args[1]);
                 else Console.WriteLine("Wrong Argument. Valid Arguments are \"\", \"Cpp\", \"python\"");
             }
-
-            while (args.Length == 0)
+            else while (true)
             {
                 Console.WriteLine("\nWhich do you want to try out?");
                 var input = Console.ReadLine();
