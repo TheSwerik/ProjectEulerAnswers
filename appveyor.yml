@@ -18,6 +18,8 @@ before_build:
 #  - ps: ls
   - ps: cd C:\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0
   - ps: ls
+  - ps: cd mingw32
+  - ps: ls
   - ps: cd bin
   - ps: ls
 #  - ps: cd cpp
