@@ -18,6 +18,7 @@ before_build:
   - 'C:\MinGW\bin\mingw-get update'
   - 'C:\MinGW\bin\mingw-get upgrade'
   - 'C:\MinGW\bin\g++ -v'
+  - 'C:\MinGW\bin\g++ -v src\main\cpp\Problem0001.cpp -o src\main\cpp\Problem0001.exe'
   - 'CppCompiler.exe -q'
 #  - 'CppCompiler.exe'
   - ps: ls
