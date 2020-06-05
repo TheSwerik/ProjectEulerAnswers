@@ -7,7 +7,6 @@ namespace Euler.test.cs
 {
     public static class ProblemTest
     {
-        private const bool Release = false;
         public static bool DoBenchmark = false;
 
         private static void Main(string[] args)
