@@ -16,12 +16,7 @@ namespace Euler.main.cs._00
             // Solution:
             long fibo1 = 1;
             long fibo2 = 1;
-            while (fibo1 < n)
-                if ((fibo1 = fibo2 + (fibo2 = fibo1)) % 2 == 0 && fibo1 < n)
-                {
-                    result += fibo1;
-                    Console.WriteLine(fibo1);
-                }
+            while (fibo1 < n) if ((fibo1 = fibo2 + (fibo2 = fibo1)) % 2 == 0 && fibo1 < n) result += fibo1;
 
             stopWatch.Stop();
             var elapsedTime = stopWatch.Elapsed.ToString();
