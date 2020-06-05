@@ -63,15 +63,10 @@ namespace Euler.test.cs
                             UseShellExecute = false,
                             RedirectStandardOutput = true
                         };
-            var watch = new Stopwatch();
-            watch.Start();
             using var process = Process.Start(start);
             using var reader = process.StandardOutput;
             var solution = reader.ReadToEnd();
-            watch.Stop();
-            if (string.IsNullOrWhiteSpace(solution))
-                Console.WriteLine($@"Cannot find \python\Problem{new string('0', 4 - input.Length) + input}.py");
-            else Console.WriteLine(watch.Elapsed);
+            Console.WriteLine(solution);
         }
 
         private static void StartCpp(string input)

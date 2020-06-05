@@ -1,9 +1,13 @@
+import time
+
+
 def solve(limit=1000):
+    start_time = time.time()
     x = 0
     for i in range(limit):
         if i % 3 == 0 or i % 5 == 0:
             x += i
-    print(x)
+    print("Result:\t" + str(x) + "\tTime:\t" + str((time.time() - start_time) * 1000) + "ms")
 
 
 if __name__ == "__main__":
