@@ -26,13 +26,14 @@ namespace Euler.test.cs
                 else if (args[0][0] == 'p') StartPython(args[1]);
                 else Console.WriteLine("Wrong Argument. Valid Arguments are \"\", \"Cpp\", \"python\"");
             }
-            else while (true)
-            {
-                Console.WriteLine("\nWhich do you want to try out?");
-                var input = Console.ReadLine();
-                if (input.Equals("0")) return;
-                Start(input);
-            }
+            else
+                while (true)
+                {
+                    Console.WriteLine("\nWhich do you want to try out?");
+                    var input = Console.ReadLine();
+                    if (input.Equals("0")) return;
+                    Start(input);
+                }
         }
 
         private static void Start(string input)
@@ -68,7 +69,8 @@ namespace Euler.test.cs
             using var reader = process.StandardOutput;
             var solution = reader.ReadToEnd();
             watch.Stop();
-            Console.WriteLine(watch.Elapsed);
+            if (string.IsNullOrWhiteSpace(solution)) Console.WriteLine($@"Cannot find \python\Problem{new string('0', 4 - input.Length) + input}.py");
+            else Console.WriteLine(watch.Elapsed);
         }
 
         private static void StartCpp(string input)
