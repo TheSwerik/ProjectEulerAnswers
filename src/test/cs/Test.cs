@@ -58,8 +58,8 @@ namespace Euler.test.cs
             var start = new ProcessStartInfo
                         {
                             FileName = "python",
-                            Arguments = Environment.CurrentDirectory +
-                                        $@"\python\Problem{new string('0', 4 - input.Length) + input}.py",
+                            Arguments =
+                                $@"""{Environment.CurrentDirectory}\python\Problem{new string('0', 4 - input.Length) + input}.py""",
                             UseShellExecute = false,
                             RedirectStandardOutput = true
                         };
@@ -69,7 +69,8 @@ namespace Euler.test.cs
             using var reader = process.StandardOutput;
             var solution = reader.ReadToEnd();
             watch.Stop();
-            if (string.IsNullOrWhiteSpace(solution)) Console.WriteLine($@"Cannot find \python\Problem{new string('0', 4 - input.Length) + input}.py");
+            if (string.IsNullOrWhiteSpace(solution))
+                Console.WriteLine($@"Cannot find \python\Problem{new string('0', 4 - input.Length) + input}.py");
             else Console.WriteLine(watch.Elapsed);
         }
 
